@@ -115,7 +115,7 @@ body {
   transform: translateY(0);
 }
 
-/* Mobile-friendly touch targets */
+/* Mobile-friendly touch targets & breathing space */
 @media (max-width: 640px) {
   button, a {
     touch-action: manipulation;
@@ -126,11 +126,47 @@ body {
     overflow-x: hidden;
     position: relative;
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   /* Make code/project cards feel responsive on tap */
   .cursor-target:active {
-    transform: scale(0.99);
+    transform: scale(0.995);
+  }
+
+  /* Ensure text looks relaxed and never justifies awkwardly on mobile */
+  .mobile-relaxed-text {
+    text-align: left !important;
+    line-height: 1.65 !important;
+    letter-spacing: -0.01em;
+  }
+
+  /* Mobile horizontal scroll container for GitHub graph */
+  .mobile-scroll-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.75rem;
+    scrollbar-width: thin;
+  }
+  
+  .mobile-scroll-container::-webkit-scrollbar {
+    height: 4px;
+  }
+  .mobile-scroll-container::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 4px;
+  }
+
+  /* Prevent iOS Safari from auto-zooming inputs on focus */
+  .contact-input-field {
+    font-size: 16px !important;
+  }
+
+  /* Generous item spacing */
+  .mobile-card-spacing {
+    padding-left: 1rem !important;
+    border-left-width: 2px !important;
   }
 }
 
