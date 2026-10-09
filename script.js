@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTargetCursor();
   initContributionsGrid();
   initBackToTop();
+  initContactForm();
 });
 
 /* ==========================================================================
@@ -261,6 +262,79 @@ function initBackToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+}
+
+/* ==========================================================================
+   REAL CONTACT FORM SUBMISSION
+   ========================================================================== */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+
+  if (!form || !submitBtn) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const messageInput = document.getElementById('contact-message');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim() : '';
+    const message = messageInput ? messageInput.value.trim() : '';
+
+    if (!name || !email || !message) {
+      if (status) {
+        status.innerHTML = '<span style="color: #ef4444;">Please fill in all fields.</span>';
+      }
+      return;
+    }
+
+    submitBtn.disabled = true;
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = `
+      <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+      <span>Sending...</span>
+    `;
+    if (status) status.innerHTML = '';
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/nandigammahesh595@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+          _subject: `New Portfolio Message from ${name}`
+        })
+      });
+
+      if (response.ok) {
+        if (status) {
+          status.innerHTML = '<span style="color: #10b981; font-weight: 500;">✓ Message sent to Mahesh! I will get back to you shortly.</span>';
+        }
+        form.reset();
+      } else {
+        throw new Error('Server returned error');
+      }
+    } catch (err) {
+      // Fallback: open mailto directly so message is never lost
+      if (status) {
+        status.innerHTML = '<span style="color: #10b981;">✓ Opening your email client to send...</span>';
+      }
+      const mailtoUrl = `mailto:nandigammahesh595@gmail.com?subject=${encodeURIComponent('Portfolio Message from ' + name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + ' (' + email + ')')}`;
+      window.location.href = mailtoUrl;
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+  });
 }
 
 
