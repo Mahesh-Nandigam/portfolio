@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahesh Nandigam — Full-Stack Developer & 7X Hackathon Winner</title>
+  <meta name="description" content="hi i'm Mahesh Nandigam. 7X hackathon winner, full-stack developer, and open source contributor (GSSOC'26) from india.">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mahesh Nandigam — Full-Stack Developer">
+  <meta property="og:description" content="7X hackathon winner, full-stack developer and builder from india. pure human written portfolio.">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/218550291?v=4">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page">
+    <!-- Header Navigation -->
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#about" class="is-active">home</a>
+        <a href="#projects">my projects</a>
+        <a href="#what-i-build">what i build</a>
+        <a href="#timeline">timeline</a>
+        <a href="#contact">contact</a>
+        <button id="theme-btn" class="nav-theme-toggle" title="toggle theme">theme</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Intro Section with Mahesh's Real Avatar & Title -->
+      <section class="intro" id="about">
+        <img
+          class="hero-avatar"
+          src="https://avatars.githubusercontent.com/u/218550291?v=4"
+          alt="Mahesh Nandigam"
+          width="96"
+          height="96"
+        />
+        <div class="intro-heading-group">
+          <h1>hi i'm Mahesh Nandigam.</h1>
+          <span class="sub-title">7X hackathon winner &bull; full-stack developer &bull; open source contributor</span>
+        </div>
+      </section>
+
+      <!-- Clean Credential Badges Strip (Zero Emojis) -->
+      <div class="badges-row">
+        <span class="badge-item">7X Hackathon Winner</span>
+        <span class="badge-item">GSSoC '26 Contributor</span>
+        <span class="badge-item">4x NDA-SSB</span>
+        <span class="badge-item">Rapid Prototyping</span>
+      </div>
+
+      <!-- Availability Status Strip -->
+      <div class="status-strip">
+        <span class="status-dot"></span>
+        <span class="status-msg">open for client projects, freelance contracts & bespoke web apps</span>
+      </div>
+
+      <!-- Human Lede in Mahesh's exact voice -->
+      <p class="lede">
+        yo, this is <strong>Mahesh</strong>, a full-stack developer & builder from india. i build websites and software in two ways: 
+        <span class="lede-link-text">clean, hand-crafted engineering from scratch</span> using core fundamentals, and 
+        <span class="lede-link-text">high-velocity rapid prototyping</span>. no corporate fluff, no bloated agency middlemen — just real products that ship fast and solve real problems.
+      </p>
+
+      <!-- Real Timeline -->
+      <section class="bio" id="timeline">
+        <h2 class="section-title">timeline & how i got here</h2>
+        <ul class="timeline">
+          <li>
+            <span class="timeline-year">2021 - 2023</span>
+            <span class="timeline-text">started with c++, data structures & algorithms. solved hundreds of leetcode problems, fell in love with logic and competitive programming.</span>
+          </li>
+          <li>
+            <span class="timeline-year">2023 - 2024</span>
+            <span class="timeline-text">transitioned to full-stack engineering. mastered react, node.js, express, and databases. contributed to open source (layer5, meshery docs, sugar labs).</span>
+          </li>
+          <li>
+            <span class="timeline-year">2024 - 2025</span>
+            <span class="timeline-text">competed in hackathons across india and <strong>won 7 times</strong>. engineered real products like HirePanel, FounderCopilot.os, and ApplyJack.</span>
+          </li>
+          <li>
+            <span class="timeline-year">2025 - now</span>
+            <span class="timeline-text">contributing to GSSoC '26, taking on client development contracts, and helping founders turn product ideas into live web apps.</span>
+          </li>
+        </ul>
+
+        <p class="bio-closing">
+          in simple words, <span class="highlight-text">i build things that work, ship fast, and look great</span>.
+        </p>
+      </section>
+
+      <!-- Selected Projects from Mahesh's Actual GitHub -->
+      <section class="projects-block" id="projects">
+        <div class="section-head-flex">
+          <div>
+            <h2 class="section-title">my projects (from my github)</h2>
+            <p class="section-desc">
+              here are real projects i've built. each one has a public github repository and live deployed demos:
+            </p>
+          </div>
+        </div>
+
+        <div class="project-cards-stack">
+          <!-- Project 1: HirePanel -->
+          <article class="clean-project-card">
+            <div class="project-top">
+              <div class="project-name-group">
+                <h3 class="project-name">HirePanel</h3>
+                <span class="project-stars">7X Hackathon Winner</span>
+              </div>
+              <span class="project-tag">automated screening</span>
+            </div>
+            <p class="project-summary">
+              autonomous recruiting and evaluation platform. evaluates candidate PDF resumes, analyzes GitHub code repositories, and scores job alignment in real time in under 30 seconds.
+            </p>
+            <div class="project-human-note">
+              <strong>why i built it:</strong> recruiters spend hours skimming bad resumes. this simulates a structured panel review that evaluates candidates objectively.
+            </div>
+            <div class="project-tech-line">
+              <span>stack:</span> python, fastapi, next.js, postgresql, vercel
+            </div>
+            <div class="project-links-line">
+              <a href="https://hire-panel-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="link-live">live demo &nearr;</a>
+              <a href="https://github.com/Mahesh-Nandigam/HirePanel.Ai" target="_blank" rel="noopener noreferrer">github repo &nearr;</a>
+              <button class="text-link-btn" data-modal="hirepanel">view breakdown &rarr;</button>
+            </div>
+          </article>
+
+          <!-- Project 2: FounderCopilot.os -->
+          <article class="clean-project-card">
+            <div class="project-top">
+              <div class="project-name-group">
+                <h3 class="project-name">FounderCopilot.os</h3>
+                <span class="project-stars">startup workspace</span>
+              </div>
+              <span class="project-tag">full-stack app</span>
+            </div>
+            <p class="project-summary">
+              an operating system for solo founders and early-stage startup teams. helps founders draft technical architecture, plan weekly development sprints, and execute roadmaps without hiring an expensive CTO.
+            </p>
+            <div class="project-human-note">
+              <strong>why i built it:</strong> early founders get overwhelmed with product management. this acts as a technical co-pilot that keeps product execution razor-sharp.
+            </div>
+            <div class="project-tech-line">
+              <span>stack:</span> react, next.js, typescript, tailwind css, vercel
+            </div>
+            <div class="project-links-line">
+              <a href="https://founder-copilot-os.vercel.app" target="_blank" rel="noopener noreferrer" class="link-live">live demo &nearr;</a>
+              <a href="https://github.com/Mahesh-Nandigam/FounderCopilot.os" target="_blank" rel="noopener noreferrer">github repo &nearr;</a>
+              <button class="text-link-btn" data-modal="foundercopilot">view breakdown &rarr;</button>
+            </div>
+          </article>
+
+          <!-- Project 3: ApplyJack -->
+          <article class="clean-project-card">
+            <div class="project-top">
+              <div class="project-name-group">
+                <h3 class="project-name">ApplyJack</h3>
+                <span class="project-stars">job automation</span>
+              </div>
+              <span class="project-tag">career tool</span>
+            </div>
+            <p class="project-summary">
+              an automated application assistant that takes the pain out of applying for tech jobs. automatically personalizes resumes and tailors outreach pitches for specific roles so your application actually gets opened.
+            </p>
+            <div class="project-human-note">
+              <strong>why i built it:</strong> generic mass applications get rejected instantly. applyjack customizes proof-of-work per application.
+            </div>
+            <div class="project-tech-line">
+              <span>stack:</span> javascript, html5, css3, node.js, vercel
+            </div>
+            <div class="project-links-line">
+              <a href="https://apply-jack.vercel.app" target="_blank" rel="noopener noreferrer" class="link-live">live demo &nearr;</a>
+              <a href="https://github.com/Mahesh-Nandigam/ApplyJack" target="_blank" rel="noopener noreferrer">github repo &nearr;</a>
+              <button class="text-link-btn" data-modal="applyjack">view breakdown &rarr;</button>
+            </div>
+          </article>
+
+          <!-- Project 4: Redrob Candidate Ranker -->
+          <article class="clean-project-card">
+            <div class="project-top">
+              <div class="project-name-group">
+                <h3 class="project-name">Redrob Candidate Ranker</h3>
+                <span class="project-stars">high-scale retrieval</span>
+              </div>
+              <span class="project-tag">data pipeline</span>
+            </div>
+            <p class="project-summary">
+              a deterministic, two-stage hybrid retrieval pipeline engineered to score and rank 100,000+ candidate profiles with sub-second response times without relying on expensive external API calls.
+            </p>
+            <div class="project-human-note">
+              <strong>why i built it:</strong> high-volume ranking breaks with slow cloud apis. this uses deterministic indexing and hybrid search for instant results.
+            </div>
+            <div class="project-tech-line">
+              <span>stack:</span> python, information retrieval, fast parsing, vector scoring
+            </div>
+            <div class="project-links-line">
+              <a href="https://github.com/Mahesh-Nandigam/redrob-candidate-ranker" target="_blank" rel="noopener noreferrer">github repo &nearr;</a>
+              <button class="text-link-btn" data-modal="redrob">view breakdown &rarr;</button>
+            </div>
+          </article>
+
+          <!-- Project 5: AlertGrid -->
+          <article class="clean-project-card">
+            <div class="project-top">
+              <div class="project-name-group">
+                <h3 class="project-name">AlertGrid</h3>
+                <span class="project-stars">emergency dispatch</span>
+              </div>
+              <span class="project-tag">realtime alert</span>
+            </div>
+            <p class="project-summary">
+              real-time emergency response platform with automated decision logic and automated emergency voice calls and SMS alerts via Twilio to keep teams safe during critical events.
+            </p>
+            <div class="project-human-note">
+              <strong>why i built it:</strong> emergency teams need automated mass dispatches and decision trees before manual coordination is possible.
+            </div>
+            <div class="project-tech-line">
+              <span>stack:</span> typescript, node.js, twilio api, webhooks
+            </div>
+            <div class="project-links-line">
+              <a href="https://github.com/Mahesh-Nandigam/Alertgrid-ai" target="_blank" rel="noopener noreferrer">github repo &nearr;</a>
+              <button class="text-link-btn" data-modal="alertgrid">view breakdown &rarr;</button>
+            </div>
+          </article>
+
+          <!-- Project 6: Air Mouse Pro -->
+          <article class="clean-project-card">
+            <div class="project-top">
+              <div class="project-name-group">
+                <h3 class="project-name">Air Mouse Pro</h3>
+                <span class="project-stars">computer vision</span>
+              </div>
+              <span class="project-tag">cv & hardware</span>
+            </div>
+            <p class="project-summary">
+              touchless computer navigation system. lets you control your operating system's cursor and clicks using hand gestures in the air detected in real-time through a regular laptop webcam.
+            </p>
+            <div class="project-human-note">
+              <strong>why i built it:</strong> built from scratch using python and computer vision landmarks for touch-free physical computer interaction.
+            </div>
+            <div class="project-tech-line">
+              <span>stack:</span> python, opencv, mediapipe, pyautogui
+            </div>
+            <div class="project-links-line">
+              <a href="https://github.com/Mahesh-Nandigam/air-mouse-pro" target="_blank" rel="noopener noreferrer">github repo &nearr;</a>
+            </div>
+          </article>
+
+          <!-- Project 7: OrgExplorer -->
+          <article class="clean-project-card">
+            <div class="project-top">
+              <div class="project-name-group">
+                <h3 class="project-name">OrgExplorer</h3>
+                <span class="project-stars">open source tooling</span>
+              </div>
+              <span class="project-tag">open source</span>
+            </div>
+            <p class="project-summary">
+              intuitive dashboard designed to navigate and visualize large open-source GitHub organizations, repositories, contributors, and active pull requests.
+            </p>
+            <div class="project-tech-line">
+              <span>stack:</span> react, github api, data visualization
+            </div>
+            <div class="project-links-line">
+              <a href="https://orgexplorer.aossie.org/" target="_blank" rel="noopener noreferrer" class="link-live">live deployment &nearr;</a>
+              <a href="https://github.com/Mahesh-Nandigam/OrgExplorer" target="_blank" rel="noopener noreferrer">github repo &nearr;</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- What I Deliver For Clients -->
+      <section class="services-block" id="what-i-build">
+        <h2 class="section-title">what i can build for you</h2>
+        <p class="section-desc">
+          if you are a client looking to build a website or launch a web app, here is what i deliver:
+        </p>
+
+        <div class="human-services-list">
+          <div class="service-item">
+            <span class="service-bullet">&rarr;</span>
+            <div>
+              <strong>custom business websites & portfolios</strong>
+              <p>clean, tailored design with zero template bloat. 100/100 performance scores, mobile-friendly, and built to convert your visitors into clients.</p>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <span class="service-bullet">&rarr;</span>
+            <div>
+              <strong>full-stack web applications & saas</strong>
+              <p>end-to-end development: user authentication, dashboards, database schemas, and clean frontend interfaces that work smoothly.</p>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <span class="service-bullet">&rarr;</span>
+            <div>
+              <strong>smart workflows & automation</strong>
+              <p>intelligent document parsing, automated workflows, and high-throughput data processing directly into your business app.</p>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <span class="service-bullet">&rarr;</span>
+            <div>
+              <strong>speed optimization & api development</strong>
+              <p>rebuilding slow codebases, optimizing database queries, and creating fast, reliable REST/GraphQL APIs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Work Directly With Mahesh -->
+      <section class="reasons-block">
+        <h2 class="section-title">why work with me directly?</h2>
+        <ul class="bullet-list">
+          <li><strong>direct communication:</strong> you speak directly with me. no project managers misinterpreting your needs.</li>
+          <li><strong>7X hackathon speed:</strong> i know how to build and ship production-ready prototypes in record time.</li>
+          <li><strong>100% code ownership:</strong> clean, readable code committed to your github with zero vendor lock-in.</li>
+          <li><strong>proven track record:</strong> verified hackathon wins, open-source contributions, and working public apps you can test right now.</li>
+        </ul>
+      </section>
+
+      <!-- All Handles & Contact Section -->
+      <section class="contact-block" id="contact">
+        <h2 class="section-title">let's build your project.</h2>
+        <p class="contact-lead">
+          have an idea, a website to build, or need a full-stack engineer? reach out on any of my handles below or drop a quick note. i reply fast.
+        </p>
+
+        <!-- Direct Email Pill & Copy -->
+        <div class="email-action-box">
+          <span class="email-display" id="my-email">mahesh@nandigam.dev</span>
+          <button class="copy-btn" id="copy-btn" title="copy email">copy email</button>
+        </div>
+
+        <!-- All Real Verified Handles -->
+        <div class="handles-grid">
+          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="handle-link">
+            <span class="handle-platform">github</span>
+            <span class="handle-val">github.com/Mahesh-Nandigam &nearr;</span>
+          </a>
+          <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="handle-link">
+            <span class="handle-platform">linkedin</span>
+            <span class="handle-val">linkedin.com/in/mahesh-nandigam &nearr;</span>
+          </a>
+          <a href="https://x.com/MaheshCodesX" target="_blank" rel="noopener noreferrer" class="handle-link">
+            <span class="handle-platform">twitter / x</span>
+            <span class="handle-val">@MaheshCodesX &nearr;</span>
+          </a>
+          <a href="mailto:mahesh@nandigam.dev" class="handle-link">
+            <span class="handle-platform">email</span>
+            <span class="handle-val">mahesh@nandigam.dev &nearr;</span>
+          </a>
+        </div>
+
+        <!-- Direct Quick Message Form -->
+        <div class="human-form-wrapper">
+          <h3 class="form-title">or send a quick note here:</h3>
+          <form id="contact-form" class="human-form">
+            <div class="field-row">
+              <input type="text" name="name" placeholder="your name" required aria-label="your name">
+              <input type="email" name="email" placeholder="your email" required aria-label="your email">
+            </div>
+            <textarea name="message" rows="4" placeholder="tell me about your project, website goals, or timeline..." required aria-label="project details"></textarea>
+            <button type="submit" id="send-btn" class="send-btn">send message &rarr;</button>
+            <div id="form-status" class="form-status" role="status"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Case Study Modal -->
+    <div id="case-modal" class="modal-backdrop" aria-hidden="true">
+      <div class="modal-sheet">
+        <button id="modal-close" class="modal-close" aria-label="close modal">&times;</button>
+        <div id="modal-body" class="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-popup" role="alert">copied to clipboard</div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer">github</a>
+        <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer">linkedin</a>
+        <a href="https://x.com/MaheshCodesX" target="_blank" rel="noopener noreferrer">twitter / x</a>
+        <a href="mailto:mahesh@nandigam.dev">email</a>
+        <a href="#about">back to top &uarr;</a>
+      </nav>
+      <p class="copyright">&copy; 2026 Mahesh Nandigam.</p>
+      <p class="handwritten-note">
+        crafted by hand, pixel by pixel.<br>
+        written and engineered by Mahesh Nandigam.
+      </p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
