@@ -192,7 +192,7 @@ function initTargetCursor() {
    1-CLICK EMAIL COPY & TOAST
    ========================================================================== */
 function initEmailCopy() {
-  const email = 'mahesh@nandigam.dev';
+  const email = 'nandigammahesh595@gmail.com';
   const heroBtn = document.getElementById('copy-email-btn');
   const cardBtn = document.getElementById('copy-email-btn-card');
 
