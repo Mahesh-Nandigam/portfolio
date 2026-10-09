@@ -16,12 +16,12 @@
   <meta name="twitter:title" content="Mahesh Nandigam | Frontend Web Developer">
   <meta name="twitter:description" content="Building clean, responsive websites with HTML, CSS, JavaScript, and Bootstrap.">
 
-  <!-- Fonts: Google Outfit & JetBrains Mono -->
+  <!-- Google Fonts: Outfit & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Pragnyan Production Tailwind CSS -->
+  <!-- Compiled Pragnyan Tailwind CSS & Complementary Styles -->
   <link rel="stylesheet" href="pragnyan.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -46,32 +46,23 @@
     <div class="top-1/2 left-1/2 absolute border-[3px] border-t-0 border-r-0 border-white w-2.5 h-2.5 -translate-x-[150%] translate-y-1/2 target-cursor-corner transform"></div>
   </div>
 
-  <!-- Main Container matching pragnyanramtha: w-full lg:w-2/3 xl:w-1/2 mx-auto -->
+  <!-- Main Container: exact layout from pragnyanramtha.dev -->
   <div class="mx-auto px-4 pt-6 sm:pt-12 w-full lg:w-2/3 xl:w-1/2 text-foreground">
-    
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
 
-    <!-- Header Navigation -->
-    <header class="flex justify-between items-end mb-6 sm:mb-10">
-      <div class="cursor-target">
-        <a class="font-bold text-xl tracking-tighter hover:opacity-80 transition-opacity" href="/" aria-label="Mahesh Nandigam Home">mn.</a>
+    <!-- Header Navigation (Exact brand + nav links + theme toggle) -->
+    <header class="flex justify-between items-end">
+      <div class="cursor-target" style="transform:none">
+        <a class="inline-flex items-center justify-center font-bold text-xl tracking-tighter hover:opacity-80 transition-opacity" href="/" aria-label="Navigate to home">mn.</a>
       </div>
-      <nav class="flex items-center gap-1 sm:gap-2">
-        <ul class="flex items-center gap-1.5 sm:gap-3 text-sm sm:text-base">
+      <nav class="flex items-center gap-2">
+        <ul class="flex items-center gap-1 sm:gap-0">
+          <li><a href="/#experience" class="cursor-target relative block w-fit leading-[1.2rem] rounded-lg p-0 text-sm sm:text-base text-primary/90 hover:text-primary whitespace-nowrap px-1.5 py-1 sm:px-2 sm:py-1">experience</a></li>
+          <li><a href="/#projects" class="cursor-target relative block w-fit leading-[1.2rem] rounded-lg p-0 text-sm sm:text-base text-primary/90 hover:text-primary whitespace-nowrap px-1.5 py-1 sm:px-2 sm:py-1">projects</a></li>
+          <li><a href="/#blogs" class="cursor-target relative block w-fit leading-[1.2rem] rounded-lg p-0 text-sm sm:text-base text-primary/90 hover:text-primary whitespace-nowrap px-1.5 py-1 sm:px-2 sm:py-1">blogs</a></li>
+          <li><a href="/#research" class="cursor-target relative block w-fit leading-[1.2rem] rounded-lg p-0 text-sm sm:text-base text-primary/90 hover:text-primary whitespace-nowrap px-1.5 py-1 sm:px-2 sm:py-1">research</a></li>
           <li>
-            <a href="#experience" class="cursor-target relative block w-fit rounded-lg px-1.5 py-1 sm:px-2 sm:py-1 text-primary/90 hover:text-primary transition-colors">experience</a>
-          </li>
-          <li>
-            <a href="#projects" class="cursor-target relative block w-fit rounded-lg px-1.5 py-1 sm:px-2 sm:py-1 text-primary/90 hover:text-primary transition-colors">projects</a>
-          </li>
-          <li>
-            <a href="#skills" class="cursor-target relative block w-fit rounded-lg px-1.5 py-1 sm:px-2 sm:py-1 text-primary/90 hover:text-primary transition-colors">skills</a>
-          </li>
-          <li>
-            <a href="#contact" class="cursor-target relative block w-fit rounded-lg px-1.5 py-1 sm:px-2 sm:py-1 text-primary/90 hover:text-primary transition-colors">contact</a>
-          </li>
-          <li>
-            <button id="theme-toggle" class="cursor-target inline-flex items-center justify-center rounded-md p-1.5 text-muted-foreground hover:text-foreground transition-colors" aria-label="Toggle theme" title="Toggle theme">
+            <button id="theme-toggle" class="cursor-target inline-flex items-center justify-center rounded-md p-1.5 text-muted-foreground hover:text-foreground transition-colors ml-1" aria-label="Toggle theme" title="Toggle theme">
               <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
               <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun hidden"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
             </button>
@@ -81,59 +72,58 @@
     </header>
 
     <main id="main-content" class="px-0 sm:px-4 min-h-screen">
-      
-      <!-- Hero Section (Bit-to-bit matching pragnyanramtha screenshot) -->
-      <section class="pt-6 sm:pt-12">
+
+      <!-- Hero Section (Exact Pin-to-Pin Replica) -->
+      <section class="pt-8 sm:pt-12">
         <div class="space-y-2">
           <!-- Exact Greeting with emoji -->
           <p class="font-normal text-muted-foreground text-base">hi there👋, I&#x27;m</p>
-          
           <div>
             <h1 class="font-bold text-primary/90 text-3xl sm:text-4xl tracking-tight">Mahesh Nandigam</h1>
-            <div class="flex flex-col gap-0.5 font-normal text-primary/90 text-sm sm:text-base mt-1">
+            <div class="flex flex-col gap-0 font-normal text-primary/90 text-sm sm:text-base mt-1">
               <span>18, he/him</span>
               <span>Frontend Web Developer &amp; Student @CMR — Building clean, responsive websites</span>
             </div>
           </div>
 
-          <!-- Hero Buttons & Social Icons Row -->
+          <!-- Hero Buttons & Clean Profile Icons Row -->
           <div class="flex flex-wrap items-center gap-2 pt-2 text-sm">
-            <div class="cursor-target">
+            <div class="cursor-target" style="transform:none">
               <a href="#contact" class="inline-flex justify-center items-center bg-primary hover:bg-primary/90 shadow px-4 py-2 rounded-md h-9 font-medium text-primary-foreground text-sm whitespace-nowrap transition-colors" aria-label="Contact">
                 Contact
               </a>
             </div>
-            <div class="cursor-target">
+            <div class="cursor-target" style="transform:none">
               <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-background hover:bg-accent border border-input shadow-sm px-4 py-2 rounded-md h-9 font-medium text-primary text-sm whitespace-nowrap transition-colors" aria-label="Resume">
                 Resume
               </a>
             </div>
-            
+
             <div class="flex items-center gap-2">
               <!-- Email Icon Button -->
-              <div class="cursor-target">
-                <button id="copy-email-btn" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="Copy Email" title="Copy Email">
+              <div class="cursor-target" style="transform:none">
+                <button id="copy-email-btn" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="Email" title="Copy Email">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                 </button>
               </div>
 
               <!-- GitHub Icon Button -->
-              <div class="cursor-target">
-                <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="GitHub Profile" title="GitHub">
+              <div class="cursor-target" style="transform:none">
+                <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="Github" title="GitHub">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
                 </a>
               </div>
 
               <!-- LinkedIn Icon Button -->
-              <div class="cursor-target">
-                <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="LinkedIn Profile" title="LinkedIn">
+              <div class="cursor-target" style="transform:none">
+                <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="Linkedin" title="LinkedIn">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
               </div>
 
               <!-- Twitter / X Icon Button -->
-              <div class="cursor-target">
-                <a href="https://x.com/maheshn_dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="X Profile" title="X (Twitter)">
+              <div class="cursor-target" style="transform:none">
+                <a href="https://x.com/maheshn_dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="Twitter / X" title="X (Twitter)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                 </a>
               </div>
@@ -143,12 +133,12 @@
       </section>
 
       <!-- About Me Section (Exact bit-to-bit layout from screenshot) -->
-      <div id="aboutme" class="py-8 sm:py-10">
+      <div id="aboutme" class="py-10">
         <h2 class="font-medium text-primary/90 text-base">about me.</h2>
         <ul class="mt-4 space-y-2 text-muted-foreground text-sm sm:text-base">
           <li class="flex gap-2">
             <span class="text-primary/40 mt-0.5 select-none shrink-0">•</span>
-            <span>I&#x27;m a <strong class="font-bold text-primary underline-offset-4">Frontend Web Developer</strong> based in Hyderabad, India specializing in clean <strong class="font-bold text-primary underline-offset-4">HTML5</strong>, modern <strong class="font-bold text-primary underline-offset-4">CSS3</strong>, <strong class="font-bold text-primary underline-offset-4">JavaScript</strong>, and <strong class="font-bold text-primary underline-offset-4">Bootstrap</strong></span>
+            <span>I&#x27;m a <strong class="font-bold text-primary underline-offset-4">Frontend Web Developer</strong> specializing in clean <strong class="font-bold text-primary underline-offset-4">HTML5</strong>, modern <strong class="font-bold text-primary underline-offset-4">CSS3</strong>, vanilla <strong class="font-bold text-primary underline-offset-4">JavaScript</strong>, and <strong class="font-bold text-primary underline-offset-4">Bootstrap</strong></span>
           </li>
           <li class="flex gap-2">
             <span class="text-primary/40 mt-0.5 select-none shrink-0">•</span>
@@ -166,26 +156,24 @@
       </div>
 
       <!-- Experience Section (Exact Left Border card styling from pragnyanramtha) -->
-      <div id="experience" class="py-8 sm:py-10">
+      <div id="experience" class="py-10">
         <h2 class="font-medium text-primary/90 text-base">experience.</h2>
-        <ul class="flex flex-col gap-8 sm:gap-12 mt-4 font-normal text-primary/90 text-base">
+        <ul class="flex flex-col gap-12 mt-4 font-normal text-primary/90 text-base">
           
           <li class="cursor-target">
             <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
               <div class="flex sm:flex-row flex-col justify-between items-start">
                 <div>
-                  <p class="text-primary/90 text-lg font-medium">Frontend Web Developer <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-0.5 rounded text-xs text-muted-foreground">Projects</span></p>
-                  <p class="flex items-center text-sm text-muted-foreground mt-0.5">
-                    at, <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 ml-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">Personal &amp; Open Source Projects <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
-                  </p>
+                  <p class="text-primary/90 text-lg">Frontend Web Developer <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-1 rounded text-xs">Projects</span></p>
+                  <p class="flex items-center text-sm">at, <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 ml-1" href="https://github.com/Mahesh-Nandigam">Personal &amp; Open Source Projects <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
                 </div>
-                <p class="text-muted-foreground text-sm max-sm:mt-1">2024 - Present</p>
+                <p class="text-muted-foreground text-sm">2024 - Present</p>
               </div>
-              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
-                <li><span>Built multiple clean, fully responsive web interfaces using semantic <strong class="font-bold text-primary underline-offset-4">HTML5, CSS3, JavaScript</strong>, and <strong class="font-bold text-primary underline-offset-4">Bootstrap</strong>, focusing on fast load times and mobile usability.</span></li>
+              <ul class="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>Built multiple clean, fully responsive web interfaces using semantic <strong class="font-bold text-primary underline-offset-4">HTML5, CSS3, JavaScript</strong>, and <strong class="font-bold text-primary underline-offset-4">Bootstrap</strong>, ensuring 100% cross-device compatibility.</span></li>
                 <li><span>Implemented dynamic UI state handling, dark mode toggles, interactive forms, and custom component animations without heavy dependencies.</span></li>
               </ul>
-              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+              <ul class="flex flex-wrap items-center gap-2 mt-2 pl-3">
                 <li class="bg-muted px-2 py-1 rounded text-xs">HTML5</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">CSS3</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
@@ -199,18 +187,16 @@
             <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
               <div class="flex sm:flex-row flex-col justify-between items-start">
                 <div>
-                  <p class="text-primary/90 text-lg font-medium">B.Tech Student &amp; Developer <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-0.5 rounded text-xs text-muted-foreground">Hyderabad</span></p>
-                  <p class="flex items-center text-sm text-muted-foreground mt-0.5">
-                    at, <span class="ml-1 text-primary">CMR College of Engineering &amp; Technology</span>
-                  </p>
+                  <p class="text-primary/90 text-lg">B.Tech Student &amp; Developer <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-1 rounded text-xs">Hyderabad</span></p>
+                  <p class="flex items-center text-sm">at, <span class="ml-1 text-primary">CMR College of Engineering &amp; Technology</span></p>
                 </div>
-                <p class="text-muted-foreground text-sm max-sm:mt-1">2023 - Present</p>
+                <p class="text-muted-foreground text-sm">2023 - Present</p>
               </div>
-              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+              <ul class="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
                 <li><span>Studying Computer Science and Engineering with a focus on web technologies, data structures, algorithms, and software design principles (7.95 GPA).</span></li>
                 <li><span>Active participant in developer hackathons, coding contests, and technical collaboration.</span></li>
               </ul>
-              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+              <ul class="flex flex-wrap items-center gap-2 mt-2 pl-3">
                 <li class="bg-muted px-2 py-1 rounded text-xs">Computer Science</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">Algorithms</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">C++</li>
@@ -223,30 +209,30 @@
       </div>
 
       <!-- Projects Section (Exact Left Border card styling from pragnyanramtha) -->
-      <div id="projects" class="py-8 sm:py-10">
+      <div id="projects" class="py-10">
         <h2 class="font-medium text-primary/90 text-base">projects.</h2>
-        <ul class="flex flex-col gap-8 sm:gap-12 mt-4 font-normal text-primary/90 text-base">
+        <ul class="flex flex-col gap-12 mt-4 font-normal text-primary/90 text-base">
 
           <!-- Project 1: Ecosphere -->
           <li class="cursor-target">
             <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
               <div class="flex sm:flex-row flex-col justify-between items-start">
                 <div>
-                  <p class="text-primary/90 text-lg font-medium">Ecosphere — Carbon Footprint Tracker</p>
+                  <p class="text-primary/90 text-lg">Ecosphere — Carbon Footprint Tracker</p>
                   <div class="flex items-center gap-3 text-sm mt-1">
                     <div class="flex items-center">
-                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">
-                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1" href="https://github.com/Mahesh-Nandigam">
+                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+              <ul class="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
                 <li><span>Interactive web application designed to help users calculate, visualize, and reduce their everyday carbon impact.</span></li>
                 <li><span>Engineered with pure vanilla JavaScript, HTML, and CSS for fast rendering and dynamic interactive score updates.</span></li>
               </ul>
-              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+              <ul class="flex flex-wrap items-center gap-2 mt-2 pl-3">
                 <li class="bg-muted px-2 py-1 rounded text-xs">HTML5</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">CSS3</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
@@ -260,21 +246,21 @@
             <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
               <div class="flex sm:flex-row flex-col justify-between items-start">
                 <div>
-                  <p class="text-primary/90 text-lg font-medium">HirePanel — Candidate Review Dashboard</p>
+                  <p class="text-primary/90 text-lg">HirePanel — Candidate Review Dashboard</p>
                   <div class="flex items-center gap-3 text-sm mt-1">
                     <div class="flex items-center">
-                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">
-                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1" href="https://github.com/Mahesh-Nandigam">
+                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+              <ul class="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
                 <li><span>Streamlined recruitment dashboard for filtering applicants, scheduling rounds, and managing candidate profiles.</span></li>
                 <li><span>Built using Bootstrap 5 components, flexbox tables, and JavaScript search/filtering algorithms.</span></li>
               </ul>
-              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+              <ul class="flex flex-wrap items-center gap-2 mt-2 pl-3">
                 <li class="bg-muted px-2 py-1 rounded text-xs">Bootstrap 5</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">HTML5</li>
@@ -288,21 +274,20 @@
             <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
               <div class="flex sm:flex-row flex-col justify-between items-start">
                 <div>
-                  <p class="text-primary/90 text-lg font-medium">AlertGrid — Server Status Dashboard</p>
+                  <p class="text-primary/90 text-lg">AlertGrid — Server Status Dashboard</p>
                   <div class="flex items-center gap-3 text-sm mt-1">
                     <div class="flex items-center">
-                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">
-                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                      </a>
+                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1" href="https://github.com/Mahesh-Nandigam">
+                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
                     </div>
                   </div>
                 </div>
               </div>
-              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
-                <li><span>Real-time server health and service uptime monitor with status badges, ping metrics, and alert cards.</span></li>
+              <ul class="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>Real-time server health and service uptime monitor with status badges, ping metrics, and alert panels.</span></li>
                 <li><span>Designed with custom CSS Grid and responsive flex containers optimized for high-density information displays.</span></li>
               </ul>
-              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+              <ul class="flex flex-wrap items-center gap-2 mt-2 pl-3">
                 <li class="bg-muted px-2 py-1 rounded text-xs">CSS Grid</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">Flexbox</li>
@@ -315,20 +300,20 @@
             <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
               <div class="flex sm:flex-row flex-col justify-between items-start">
                 <div>
-                  <p class="text-primary/90 text-lg font-medium">Air Mouse — Gesture Controller</p>
+                  <p class="text-primary/90 text-lg">Air Mouse — Gesture Controller</p>
                   <div class="flex items-center gap-3 text-sm mt-1">
                     <div class="flex items-center">
-                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam/air_mouse">
-                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1" href="https://github.com/Mahesh-Nandigam/air_mouse">
+                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
                       </a>
                     </div>
                   </div>
                 </div>
               </div>
-              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+              <ul class="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
                 <li><span>Computer vision program using OpenCV and Python that tracks hand gestures via webcam to control mouse movement and left/right clicks in real time.</span></li>
               </ul>
-              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+              <ul class="flex flex-wrap items-center gap-2 mt-2 pl-3">
                 <li class="bg-muted px-2 py-1 rounded text-xs">Python</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">OpenCV</li>
                 <li class="bg-muted px-2 py-1 rounded text-xs">Computer Vision</li>
@@ -339,17 +324,15 @@
         </ul>
 
         <div class="flex justify-center mt-8">
-          <a class="inline-flex justify-center items-center bg-background hover:bg-accent border border-input shadow-sm px-4 py-2 rounded-md h-9 font-medium text-muted-foreground text-sm whitespace-nowrap transition-colors hover:text-accent-foreground cursor-target" href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer">
-            View all projects on GitHub &rarr;
-          </a>
+          <a class="inline-flex justify-center items-center bg-background hover:bg-accent disabled:opacity-50 shadow-sm px-4 py-2 border border-input rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-9 font-medium text-muted-foreground text-sm whitespace-nowrap transition-colors hover:text-accent-foreground cursor-target" href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer">View all projects</a>
         </div>
       </div>
 
       <!-- GitHub Contributions Section (Exact SVG from pragnyanramtha) -->
-      <div id="github-contribution" class="w-full py-8 sm:py-10">
+      <div id="github-contribution" class="w-full">
         <h2 class="font-medium text-primary/90 text-base mb-4">github contributions.</h2>
-        <div class="w-full overflow-x-auto no-scrollbar px-1 py-2 cursor-target rounded-lg border border-border/50 bg-card/20">
-          <svg class="block w-full min-w-[720px] h-auto overflow-visible text-muted-foreground" viewBox="0 0 1002 150">
+        <div class="w-full overflow-hidden no-scrollbar px-2">
+          <svg class="block w-full h-auto overflow-visible" viewBox="0 0 1002 150">
             <title>GitHub Contributions</title>
             <g class="fill-current text-xs">
               <text dominant-baseline="hanging" x="0">Oct</text>
@@ -365,95 +348,192 @@
               <text dominant-baseline="hanging" x="817">Aug</text>
               <text dominant-baseline="hanging" x="912">Sep</text>
             </g>
-            <!-- Generated 52-week activity grid matching pragnyanramtha -->
-            <g id="contrib-grid">
-              <!-- Rendered via JS or native rects -->
-            </g>
+            <g id="contrib-grid"></g>
           </svg>
         </div>
       </div>
 
+      <!-- Blogs Section (Exact matching pragnyanramtha.dev) -->
+      <div id="blogs" class="py-10">
+        <h2 class="font-medium text-primary/90 text-base">blogs.</h2>
+        <ul class="flex flex-col gap-12 mt-4 font-normal text-primary/90 text-base">
+          
+          <li class="cursor-target">
+            <div class="block pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <p class="text-primary/90 text-lg">Building Fast, Accessible Websites Without Heavy Frameworks <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-1 rounded text-xs">Apr 2026</span></p>
+              <div class="flex flex-wrap items-center gap-3 mt-1 text-sm">
+                <span class="flex items-center gap-1">Read full post <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span>
+                <span class="text-muted-foreground">8 min read</span>
+              </div>
+              <ul class="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>Why mastering vanilla HTML, modern CSS, and lightweight JavaScript delivers faster load times, superior accessibility, and better maintainability.</span></li>
+                <li><span>Practical tips for optimizing layout performance and reducing DOM complexity on mobile screens.</span></li>
+              </ul>
+              <ul class="flex flex-wrap items-center gap-2 mt-2 pl-3">
+                <li class="bg-muted px-2 py-1 rounded text-xs">HTML5</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">CSS3</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Performance</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="cursor-target">
+            <div class="block pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <p class="text-primary/90 text-lg">Responsive Layouts Mastery: From Flexbox to CSS Grid <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-1 rounded text-xs">Mar 2026</span></p>
+              <div class="flex flex-wrap items-center gap-3 mt-1 text-sm">
+                <span class="flex items-center gap-1">Read full post <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span>
+                <span class="text-muted-foreground">6 min read</span>
+              </div>
+              <ul class="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>A deep dive into modern responsive CSS strategies without bloated utility classes or excessive media queries.</span></li>
+                <li><span>Handling edge cases in mobile viewports, dynamic font scaling, and touch-friendly UI design.</span></li>
+              </ul>
+              <ul class="flex flex-wrap items-center gap-2 mt-2 pl-3">
+                <li class="bg-muted px-2 py-1 rounded text-xs">CSS Grid</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Flexbox</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Responsive Design</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Mobile First</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="cursor-target">
+            <div class="block pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <p class="text-primary/90 text-lg">Creating Interactive Web Dashboards with Bootstrap &amp; Vanilla JS <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-1 rounded text-xs">Feb 2026</span></p>
+              <div class="flex flex-wrap items-center gap-3 mt-1 text-sm">
+                <span class="flex items-center gap-1">Read full post <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span>
+                <span class="text-muted-foreground">7 min read</span>
+              </div>
+              <ul class="space-y-1 mt-1 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>How to rapidly prototype and ship clean, accessible dashboard interfaces using Bootstrap 5 and modular JavaScript.</span></li>
+                <li><span>State management, real-time client-side filtering, and responsive table views.</span></li>
+              </ul>
+              <ul class="flex flex-wrap items-center gap-2 mt-2 pl-3">
+                <li class="bg-muted px-2 py-1 rounded text-xs">Bootstrap 5</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">UI Design</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Dashboards</li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="flex justify-center mt-8">
+          <a class="inline-flex justify-center items-center bg-background hover:bg-accent disabled:opacity-50 shadow-sm px-4 py-2 border border-input rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-9 font-medium text-muted-foreground text-sm whitespace-nowrap transition-colors hover:text-accent-foreground cursor-target" href="#projects">View more</a>
+        </div>
+      </div>
+
+      <!-- Research Section (Exact matching pragnyanramtha.dev) -->
+      <div id="research" class="py-10">
+        <h2 class="font-medium text-primary/90 text-base">research papers.</h2>
+        <ul class="flex flex-col gap-12 mt-4 font-normal text-primary/90 text-base">
+          
+          <li class="cursor-target">
+            <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <p class="text-primary/90 text-lg">Comparative Analysis of Modern CSS Layout Engines and Render Performance Across Mobile Viewports <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-1 rounded text-xs">2026</span></p>
+              <p class="flex items-center gap-1 text-sm"><span class="flex items-center gap-1 text-primary">Academic Study <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span><span class="px-1 py-px text-xs">CMR CET</span></p>
+              <p class="mt-1 text-muted-foreground text-sm text-justify line-clamp-3">A comprehensive analysis of layout recalculation costs, repaint frequency, and GPU memory usage between Flexbox, CSS Grid, and traditional block layouts on low-power mobile devices to optimize core web vitals.</p>
+            </div>
+          </li>
+
+          <li class="cursor-target">
+            <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <p class="text-primary/90 text-lg">Computer Vision-Based Human-Computer Interaction: Real-Time Hand Landmark Tracking for Assistive Input <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-1 rounded text-xs">2026</span></p>
+              <p class="flex items-center gap-1 text-sm"><span class="flex items-center gap-1 text-primary">Project Report <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></span><span class="px-1 py-px text-xs">OpenCV / Python</span></p>
+              <p class="mt-1 text-muted-foreground text-sm text-justify line-clamp-3">Investigating lightweight gesture detection algorithms using Python and OpenCV for accessible, hands-free computer control without proprietary specialized hardware, focusing on low latency and real-time execution.</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
       <!-- Technical Skills Section (Exact sm:grid-cols-[170px_1fr] layout) -->
-      <div id="skills" class="py-8 sm:py-10">
+      <div id="skills" class="py-10">
         <h2 class="font-medium text-primary/90 text-base">technical skills.</h2>
-        <ul class="flex flex-col gap-3 mt-4 font-normal text-primary/90 text-base">
-          <li class="items-start sm:items-end grid sm:grid-cols-[170px_1fr] gap-1">
-            <p class="font-medium text-primary/90">Core Web:</p>
-            <p class="text-muted-foreground text-sm">HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, Responsive Design</p>
+        <ul class="flex flex-col gap-2 mt-4 font-normal text-primary/90 text-base">
+          <li class="items-end grid sm:grid-cols-[170px_1fr]">
+            <p>Languages:</p>
+            <p class="text-muted-foreground text-sm">HTML5, CSS3, JavaScript (ES6+), C++, Python</p>
           </li>
-          <li class="items-start sm:items-end grid sm:grid-cols-[170px_1fr] gap-1">
-            <p class="font-medium text-primary/90">Other Languages:</p>
-            <p class="text-muted-foreground text-sm">C++, Python</p>
+          <li class="items-end grid sm:grid-cols-[170px_1fr]">
+            <p>Frontend Web:</p>
+            <p class="text-muted-foreground text-sm">Bootstrap 5, Responsive Design, CSS Grid, Flexbox, Semantic HTML</p>
           </li>
-          <li class="items-start sm:items-end grid sm:grid-cols-[170px_1fr] gap-1">
-            <p class="font-medium text-primary/90">Developer Tools:</p>
-            <p class="text-muted-foreground text-sm">Git, GitHub, VS Code, Chrome DevTools</p>
+          <li class="items-end grid sm:grid-cols-[170px_1fr]">
+            <p>Developer Tools:</p>
+            <p class="text-muted-foreground text-sm">Git, GitHub, VS Code, Chrome DevTools, Figma</p>
           </li>
-          <li class="items-start sm:items-end grid sm:grid-cols-[170px_1fr] gap-1">
-            <p class="font-medium text-primary/90">Education:</p>
+          <li class="items-start grid sm:grid-cols-[170px_1fr]">
+            <p>Achievements:</p>
+            <ul class="flex flex-col gap-1 text-muted-foreground text-sm">
+              <li>Built 4+ production web applications from scratch</li>
+              <li>Active open-source contributor on GitHub</li>
+              <li>Participant in college hackathons and technical contests</li>
+            </ul>
+          </li>
+          <li class="items-end grid sm:grid-cols-[170px_1fr]">
+            <p>Education:</p>
             <p class="text-muted-foreground text-sm">CMR College of Engineering &amp; Technology — B.Tech in CSE (7.95 GPA)</p>
           </li>
         </ul>
       </div>
 
-      <!-- Let's work together Section (Exact layout from pragnyanramtha) -->
-      <section class="py-10 sm:py-14" id="contact">
+      <!-- Let's work together Section (Exact layout from pragnyanramtha — NO dirty form, NO text pills) -->
+      <section class="py-10" id="contact">
         <div class="space-y-6 text-center">
-          <div class="space-y-3">
+          <div class="space-y-4">
             <h2 class="font-bold text-3xl">Let&#x27;s work together.</h2>
-            <p class="mx-auto max-w-2xl text-muted-foreground text-sm sm:text-base">
-              I&#x27;m always interested in new opportunities, frontend web development roles, and exciting projects. Whether you have a project in mind or just want to chat about tech, I&#x27;d love to hear from you.
+            <p class="mx-auto max-w-2xl text-muted-foreground text-base">
+              I&#x27;m always interested in new opportunities, frontend web developer roles, and exciting projects. Whether you have a website in mind or just want to chat about tech, I&#x27;d love to hear from you.
             </p>
           </div>
 
-          <div class="flex sm:flex-row flex-col justify-center items-center gap-3 sm:gap-4">
-            <a href="mailto:nandigammahesh595@gmail.com" class="inline-flex justify-center items-center bg-primary hover:bg-primary/90 shadow px-4 rounded-md h-9 font-medium text-primary-foreground text-sm whitespace-nowrap transition-colors cursor-target w-full sm:w-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail mr-2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+          <div class="flex sm:flex-row flex-col justify-center items-center gap-4">
+            <a href="mailto:nandigammahesh595@gmail.com" class="inline-flex justify-center items-center bg-primary hover:bg-primary/90 shadow px-4 rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-9 font-medium text-primary-foreground text-sm whitespace-nowrap transition-colors cursor-target">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail mr-2 w-4 h-4"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
               Get in touch
             </a>
-            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center hover:bg-primary/10 shadow px-4 border border-primary rounded-md h-9 font-medium text-primary text-sm whitespace-nowrap transition-colors cursor-target w-full sm:w-auto">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mr-2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center hover:bg-primary/10 shadow px-4 border border-primary rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-9 font-medium text-primary text-sm whitespace-nowrap transition-colors cursor-target">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mr-2 w-4 h-4"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
               Download Resume
             </a>
           </div>
 
-          <!-- Social Icon Links Row -->
-          <div class="flex justify-center items-center gap-5 pt-2">
-            <a target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="https://github.com/Mahesh-Nandigam" title="GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+          <!-- Exact Clean Social Icons Row (matching pragnyanramtha.dev) -->
+          <div class="flex justify-center items-center gap-6 pt-2">
+            <a target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-muted-foreground hover:text-foreground transition-colors cursor-target" href="https://github.com/Mahesh-Nandigam">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github w-5 h-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
             </a>
-            <a target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="https://www.linkedin.com/in/mahesh-nandigam" title="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            <a target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-muted-foreground hover:text-foreground transition-colors cursor-target" href="https://www.linkedin.com/in/mahesh-nandigam">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin w-5 h-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </a>
-            <a target="_blank" rel="noopener noreferrer" aria-label="X Profile" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="https://x.com/maheshn_dev" title="X (Twitter)">
+            <a target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="text-muted-foreground hover:text-foreground transition-colors cursor-target" href="https://x.com/maheshn_dev">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
-            <a target="_blank" rel="noopener noreferrer" aria-label="Send Email" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="mailto:nandigammahesh595@gmail.com" title="Email">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-            </a>
-            <a target="_blank" rel="noopener noreferrer" aria-label="Call Phone" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="tel:+917989281078" title="+91 7989281078">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <a target="_blank" rel="noopener noreferrer" aria-label="Email" class="text-muted-foreground hover:text-foreground transition-colors cursor-target" href="mailto:nandigammahesh595@gmail.com">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-5 h-5"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
             </a>
           </div>
 
           <div class="pt-4 cursor-target">
-            <p class="text-muted-foreground text-sm">Open to frontend web developer roles, internships, and freelance projects</p>
-            <p class="mt-1 text-muted-foreground/60 text-xs">Response time: Usually within 24 hours</p>
+            <p class="text-muted-foreground text-sm">Open to frontend engineering roles, internships, and freelance web projects</p>
+            <p class="mt-2 text-muted-foreground/60 text-xs">Response time: Usually within 24 hours</p>
           </div>
         </div>
       </section>
 
       <!-- Footer (Exact bit-to-bit from pragnyanramtha) -->
-      <div class="flex max-md:flex-col justify-between items-center max-md:gap-3 mb-6 py-8 sm:py-10 border-border border-t">
-        <p class="text-muted-foreground text-sm sm:text-base text-center">Mahesh Nandigam &bull; 2026</p>
-        <button id="elevate-top-btn" class="flex items-center gap-2 w-fit text-muted-foreground hover:text-foreground text-sm sm:text-base cursor-pointer transition-colors" aria-label="Scroll back to top">
+      <div class="flex max-md:flex-col justify-between items-center max-md:gap-2 mb-6 py-10 border-gray-800 border-t">
+        <p class="text-muted-foreground text-base text-center">Mahesh Nandigam · 2026</p>
+        <button id="elevate-top-btn" class="flex items-center gap-2 w-fit text-muted-foreground text-base cursor-pointer hover:text-foreground transition-colors" aria-label="Scroll back to top">
           Elevate to the top
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
         </button>
       </div>
 
     </main>
-
   </div>
 
   <!-- Toast Notification -->
