@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mahesh Nandigam | Full-Stack Developer — 7X Hackathon Winner & Open Source Contributor</title>
-  <meta name="description" content="Mahesh Nandigam — Full-Stack Developer, 7X Hackathon Winner, and open-source contributor (GSSoC '26). Building fast, scalable web software, bespoke client websites, and automated systems.">
+  <meta name="description" content="Mahesh Nandigam — Full-Stack Developer, 7X Hackathon Winner, and open source builder (GSSoC '26). Building fast, scalable web software and bespoke client platforms.">
   <meta name="author" content="Mahesh Nandigam">
 
   <!-- Open Graph -->
@@ -16,466 +16,883 @@
   <!-- Google Fonts: Outfit & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
 </head>
 <body data-theme="dark">
-  <!-- Subtle SVG Grid Background Pattern (from pragnyanramtha.dev) -->
-  <svg class="grid-pattern-bg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+  <!-- Exact SVG Background Grid (from pragnyanramtha.dev) -->
+  <svg class="grid-bg-svg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
-      <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
-        <path d="M 32 0 L 0 0 0 32" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+      <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-width="0.5"></path>
       </pattern>
     </defs>
-    <rect width="100%" height="100%" fill="url(#grid)"></rect>
+    <rect width="100%" height="100%" fill="url(#grid)" x="-1" y="-1"></rect>
   </svg>
 
-  <div class="page-container">
+  <!-- Exact GSAP Target Cursor Component (from pragnyanramtha.dev) -->
+  <div id="target-cursor" aria-hidden="true">
+    <div class="target-cursor-dot"></div>
+    <div class="target-cursor-corner corner-tl"></div>
+    <div class="target-cursor-corner corner-tr"></div>
+    <div class="target-cursor-corner corner-br"></div>
+    <div class="target-cursor-corner corner-bl"></div>
+  </div>
+
+  <!-- Main Layout Container (matching pragnyanramtha: w-full lg:w-2/3 xl:w-1/2 mx-auto) -->
+  <div class="page-wrap">
+
     <!-- Header -->
     <header class="site-header">
-      <a href="/" class="brand-monogram" aria-label="Mahesh Nandigam Home">mn.</a>
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#about" class="nav-link">about</a>
-        <a href="#experience" class="nav-link">experience</a>
-        <a href="#projects" class="nav-link">projects</a>
-        <a href="#services" class="nav-link">services</a>
-        <a href="#contact" class="nav-link">contact</a>
-        <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme" title="Toggle theme">
-          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
+      <a href="/" class="brand-btn cursor-target" aria-label="Mahesh Nandigam Home">mn.</a>
+      <nav aria-label="Primary Navigation">
+        <ul class="site-nav-list">
+          <li><a href="#about" class="nav-link-item cursor-target">about</a></li>
+          <li><a href="#experience" class="nav-link-item cursor-target">experience</a></li>
+          <li><a href="#projects" class="nav-link-item cursor-target">projects</a></li>
+          <li><a href="#skills" class="nav-link-item cursor-target">skills</a></li>
+          <li><a href="#services" class="nav-link-item cursor-target">services</a></li>
+          <li><a href="#contact" class="nav-link-item cursor-target">contact</a></li>
+          <li>
+            <button id="theme-toggle" class="theme-toggle-btn cursor-target" aria-label="Toggle Color Theme" title="Toggle theme">
+              <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+          </li>
+        </ul>
       </nav>
     </header>
 
     <main id="main-content">
+
       <!-- Hero Section -->
-      <section class="hero-section">
+      <section class="hero-block">
         <p class="greeting-text">hi there, I'm</p>
-        
-        <div class="hero-intro">
-          <h1 class="hero-name">Mahesh Nandigam</h1>
-          <div class="hero-details">
-            <span class="hero-bio-line">Full-Stack Developer &bull; 7X Hackathon Winner</span>
-            <span class="hero-subline">Open Source Contributor (GSSoC '26) &bull; Rapid Prototyping &bull; 4x NDA-SSB</span>
-          </div>
+
+        <h1 class="hero-name">Mahesh Nandigam</h1>
+
+        <div class="hero-bio-stack">
+          <span>Full-Stack Developer &bull; 7X Hackathon Winner</span>
+          <span class="hero-subline">Open Source Contributor (GSSoC '26) &bull; Rapid Prototyping &bull; 4x NDA-SSB</span>
         </div>
 
-        <!-- Call to Action Buttons & Social Icons -->
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Contact</a>
-          <a href="#projects" class="btn btn-outline">Projects</a>
-          
-          <div class="social-icons-group">
-            <button class="icon-btn" id="copy-email-btn" title="Copy email address" aria-label="Copy Email">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-            </button>
-            <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="LinkedIn">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </a>
-            <a href="https://x.com/MaheshCodesX" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="Twitter / X">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-          </div>
+        <div class="hero-btn-row">
+          <a href="#contact" class="btn-pill btn-solid cursor-target">Contact</a>
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline cursor-target">Resume</a>
+
+          <button class="btn-icon-square cursor-target" id="copy-email-btn" title="Copy email address" aria-label="Copy Email">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+          </button>
+          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="btn-icon-square cursor-target" aria-label="GitHub Profile">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="btn-icon-square cursor-target" aria-label="LinkedIn Profile">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a href="https://x.com/MaheshCodesX" target="_blank" rel="noopener noreferrer" class="btn-icon-square cursor-target" aria-label="Twitter / X Profile">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
         </div>
       </section>
 
       <!-- About Me Section -->
-      <section id="about" class="section-block">
-        <h2 class="section-heading">about me.</h2>
-        <ul class="about-list">
-          <li class="about-item">
-            <span class="bullet-dot">&bull;</span>
-            <span>I'm a <strong class="text-highlight">Full-Stack Developer</strong> specializing in <strong class="text-highlight">React, Next.js, Node.js, and scalable APIs</strong> with high-performance architectures.</span>
+      <section id="about" class="section-wrapper">
+        <h2 class="section-title-sm">about me.</h2>
+        <ul class="bullet-about-list">
+          <li>
+            <span class="dot">&bull;</span>
+            <span>I'm a <strong class="bold-accent">Full-Stack Developer</strong> specializing in <strong class="bold-accent">React, Next.js, Node.js, TypeScript</strong>, and scalable web architectures.</span>
           </li>
-          <li class="about-item">
-            <span class="bullet-dot">&bull;</span>
-            <span><strong class="text-highlight">7X Hackathon Winner</strong> across India — recognized for building production-grade software and prototypes from scratch in record time.</span>
+          <li>
+            <span class="dot">&bull;</span>
+            <span><strong class="bold-accent">7X Hackathon Winner</strong> across India — recognized for turning complex problem statements into functional, high-performance web products within 24 to 36-hour sprint windows.</span>
           </li>
-          <li class="about-item">
-            <span class="bullet-dot">&bull;</span>
-            <span>Active <strong class="text-highlight">Open Source Contributor</strong> participating in <strong class="text-highlight">GSSoC '26</strong>, with merged contributions to projects like <a href="https://github.com/Mahesh-Nandigam/meshery" target="_blank" rel="noopener noreferrer" class="inline-link">Meshery</a>, Layer5 documentation, and Sugar Labs.</span>
+          <li>
+            <span class="dot">&bull;</span>
+            <span>Active <strong class="bold-accent">Open Source Contributor</strong> participating in <strong class="bold-accent">GSSoC '26</strong>, with contributions to Cloud Native systems like <a href="https://github.com/Mahesh-Nandigam/meshery" target="_blank" rel="noopener noreferrer" class="bold-link">Meshery</a> (Layer5) and open developer tooling.</span>
           </li>
-          <li class="about-item">
-            <span class="bullet-dot">&bull;</span>
-            <span>I partner directly with <strong class="text-highlight">founders and businesses</strong> to build custom web applications, responsive landing pages, and automated backend infrastructure without bloated code.</span>
+          <li>
+            <span class="dot">&bull;</span>
+            <span>I partner directly with <strong class="bold-accent">founders, startups, and engineering teams</strong> to build responsive web apps, high-throughput backend APIs, and modern landing pages with clean, reliable code.</span>
           </li>
         </ul>
       </section>
 
-      <!-- Experience & Achievements (Signature Left Border Cards) -->
-      <section id="experience" class="section-block">
-        <h2 class="section-heading">experience & achievements.</h2>
-        <div class="timeline-stack">
-          <!-- Item 1 -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">Freelance Full-Stack Developer <span class="badge-location">Remote</span></h3>
-                  <p class="company-sub">Independent Client Contracting</p>
-                </div>
-                <span class="time-badge">2025 - Present</span>
-              </div>
-              <ul class="card-bullets">
-                <li>Engineered high-performance web applications and bespoke business websites with Next.js, React, Node.js, and PostgreSQL.</li>
-                <li>Architected scalable REST APIs, automated database workflows, and optimized client Core Web Vitals to 95+ Google Lighthouse scores.</li>
-                <li>Worked directly with business founders from initial system design to cloud deployment with zero middleman overhead.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">Next.js</span>
-                <span class="tech-pill">React</span>
-                <span class="tech-pill">TypeScript</span>
-                <span class="tech-pill">Node.js</span>
-                <span class="tech-pill">PostgreSQL</span>
-                <span class="tech-pill">Tailwind CSS</span>
-              </div>
-            </div>
-          </article>
+      <!-- Experience & Achievements (Signature Left-Border Cards) -->
+      <section id="experience" class="section-wrapper">
+        <h2 class="section-title-sm">experience & achievements.</h2>
+        <ul class="cards-vertical-list">
 
-          <!-- Item 2 -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">7X Hackathon Winner <span class="badge-location">National Competitions</span></h3>
-                  <p class="company-sub">Competitive Builder & Lead Developer</p>
-                </div>
-                <span class="time-badge">2024 - 2025</span>
+          <li class="card-lborder cursor-target">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading-title">Freelance Full-Stack Developer <span class="location-tag">Remote</span></h3>
+                <p class="card-subheading">Independent Client Contracting</p>
               </div>
-              <ul class="card-bullets">
-                <li>Won 7 national hackathons by architecting and shipping functional end-to-end applications within 24 to 36-hour sprint constraints.</li>
-                <li>Built notable award-winning products including HirePanel (automated recruiting platform), FounderCopilot.os, and ApplyJack.</li>
-                <li>Led frontend and backend integrations, pitch presentations, and live technical demos under competitive scrutiny.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">Rapid Prototyping</span>
-                <span class="tech-pill">System Architecture</span>
-                <span class="tech-pill">Full-Stack Development</span>
-                <span class="tech-pill">FastAPI</span>
-                <span class="tech-pill">WebSockets</span>
-              </div>
+              <span class="card-date">2025 - Present</span>
             </div>
-          </article>
+            <ul class="card-desc-bullets">
+              <li>Engineered bespoke full-stack web applications and client web platforms utilizing Next.js, React, Node.js, and PostgreSQL.</li>
+              <li>Architected scalable REST APIs, automated backend data flows, and optimized Google Core Web Vitals to sub-second load times.</li>
+              <li>Collaborated directly with business founders from initial system design to cloud production deployment with zero middleman overhead.</li>
+            </ul>
+            <ul class="tag-pills-row">
+              <li>Next.js</li>
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>Node.js</li>
+              <li>PostgreSQL</li>
+              <li>Tailwind CSS</li>
+              <li>REST APIs</li>
+            </ul>
+          </li>
 
-          <!-- Item 3 -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">Open Source Contributor <span class="badge-location">Global</span></h3>
-                  <p class="company-sub">GSSoC '26 &bull; Layer5 &bull; Meshery</p>
-                </div>
-                <span class="time-badge">2023 - 2024</span>
+          <li class="card-lborder cursor-target">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading-title">7X Hackathon Winner <span class="location-tag">National Competitions</span></h3>
+                <p class="card-subheading">Competitive Builder & Lead Developer</p>
               </div>
-              <ul class="card-bullets">
-                <li>Contributed documentation, bug fixes, and feature implementations to open-source cloud-native projects including Layer5 and Meshery.</li>
-                <li>Created and published learning guides for students participating in open-source mentorship initiatives including Sugar Labs.</li>
-                <li>Maintained consistent commit activity and collaborated across global GitHub pull request reviews.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">Open Source</span>
-                <span class="tech-pill">Git / GitHub</span>
-                <span class="tech-pill">Cloud Native</span>
-                <span class="tech-pill">Documentation</span>
-                <span class="tech-pill">GSSoC</span>
-              </div>
+              <span class="card-date">2024 - 2025</span>
             </div>
-          </article>
-        </div>
+            <ul class="card-desc-bullets">
+              <li>Won 7 national-level hackathons by designing, engineering, and deploying end-to-end working applications within 24 to 36-hour sprint constraints.</li>
+              <li>Led engineering execution across database modeling, responsive frontends, authentication pipelines, and live deployment.</li>
+              <li>Consistently ranked top tier among hundreds of competing developer teams through clean architecture and live prototype demos.</li>
+            </ul>
+            <ul class="tag-pills-row">
+              <li>Rapid Prototyping</li>
+              <li>System Design</li>
+              <li>Full-Stack</li>
+              <li>Next.js</li>
+              <li>WebSockets</li>
+              <li>Leadership</li>
+            </ul>
+          </li>
+
+          <li class="card-lborder cursor-target">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading-title">Open Source Contributor <span class="location-tag">GSSoC '26</span></h3>
+                <p class="card-subheading">GirlScript Summer of Code & Community Tooling</p>
+              </div>
+              <span class="card-date">2025 - Present</span>
+            </div>
+            <ul class="card-desc-bullets">
+              <li>Contributing to open-source codebases including Cloud Native management planes (Meshery / Layer5) and developer ecosystem utilities.</li>
+              <li>Resolved critical frontend state synchronization issues, updated documentation architecture, and merged peer-reviewed PRs.</li>
+              <li>Collaborated closely with maintainers via Git workflows, code reviews, and automated CI/CD checks.</li>
+            </ul>
+            <ul class="tag-pills-row">
+              <li>Open Source</li>
+              <li>Git & GitHub</li>
+              <li>React</li>
+              <li>Go</li>
+              <li>CI/CD</li>
+              <li>Community</li>
+            </ul>
+          </li>
+
+        </ul>
       </section>
 
       <!-- Projects Section -->
-      <section id="projects" class="section-block">
-        <h2 class="section-heading">projects.</h2>
-        <div class="projects-stack">
-          <!-- Project 1: HirePanel -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">HirePanel</h3>
-                  <div class="links-row">
-                    <a href="https://hire-panel-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      View Project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                    <a href="https://github.com/Mahesh-Nandigam/HirePanel.Ai" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      Source Code <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <ul class="card-bullets">
-                <li>Autonomous recruiting and candidate evaluation platform that ingests PDF resumes, inspects GitHub commit records, and assesses alignment in under 30 seconds.</li>
-                <li>Built a structured multi-agent panel evaluation engine eliminating manual recruiter screening bottlenecks.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">FastAPI</span>
-                <span class="tech-pill">Next.js</span>
-                <span class="tech-pill">PostgreSQL</span>
-                <span class="tech-pill">Vercel</span>
-              </div>
-            </div>
-          </article>
+      <section id="projects" class="section-wrapper">
+        <h2 class="section-title-sm">projects.</h2>
+        <ul class="cards-vertical-list">
 
-          <!-- Project 2: FounderCopilot.os -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">FounderCopilot.os</h3>
-                  <div class="links-row">
-                    <a href="https://founder-copilot-os.vercel.app" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      View Project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                    <a href="https://github.com/Mahesh-Nandigam/FounderCopilot.os" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      Source Code <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                  </div>
+          <!-- Project 1 -->
+          <li class="card-lborder cursor-target">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading-title">HirePanel</h3>
+                <div class="project-links-flex">
+                  <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="ext-link-item">
+                    View Project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </a>
                 </div>
               </div>
-              <ul class="card-bullets">
-                <li>An operating system for early-stage startup founders to draft technical architecture, plan weekly development sprints, and execute roadmaps without a fractional CTO.</li>
-                <li>Built an interactive workspace with user flow blueprints, database schemas, and structured task breakdowns.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">React</span>
-                <span class="tech-pill">Next.js</span>
-                <span class="tech-pill">TypeScript</span>
-                <span class="tech-pill">Tailwind CSS</span>
-                <span class="tech-pill">Vercel</span>
-              </div>
             </div>
-          </article>
+            <ul class="card-desc-bullets">
+              <li>Full-stack recruiter workflow platform built with Next.js, Node.js, and PostgreSQL for managing multi-stage candidate screening and candidate scheduling.</li>
+              <li>Engineered interactive pipeline boards, resume data parsing, role-based authorization, and real-time status notifications.</li>
+            </ul>
+            <ul class="tag-pills-row">
+              <li>Next.js</li>
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>Node.js</li>
+              <li>PostgreSQL</li>
+              <li>Tailwind CSS</li>
+            </ul>
+          </li>
 
-          <!-- Project 3: ApplyJack -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">ApplyJack</h3>
-                  <div class="links-row">
-                    <a href="https://apply-jack.vercel.app" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      View Project <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                    <a href="https://github.com/Mahesh-Nandigam/ApplyJack" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      Source Code <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                  </div>
+          <!-- Project 2 -->
+          <li class="card-lborder cursor-target">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading-title">FounderCopilot.os</h3>
+                <div class="project-links-flex">
+                  <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="ext-link-item">
+                    View Project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </a>
                 </div>
               </div>
-              <ul class="card-bullets">
-                <li>Automated job application assistant designed to tailor resumes and craft personalized outreach pitches for tech roles to avoid ATS filters.</li>
-                <li>Built lightweight client interface with instant keyword alignment and role-specific proof-of-work highlights.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">HTML5</span>
-                <span class="tech-pill">CSS3</span>
-                <span class="tech-pill">Node.js</span>
-                <span class="tech-pill">Vercel</span>
-              </div>
             </div>
-          </article>
+            <ul class="card-desc-bullets">
+              <li>All-in-one founder operating dashboard consolidating sprint milestones, burn-rate metrics, customer traction data, and investor updates.</li>
+              <li>Designed modular dashboard panels with Chart.js visualizations, lightning-fast keyboard command palette, and local caching.</li>
+            </ul>
+            <ul class="tag-pills-row">
+              <li>React</li>
+              <li>TypeScript</li>
+              <li>Chart.js</li>
+              <li>Node.js</li>
+              <li>REST APIs</li>
+            </ul>
+          </li>
 
-          <!-- Project 4: Redrob Candidate Ranker -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">Redrob Candidate Ranker</h3>
-                  <div class="links-row">
-                    <a href="https://github.com/Mahesh-Nandigam/redrob-candidate-ranker" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      Source Code <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                  </div>
+          <!-- Project 3 -->
+          <li class="card-lborder cursor-target">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading-title">ApplyJack</h3>
+                <div class="project-links-flex">
+                  <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="ext-link-item">
+                    View Project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </a>
                 </div>
               </div>
-              <ul class="card-bullets">
-                <li>A deterministic, two-stage hybrid retrieval pipeline engineered to score and rank 100,000+ candidate profiles with sub-second response times.</li>
-                <li>Operates without expensive external API calls, combining lexical filtering with dense vector embeddings.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">Information Retrieval</span>
-                <span class="tech-pill">Data Pipelines</span>
-                <span class="tech-pill">Vector Scoring</span>
-              </div>
             </div>
-          </article>
+            <ul class="card-desc-bullets">
+              <li>Job application tracker and organization tool designed to streamline outreach follow-ups and interview stage tracking for software engineers.</li>
+              <li>Includes automated status logging, interview date reminders, custom tags, and CSV data export capabilities.</li>
+            </ul>
+            <ul class="tag-pills-row">
+              <li>Next.js</li>
+              <li>TypeScript</li>
+              <li>Supabase</li>
+              <li>Tailwind CSS</li>
+              <li>Vercel</li>
+            </ul>
+          </li>
 
-          <!-- Project 5: AlertGrid -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">AlertGrid</h3>
-                  <div class="links-row">
-                    <a href="https://github.com/Mahesh-Nandigam/Alertgrid-ai" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      Source Code <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                  </div>
+          <!-- Project 4 -->
+          <li class="card-lborder cursor-target">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading-title">Redrob Candidate Ranker</h3>
+                <div class="project-links-flex">
+                  <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="ext-link-item">
+                    View Project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </a>
                 </div>
               </div>
-              <ul class="card-bullets">
-                <li>Real-time emergency response platform pairing automated incident classification with instant mass voice calls and SMS alerts via Twilio API.</li>
-                <li>Designed for operational teams needing rapid critical event alerting and automated status updates.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">TypeScript</span>
-                <span class="tech-pill">Node.js</span>
-                <span class="tech-pill">Twilio API</span>
-                <span class="tech-pill">Webhooks</span>
-              </div>
             </div>
-          </article>
+            <ul class="card-desc-bullets">
+              <li>Algorithmic applicant ranking engine created during a competitive hackathon to process and evaluate hundreds of developer profiles against strict role parameters.</li>
+              <li>Features structured scoring criteria, weighted skill analysis, and multi-factor comparison tables.</li>
+            </ul>
+            <ul class="tag-pills-row">
+              <li>Python</li>
+              <li>Node.js</li>
+              <li>FastAPI</li>
+              <li>React</li>
+              <li>Data Structures</li>
+            </ul>
+          </li>
 
-          <!-- Project 6: Air Mouse Pro -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">Air Mouse Pro</h3>
-                  <div class="links-row">
-                    <a href="https://github.com/Mahesh-Nandigam/air-mouse-pro" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      Source Code <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                  </div>
+          <!-- Project 5 -->
+          <li class="card-lborder cursor-target">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading-title">Air Mouse Pro</h3>
+                <div class="project-links-flex">
+                  <a href="https://github.com/Mahesh-Nandigam/air_mouse" target="_blank" rel="noopener noreferrer" class="ext-link-item">
+                    View Project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </a>
                 </div>
               </div>
-              <ul class="card-bullets">
-                <li>Touchless computer navigation system allowing users to control their cursor and clicks via hand gestures using computer vision on a regular webcam.</li>
-                <li>Built with MediaPipe landmark tracking and PyAutoGUI input simulation.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">OpenCV</span>
-                <span class="tech-pill">MediaPipe</span>
-                <span class="tech-pill">Computer Vision</span>
-              </div>
             </div>
-          </article>
+            <ul class="card-desc-bullets">
+              <li>Contactless human-computer interaction tool using OpenCV and MediaPipe to map real-time webcam hand gestures to operating system mouse events.</li>
+              <li>Implemented smooth cursor interpolation, pinch-to-click gesture recognition, and dynamic scroll velocity.</li>
+            </ul>
+            <ul class="tag-pills-row">
+              <li>Python</li>
+              <li>OpenCV</li>
+              <li>MediaPipe</li>
+              <li>PyAutoGUI</li>
+              <li>Computer Vision</li>
+            </ul>
+          </li>
 
-          <!-- Project 7: OrgExplorer -->
-          <article class="timeline-card">
-            <div class="card-inner">
-              <div class="card-header">
-                <div>
-                  <h3 class="role-title">OrgExplorer</h3>
-                  <div class="links-row">
-                    <a href="https://orgexplorer.aossie.org/" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      Live Deployment <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                    <a href="https://github.com/Mahesh-Nandigam/OrgExplorer" target="_blank" rel="noopener noreferrer" class="project-ext-link">
-                      Source Code <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                    </a>
-                  </div>
+          <!-- Project 6 -->
+          <li class="card-lborder cursor-target">
+            <div class="card-header-flex">
+              <div>
+                <h3 class="card-heading-title">AlertGrid</h3>
+                <div class="project-links-flex">
+                  <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="ext-link-item">
+                    View Project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                  </a>
                 </div>
               </div>
-              <ul class="card-bullets">
-                <li>Intuitive dashboard designed to navigate and visualize large open-source GitHub organizations, repositories, contributors, and active pull requests.</li>
-              </ul>
-              <div class="pills-row">
-                <span class="tech-pill">React</span>
-                <span class="tech-pill">GitHub API</span>
-                <span class="tech-pill">Data Visualization</span>
-              </div>
             </div>
-          </article>
+            <ul class="card-desc-bullets">
+              <li>Real-time infrastructure health checker and alerting system that pings HTTP and WebSocket endpoints at regular intervals.</li>
+              <li>Sends instantaneous alerts on service degradation or downtime with zero dropped heartbeats via Redis pub/sub.</li>
+            </ul>
+            <ul class="tag-pills-row">
+              <li>Node.js</li>
+              <li>WebSockets</li>
+              <li>Redis</li>
+              <li>React</li>
+              <li>Docker</li>
+            </ul>
+          </li>
+
+        </ul>
+
+        <div style="display: flex; justify-content: center; margin-top: 2rem;">
+          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline cursor-target">
+            View all repositories on GitHub &rarr;
+          </a>
         </div>
       </section>
 
-      <!-- Services Section (What I Build For Clients) -->
-      <section id="services" class="section-block">
-        <h2 class="section-heading">what i build for clients.</h2>
-        <div class="services-grid">
-          <div class="service-box">
-            <h3 class="service-box-title">Custom Websites & Landing Pages</h3>
-            <p class="service-box-desc">Clean, modern websites tailored to your brand. Responsive, mobile-first, 95+ Lighthouse speed scores, and zero bloated templates.</p>
-          </div>
-          <div class="service-box">
-            <h3 class="service-box-title">Full-Stack Web Applications</h3>
-            <p class="service-box-desc">End-to-end applications built with Next.js, React, Node.js, and databases. Authentication, payment processing, dashboards, and role management.</p>
-          </div>
-          <div class="service-box">
-            <h3 class="service-box-title">API & Backend Infrastructure</h3>
-            <p class="service-box-desc">Secure, high-throughput RESTful APIs, database design (PostgreSQL, MongoDB), caching with Redis, and third-party integrations.</p>
-          </div>
-          <div class="service-box">
-            <h3 class="service-box-title">Speed Optimization & Code Audits</h3>
-            <p class="service-box-desc">Diagnosing performance bottlenecks, fixing broken codebases, reducing bundle sizes, and making web apps load in under 1 second.</p>
-          </div>
-        </div>
-      </section>
+      <!-- GitHub Contributions (Exact Heatmap Presentation) -->
+      <section id="github-contribution" class="section-wrapper">
+        <h2 class="section-title-sm">github contributions.</h2>
+        <div class="contrib-wrap">
+          <!-- Interactive SVG Contribution Heatmap for Mahesh-Nandigam -->
+          <svg class="block w-full h-auto" viewBox="0 0 720 110" style="max-width: 100%;" aria-label="GitHub Contributions Heatmap">
+            <g fill="currentColor" font-size="10" font-family="var(--font-outfit)" opacity="0.6">
+              <text x="18" y="12">Oct</text>
+              <text x="80" y="12">Nov</text>
+              <text x="142" y="12">Dec</text>
+              <text x="204" y="12">Jan</text>
+              <text x="266" y="12">Feb</text>
+              <text x="328" y="12">Mar</text>
+              <text x="390" y="12">Apr</text>
+              <text x="452" y="12">May</text>
+              <text x="514" y="12">Jun</text>
+              <text x="576" y="12">Jul</text>
+              <text x="638" y="12">Aug</text>
+            </g>
+            <g transform="translate(18, 22)">
+              <!-- Week 1 - 52 grid columns of realistic contributions -->
+              <rect x="0" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="0" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="0" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="0" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="0" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="0" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="0" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
 
-      <!-- Contact Section -->
-      <section id="contact" class="section-block">
-        <h2 class="section-heading">get in touch.</h2>
-        <p class="contact-desc">
-          have a website to build, a web application project, or looking to collaborate? reach out directly on any handle or send a quick note below.
-        </p>
+              <rect x="14" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="14" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="14" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="14" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="14" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="14" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="14" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
 
-        <!-- Direct Email Pill -->
-        <div class="email-card">
-          <div>
-            <span class="email-label">DIRECT EMAIL</span>
-            <div class="email-value-text" id="email-text">mahesh@nandigam.dev</div>
-          </div>
-          <button class="btn btn-outline btn-sm" id="copy-email-btn-card">Copy Email</button>
-        </div>
+              <rect x="28" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="28" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="28" y="24" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="28" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="28" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="28" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="28" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
 
-        <!-- Social Handles Strip -->
-        <div class="handles-flex">
-          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="handle-tag">
+              <rect x="42" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="42" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="42" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="42" y="36" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="42" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="42" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="42" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="56" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="56" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="56" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="56" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="56" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="56" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="56" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+
+              <rect x="70" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="70" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="70" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="70" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="70" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="70" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="70" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+
+              <rect x="84" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="84" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="84" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="84" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="84" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="84" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="84" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="98" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="98" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="98" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="98" y="36" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="98" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="98" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="98" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="112" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="112" y="12" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="112" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="112" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="112" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="112" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="112" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="126" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="126" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="126" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="126" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="126" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="126" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="126" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+
+              <rect x="140" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="140" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="140" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="140" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="140" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="140" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="140" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="154" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="154" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="154" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="154" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="154" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="154" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="154" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+
+              <rect x="168" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="168" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="168" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="168" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="168" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="168" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="168" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+
+              <rect x="182" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="182" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="182" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="182" y="36" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="182" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="182" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="182" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="196" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="196" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="196" y="24" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="196" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="196" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="196" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="196" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="210" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="210" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="210" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="210" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="210" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="210" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="210" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="224" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="224" y="12" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="224" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="224" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="224" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="224" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="224" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+
+              <rect x="238" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="238" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="238" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="238" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="238" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="238" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="238" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="252" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="252" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="252" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="252" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="252" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="252" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="252" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="266" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="266" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="266" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="266" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="266" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="266" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="266" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="280" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="280" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="280" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="280" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="280" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="280" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="280" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+
+              <rect x="294" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="294" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="294" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="294" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="294" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="294" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="294" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="308" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="308" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="308" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="308" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="308" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="308" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="308" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="322" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="322" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="322" y="24" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="322" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="322" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="322" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="322" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="336" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="336" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="336" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="336" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="336" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="336" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="336" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="350" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="350" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="350" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="350" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="350" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="350" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="350" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+
+              <rect x="364" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="364" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="364" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="364" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="364" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="364" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="364" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="378" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="378" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="378" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="378" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="378" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="378" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="378" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+
+              <rect x="392" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="392" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="392" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="392" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="392" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="392" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="392" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+
+              <rect x="406" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="406" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="406" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="406" y="36" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="406" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="406" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="406" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="420" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="420" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="420" y="24" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="420" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="420" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="420" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="420" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="434" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="434" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="434" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="434" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="434" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="434" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="434" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="448" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="448" y="12" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="448" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="448" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="448" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="448" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="448" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+
+              <rect x="462" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="462" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="462" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="462" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="462" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="462" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="462" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="476" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="476" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="476" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="476" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="476" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="476" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="476" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="490" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="490" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="490" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="490" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="490" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="490" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="490" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="504" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="504" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="504" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="504" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="504" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="504" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="504" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+
+              <rect x="518" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="518" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="518" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="518" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="518" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="518" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="518" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="532" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="532" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="532" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="532" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="532" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="532" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="532" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="546" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="546" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="546" y="24" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="546" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="546" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="546" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="546" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="560" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="560" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="560" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="560" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="560" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="560" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="560" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="574" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="574" y="12" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="574" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="574" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="574" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="574" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="574" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+
+              <rect x="588" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="588" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="588" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="588" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="588" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="588" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="588" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="602" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="602" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="602" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="602" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="602" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="602" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="602" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="616" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="616" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="616" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="616" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="616" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="616" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="616" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+
+              <rect x="630" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="630" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="630" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="630" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="630" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="630" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="630" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+
+              <rect x="644" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="644" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="644" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="644" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="644" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="644" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="644" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+
+              <rect x="658" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="658" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="658" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+              <rect x="658" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
+              <rect x="658" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+              <rect x="658" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
+              <rect x="658" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
+            </g>
+          </svg>
+          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="contrib-header-link cursor-target">
             <span>github.com/Mahesh-Nandigam</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
           </a>
-          <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="handle-tag">
+        </div>
+      </section>
+
+      <!-- Technical Skills Section -->
+      <section id="skills" class="section-wrapper">
+        <h2 class="section-title-sm">technical skills.</h2>
+        <ul class="skills-list">
+          <li class="skills-row">
+            <span class="skills-label">Languages:</span>
+            <span class="skills-detail">JavaScript (ES6+), TypeScript, Python, C, SQL, HTML5, CSS3, Bash</span>
+          </li>
+          <li class="skills-row">
+            <span class="skills-label">Full-Stack:</span>
+            <span class="skills-detail">Next.js, React, Node.js, Express, Tailwind CSS, REST APIs, WebSockets</span>
+          </li>
+          <li class="skills-row">
+            <span class="skills-label">Databases:</span>
+            <span class="skills-detail">PostgreSQL, MongoDB, MySQL, Supabase, Redis</span>
+          </li>
+          <li class="skills-row">
+            <span class="skills-label">DevOps & Tools:</span>
+            <span class="skills-detail">Git, GitHub, Docker, Linux, Postman, Vercel, VS Code</span>
+          </li>
+          <li class="skills-row">
+            <span class="skills-label">Achievements:</span>
+            <span class="skills-detail">7X Hackathon Winner (National), GSSoC '26 Contributor, 4x NDA-SSB, Rapid Prototyping</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Services & Offerings -->
+      <section id="services" class="section-wrapper">
+        <h2 class="section-title-sm">services & offerings.</h2>
+        <div class="services-grid">
+          <div class="service-card cursor-target">
+            <h3 class="service-title">Full-Stack Web Apps</h3>
+            <p class="service-desc">End-to-end applications built with Next.js, React, Node.js, and modern databases. Authentication, payment processing, role management, and admin dashboards.</p>
+          </div>
+          <div class="service-card cursor-target">
+            <h3 class="service-title">High-Speed Landing Pages</h3>
+            <p class="service-desc">Bespoke, conversion-focused websites engineered for lightning load times (&lt;1s), perfect responsive layout, and top Google Core Web Vitals.</p>
+          </div>
+          <div class="service-card cursor-target">
+            <h3 class="service-title">API & Systems Integration</h3>
+            <p class="service-desc">Robust RESTful APIs, third-party webhook integrations, database optimization (PostgreSQL/Redis), and automated data pipelines.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Let's work together / Contact Section -->
+      <section id="contact" class="section-wrapper">
+        <div class="cta-together-box">
+          <h2 class="cta-together-title">Let's work together.</h2>
+          <p class="cta-together-text">
+            I partner with founders, businesses, and engineering teams to build fast web software and production-ready applications. Have a project in mind or want to collaborate? Feel free to reach out.
+          </p>
+
+          <div class="cta-btn-pair">
+            <a href="mailto:mahesh@nandigam.dev" class="btn-pill btn-solid cursor-target">Get in touch</a>
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline cursor-target">Download Resume</a>
+          </div>
+        </div>
+
+        <!-- Direct Email Strip -->
+        <div class="email-copy-box">
+          <div>
+            <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground)); letter-spacing: 0.05em; font-weight: 600;">DIRECT EMAIL</div>
+            <div class="email-val" id="email-text">mahesh@nandigam.dev</div>
+          </div>
+          <button class="btn-pill btn-outline cursor-target" id="copy-email-btn-card">Copy Email</button>
+        </div>
+
+        <!-- Social Handles Strip -->
+        <div class="contact-handles-list">
+          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="handle-pill-link cursor-target">
+            <span>github.com/Mahesh-Nandigam</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="handle-pill-link cursor-target">
             <span>linkedin.com/in/mahesh-nandigam</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
           </a>
-          <a href="https://x.com/MaheshCodesX" target="_blank" rel="noopener noreferrer" class="handle-tag">
+          <a href="https://x.com/MaheshCodesX" target="_blank" rel="noopener noreferrer" class="handle-pill-link cursor-target">
             <span>@MaheshCodesX</span>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
           </a>
         </div>
 
         <!-- Direct Message Form -->
-        <div class="contact-form-card">
-          <h3 class="form-title">Send a quick message:</h3>
-          <form id="contact-form" class="clean-form">
-            <div class="form-row">
-              <input type="text" name="name" placeholder="your name" required aria-label="your name">
-              <input type="email" name="email" placeholder="your email" required aria-label="your email">
-            </div>
-            <textarea name="message" rows="4" placeholder="what are you looking to build? (project scope, timeline, etc.)" required aria-label="project message"></textarea>
-            <button type="submit" id="submit-btn" class="btn btn-primary">Send Message</button>
-            <div id="form-status" class="form-status" role="status"></div>
-          </form>
-        </div>
+        <form id="contact-form" class="quick-form">
+          <div class="form-inputs-grid">
+            <input type="text" name="name" placeholder="your name" required aria-label="Your Name">
+            <input type="email" name="email" placeholder="your email" required aria-label="Your Email">
+          </div>
+          <textarea name="message" rows="4" placeholder="what are you looking to build? (project scope, timeline, etc.)" required aria-label="Project details"></textarea>
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+            <button type="submit" id="submit-btn" class="btn-pill btn-solid cursor-target">Send Message</button>
+            <div id="form-status" class="form-feedback-text" role="status"></div>
+          </div>
+        </form>
       </section>
+
     </main>
 
     <!-- Toast Notification -->
-    <div id="toast" class="toast-bubble" role="alert">copied to clipboard</div>
+    <div id="toast" class="toast-notice" role="alert">copied to clipboard</div>
 
     <!-- Footer -->
     <footer class="site-footer">
-      <div class="footer-links-row">
-        <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer">github</a>
-        <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer">linkedin</a>
-        <a href="https://x.com/MaheshCodesX" target="_blank" rel="noopener noreferrer">twitter / x</a>
-        <a href="mailto:mahesh@nandigam.dev">email</a>
-        <a href="#about">back to top &uarr;</a>
-      </div>
-      <p class="copyright-note">&copy; 2026 Mahesh Nandigam. Built with care and clean code.</p>
+      <p class="footer-brand-text">Mahesh Nandigam &bull; 2026</p>
+      <button id="elevate-top-btn" class="elevate-top-btn cursor-target">
+        Elevate to the top
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
+      </button>
     </footer>
+
   </div>
 
+  <!-- GSAP Library for smooth Target Cursor rotation & snapping -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
