@@ -1,15 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 /* ==========================================================================
-   PRAGNYANRAMTHA.DEV TECHNICAL CLONE — STYLESHEET
-   Dark mode default, Outfit typography, SVG Background Grid, GSAP Target Cursor
+   PRAGNYANRAMTHA.DEV TECHNICAL COMPLEMENTARY STYLES & MOBILE OPTIMIZATIONS
    ========================================================================== */
 
+/* Dark mode default variables */
 :root {
-  --font-outfit: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-
-  /* HSL Color Tokens matching shadcn / pragnyanramtha.dev */
+  
   --background: 0 0% 0%;
   --foreground: 0 0% 98%;
   --card: 240 10% 3.9%;
@@ -32,8 +29,9 @@
   --radius: 0.5rem;
 }
 
-[data-theme="light"],
-body.light-theme {
+/* Light mode overrides */
+html.light,
+html:not(.dark) {
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
   --card: 0 0% 100%;
@@ -53,810 +51,87 @@ body.light-theme {
   --ring: 240 10% 3.9%;
 }
 
-*, ::before, ::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-color: hsl(var(--border));
-}
-
 html {
-  -webkit-text-size-adjust: 100%;
-  font-family: var(--font-outfit);
-  line-height: 1.5;
+  font-family: var(--font-sans);
   scroll-behavior: smooth;
-  color-scheme: dark;
-}
-
-[data-theme="light"] html,
-body.light-theme html {
-  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  width: 100%;
-  overflow-x: hidden;
+  font-family: var(--font-sans);
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: var(--font-outfit);
   -webkit-font-smoothing: antialiased;
-  position: relative;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* ==========================================================================
-   EXACT SVG BACKGROUND GRID (from pragnyanramtha.dev)
-   ========================================================================== */
-.grid-bg-svg {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  color: rgba(255, 255, 255, 0.08);
-  mask-image: linear-gradient(to bottom right, #ffffff, transparent, transparent);
-  -webkit-mask-image: linear-gradient(to bottom right, #ffffff, transparent, transparent);
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-[data-theme="light"] .grid-bg-svg,
-body.light-theme .grid-bg-svg {
-  color: rgba(0, 0, 0, 0.07);
-}
-
-/* ==========================================================================
-   TARGET CURSOR COMPONENT (Exact pragnyanramtha.dev Revolving Cursor)
-   4 white corners + center dot, continuous 360° spin, snaps to .cursor-target
-   ========================================================================== */
-#target-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  z-index: 99999;
-  pointer-events: none;
-  mix-blend-mode: difference;
-  transform: translate(0, 0);
-  will-change: transform;
-}
-
-.target-cursor-dot {
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: 4px;
-  height: 4px;
-  background-color: #ffffff;
-  border-radius: 9999px;
-  pointer-events: none;
-  will-change: transform, opacity;
-}
-
-.target-cursor-corner {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border: 2px solid #ffffff;
-  pointer-events: none;
-  will-change: transform;
-}
-
-.corner-tl {
-  border-right-width: 0;
-  border-bottom-width: 0;
-}
-
-.corner-tr {
-  border-bottom-width: 0;
-  border-left-width: 0;
-}
-
-.corner-br {
-  border-top-width: 0;
-  border-left-width: 0;
-}
-
-.corner-bl {
-  border-top-width: 0;
-  border-right-width: 0;
-}
-
-/* Hide default cursor on fine pointer devices */
-@media (pointer: fine) {
+/* Cursor on desktop pointer */
+@media (pointer: fine) and (min-width: 769px) {
   body {
     cursor: none !important;
   }
-  a, button, input, textarea, select, [role="button"], .cursor-pointer, .cursor-target {
+  a, button, input, textarea, select, [role="button"], .cursor-target {
     cursor: none !important;
   }
 }
 
-/* ==========================================================================
-   LAYOUT CONTAINER (pragnyanramtha layout: w-full lg:w-2/3 xl:w-1/2 mx-auto)
-   ========================================================================== */
-.page-wrap {
-  width: 100%;
-  max-width: 44rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1.5rem 1rem 4rem;
-}
-
-@media (min-width: 640px) {
-  .page-wrap {
-    padding-top: 3rem;
+/* Cursor on mobile / touch: NEVER hide cursor and completely hide custom GSAP cursor */
+@media (pointer: coarse), (max-width: 768px) {
+  #target-cursor {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  body, a, button, input, textarea, select, [role="button"], .cursor-target {
+    cursor: auto !important;
   }
 }
 
-/* ==========================================================================
-   HEADER
-   ========================================================================== */
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2rem;
-}
-
-.brand-btn {
-  font-weight: 700;
-  font-size: 1.25rem;
-  letter-spacing: -0.05em;
-  color: hsl(var(--foreground));
-  text-decoration: none;
-  background: transparent;
-  border: none;
-  padding: 0.35rem 0.6rem;
-  border-radius: 0.375rem;
-  display: inline-flex;
-  align-items: center;
-  transition: background-color 0.15s ease;
-}
-
-.brand-btn:hover {
-  background-color: hsl(var(--accent));
-}
-
-.site-nav-list {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  gap: 0.25rem;
-}
-
-.nav-link-item {
-  color: hsl(var(--primary) / 0.9);
-  font-size: 0.95rem;
-  text-decoration: none;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.375rem;
-  display: block;
-  white-space: nowrap;
-  transition: opacity 0.15s ease, background-color 0.15s ease;
-}
-
-.nav-link-item:hover {
-  background-color: hsl(var(--accent));
-  opacity: 0.9;
-}
-
-.theme-toggle-btn {
-  background: transparent;
-  border: none;
-  color: hsl(var(--foreground));
-  padding: 0.4rem;
-  border-radius: 0.375rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.15s ease;
-}
-
-.theme-toggle-btn:hover {
-  background-color: hsl(var(--accent));
-}
-
-.theme-toggle-btn .moon-icon {
-  display: none;
-}
-
-[data-theme="light"] .theme-toggle-btn .sun-icon,
-body.light-theme .theme-toggle-btn .sun-icon {
-  display: none;
-}
-
-[data-theme="light"] .theme-toggle-btn .moon-icon,
-body.light-theme .theme-toggle-btn .moon-icon {
-  display: block;
-}
-
-/* ==========================================================================
-   HERO SECTION
-   ========================================================================== */
-.hero-block {
-  padding-top: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.greeting-text {
-  font-size: 1rem;
-  font-weight: 400;
-  color: hsl(var(--muted-foreground));
-  margin-bottom: 0.5rem;
-}
-
-.hero-name {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: hsl(var(--primary) / 0.9);
-  margin-bottom: 0.25rem;
-}
-
-@media (min-width: 640px) {
-  .hero-name {
-    font-size: 2.5rem;
-  }
-}
-
-.hero-bio-stack {
-  display: flex;
-  flex-direction: column;
-  font-size: 1rem;
-  color: hsl(var(--primary) / 0.9);
-  line-height: 1.5;
-  margin-bottom: 1.25rem;
-}
-
-.hero-subline {
-  color: hsl(var(--muted-foreground));
-  font-size: 0.95rem;
-  margin-top: 0.15rem;
-}
-
-.hero-btn-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-/* ==========================================================================
-   BUTTONS & ICONS
-   ========================================================================== */
-.btn-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  height: 2.25rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: calc(var(--radius) - 2px);
-  white-space: nowrap;
-  transition: background-color 0.15s ease, opacity 0.15s ease, border-color 0.15s ease;
-  border: 1px solid transparent;
-}
-
-.btn-solid {
-  background-color: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-}
-
-.btn-solid:hover {
-  opacity: 0.9;
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: hsl(var(--foreground));
-  border: 1px solid hsl(var(--border));
-}
-
-.btn-outline:hover {
-  background-color: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
-}
-
-.btn-icon-square {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.25rem;
-  width: 2.25rem;
-  border-radius: calc(var(--radius) - 2px);
-  background: transparent;
-  color: hsl(var(--foreground));
-  text-decoration: none;
-  border: 1px solid transparent;
-  transition: background-color 0.15s ease, color 0.15s ease;
-}
-
-.btn-icon-square:hover {
-  background-color: hsl(var(--accent));
-  color: hsl(var(--accent-foreground));
-}
-
-/* ==========================================================================
-   SECTIONS & TYPOGRAPHY
-   ========================================================================== */
-.section-wrapper {
-  padding: 2.5rem 0;
-}
-
-.section-title-sm {
-  font-size: 1rem;
-  font-weight: 500;
-  color: hsl(var(--primary) / 0.9);
-  margin-bottom: 1rem;
-}
-
-.bullet-about-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  font-size: 1rem;
-  color: hsl(var(--muted-foreground));
-  line-height: 1.6;
-}
-
-.bullet-about-list li {
-  display: flex;
-  gap: 0.5rem;
-  align-items: flex-start;
-}
-
-.bullet-about-list .dot {
-  color: hsl(var(--primary) / 0.4);
-  margin-top: 0.125rem;
-  user-select: none;
-  flex-shrink: 0;
-}
-
-.bold-accent {
-  font-weight: 700;
-  color: hsl(var(--primary));
-}
-
-.bold-link {
-  font-weight: 700;
-  color: hsl(var(--primary));
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.bold-link:hover {
-  color: hsl(var(--primary) / 0.8);
-}
-
-/* ==========================================================================
-   SIGNATURE LEFT-BORDER CARDS (from pragnyanramtha.dev)
-   ========================================================================== */
-.cards-vertical-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  margin-top: 1rem;
-}
-
-.card-lborder {
-  padding-left: 1rem;
-  border-left: 1px solid hsl(var(--muted-foreground));
-  width: 100%;
-  transition: border-color 0.3s ease;
-}
-
-.card-lborder:hover {
-  border-color: hsl(var(--primary));
-}
-
-.card-header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-@media (min-width: 640px) {
-  .card-header-flex {
-    flex-direction: row;
-  }
-}
-
-.card-heading-title {
-  color: hsl(var(--primary) / 0.9);
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.location-tag {
-  display: inline-block;
-  background-color: hsl(var(--secondary));
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  margin-left: 0.5rem;
-  font-weight: 400;
-  color: hsl(var(--foreground));
-}
-
-.card-subheading {
-  font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-top: 0.15rem;
-}
-
-.card-date {
-  font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
-  margin-top: 0.15rem;
-  white-space: nowrap;
-}
-
-.card-desc-bullets {
-  list-style-type: disc;
-  padding-left: 0.75rem;
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  color: hsl(var(--muted-foreground));
-  line-height: 1.6;
-}
-
-.card-desc-bullets li + li {
-  margin-top: 0.25rem;
-}
-
-.tag-pills-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  padding-left: 0.75rem;
-  list-style: none;
-}
-
-.tag-pills-row li {
-  background-color: hsl(var(--muted));
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  color: hsl(var(--foreground));
-}
-
-.project-links-flex {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
-.ext-link-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: hsl(var(--primary));
-  text-decoration: none;
-  transition: opacity 0.15s ease;
-}
-
-.ext-link-item:hover {
-  text-decoration: underline;
-  opacity: 0.85;
-}
-
-/* ==========================================================================
-   GITHUB CONTRIBUTIONS HEATMAP (matching pragnyanramtha)
-   ========================================================================== */
-.contrib-wrap {
-  width: 100%;
-  margin-top: 1rem;
-  overflow-x: auto;
-  padding: 0.5rem 0;
-}
-
-.contrib-header-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.85rem;
-  color: hsl(var(--muted-foreground));
-  text-decoration: none;
-  margin-top: 0.5rem;
-  transition: color 0.15s ease;
-}
-
-.contrib-header-link:hover {
-  color: hsl(var(--primary));
-}
-
-/* ==========================================================================
-   TECHNICAL SKILLS (grid layout matching pragnyanramtha)
-   ========================================================================== */
-.skills-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.skills-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: baseline;
-  gap: 0.25rem;
-  font-size: 0.95rem;
-}
-
-@media (min-width: 640px) {
-  .skills-row {
-    grid-template-columns: 160px 1fr;
-    gap: 1rem;
-  }
-}
-
-.skills-label {
-  color: hsl(var(--primary) / 0.9);
-  font-weight: 500;
-}
-
-.skills-detail {
-  color: hsl(var(--muted-foreground));
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-/* ==========================================================================
-   SERVICES (Clean Cards)
-   ========================================================================== */
-.services-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-@media (min-width: 640px) {
-  .services-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.service-card {
-  padding: 1rem;
-  border: 1px solid hsl(var(--border));
-  background-color: hsl(var(--secondary) / 0.2);
-  border-radius: 0.375rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.service-card:hover {
-  border-color: hsl(var(--primary));
-  background-color: hsl(var(--secondary) / 0.4);
-}
-
-.service-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: hsl(var(--foreground));
-  margin-bottom: 0.35rem;
-}
-
-.service-desc {
-  font-size: 0.825rem;
-  color: hsl(var(--muted-foreground));
-  line-height: 1.5;
-}
-
-/* ==========================================================================
-   LET'S WORK TOGETHER / CONTACT
-   ========================================================================== */
-.cta-together-box {
-  text-align: center;
-  padding: 2.5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.cta-together-title {
-  font-size: 1.875rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  color: hsl(var(--foreground));
-}
-
-.cta-together-text {
-  font-size: 1rem;
-  color: hsl(var(--muted-foreground));
-  max-width: 38rem;
-  line-height: 1.6;
-}
-
-.cta-btn-pair {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.email-copy-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: hsl(var(--secondary) / 0.5);
-  border: 1px solid hsl(var(--border));
-  padding: 0.75rem 1rem;
-  border-radius: 0.375rem;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.email-val {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: hsl(var(--primary));
-}
-
-.contact-handles-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.handle-pill-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  background-color: hsl(var(--secondary) / 0.4);
-  border: 1px solid hsl(var(--border));
-  padding: 0.35rem 0.75rem;
-  border-radius: 0.375rem;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: hsl(var(--muted-foreground));
-  text-decoration: none;
-  transition: all 0.15s ease;
-}
-
-.handle-pill-link:hover {
-  color: hsl(var(--primary));
-  border-color: hsl(var(--primary));
-}
-
-.quick-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  background-color: hsl(var(--secondary) / 0.2);
-  border: 1px solid hsl(var(--border));
-  border-radius: 0.375rem;
-  padding: 1.25rem;
-  margin-top: 1rem;
-}
-
-.form-inputs-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-}
-
-@media (min-width: 640px) {
-  .form-inputs-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-.quick-form input,
-.quick-form textarea {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  font-family: var(--font-outfit);
-  font-size: 0.875rem;
-  color: hsl(var(--foreground));
-  background-color: hsl(var(--background));
-  border: 1px solid hsl(var(--border));
-  border-radius: 0.25rem;
-  outline: none;
-  transition: border-color 0.15s ease;
-}
-
-.quick-form input:focus,
-.quick-form textarea:focus {
-  border-color: hsl(var(--primary));
-}
-
-.form-feedback-text {
-  font-size: 0.875rem;
-  color: hsl(var(--primary));
-  min-height: 1.25rem;
-}
-
-/* ==========================================================================
-   TOAST NOTIFICATION
-   ========================================================================== */
+/* Toast notification styling */
 .toast-notice {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   background-color: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
   padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  font-size: 0.85rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: 100000;
-}
-
-.toast-notice.show {
-  opacity: 1;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  z-index: 99999;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
   transform: translateY(0);
 }
 
-/* ==========================================================================
-   FOOTER (matching pragnyanramtha.dev)
-   ========================================================================== */
-.site-footer {
-  margin-top: 4rem;
-  padding-top: 1.5rem;
-  padding-bottom: 2rem;
-  border-top: 1px solid hsl(var(--border));
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem;
-}
+/* Mobile-friendly touch targets */
+@media (max-width: 640px) {
+  button, a {
+    touch-action: manipulation;
+  }
+  
+  /* Prevent any horizontal page shaking */
+  html, body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+  }
 
-@media (min-width: 640px) {
-  .site-footer {
-    flex-direction: row;
+  /* Make code/project cards feel responsive on tap */
+  .cursor-target:active {
+    transform: scale(0.99);
   }
 }
 
-.footer-brand-text {
-  font-size: 0.95rem;
-  color: hsl(var(--muted-foreground));
-}
-
-.elevate-top-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  border: none;
-  color: hsl(var(--muted-foreground));
-  font-size: 0.95rem;
-  font-family: var(--font-outfit);
-  transition: color 0.15s ease;
-}
-
-.elevate-top-btn:hover {
-  color: hsl(var(--foreground));
+/* Grid background theme sensitivity */
+html.light svg[width="100%"] {
+  color: rgba(0, 0, 0, 0.08) !important;
 }

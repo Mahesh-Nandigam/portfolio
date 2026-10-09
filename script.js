@@ -1,14 +1,14 @@
 /**
- * Mahesh Nandigam — Exact Technical Replica of pragnyanramtha.dev
- * Target Cursor Component + GSAP Continuous 360° Rotation + Snapping
+ * Exact Target Cursor Component, Activity Grid & Micro-Interactions from pragnyanramtha.dev
+ * Extracted from production chunk 0jy0j_8lq417c.js
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initTargetCursor();
-  initEmailCopy();
+  initContributionsGrid();
   initBackToTop();
-  initContactForm();
+  initEmailCopy();
 });
 
 /* ==========================================================================
@@ -16,212 +16,243 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 function initTheme() {
   const toggleBtn = document.getElementById('theme-toggle');
-  const body = document.body;
+  const moonIcon = document.getElementById('theme-icon-moon');
+  const sunIcon = document.getElementById('theme-icon-sun');
+  const html = document.documentElement;
 
-  const saved = localStorage.getItem('mn-theme') || 'dark';
-  body.setAttribute('data-theme', saved);
-  if (saved === 'light') {
-    body.classList.add('light-theme');
-  } else {
-    body.classList.remove('light-theme');
+  const saved = localStorage.getItem('theme') || 'dark';
+  applyTheme(saved);
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      html.classList.add('dark');
+      html.classList.remove('light');
+      html.style.colorScheme = 'dark';
+      if (moonIcon && sunIcon) {
+        moonIcon.classList.remove('hidden');
+        sunIcon.classList.add('hidden');
+      }
+    } else {
+      html.classList.remove('dark');
+      html.classList.add('light');
+      html.style.colorScheme = 'light';
+      if (moonIcon && sunIcon) {
+        moonIcon.classList.add('hidden');
+        sunIcon.classList.remove('hidden');
+      }
+    }
   }
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
-      const current = body.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      body.setAttribute('data-theme', next);
-      if (next === 'light') {
-        body.classList.add('light-theme');
-      } else {
-        body.classList.remove('light-theme');
-      }
-      localStorage.setItem('mn-theme', next);
+      const isDark = html.classList.contains('dark');
+      const next = isDark ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('theme', next);
     });
   }
 }
 
 /* ==========================================================================
-   TARGET CURSOR (Exact GSAP 360° Revolving Cursor from pragnyanramtha.dev)
+   EXACT REVOLVING GSAP TARGET CURSOR (Chunk 0jy0j_8lq417c.js)
    ========================================================================== */
 function initTargetCursor() {
   const cursor = document.getElementById('target-cursor');
   if (!cursor) return;
 
-  // Disable on touchscreen / coarse pointer devices
-  if (window.matchMedia('(pointer: coarse)').matches) {
+  // Immediately deactivate on mobile & touch devices
+  if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768) {
     cursor.style.display = 'none';
     return;
   }
 
-  // Ensure GSAP is available
-  if (typeof gsap === 'undefined') {
-    console.warn('GSAP not loaded, falling back');
-    return;
-  }
+  if (typeof gsap === 'undefined') return;
 
-  const dot = cursor.querySelector('.target-cursor-dot');
-  const tl = cursor.querySelector('.corner-tl');
-  const tr = cursor.querySelector('.corner-tr');
-  const br = cursor.querySelector('.corner-br');
-  const bl = cursor.querySelector('.corner-bl');
+  document.body.style.cursor = 'none';
 
-  // Default corner box offsets (14px from center, 10px corner size)
-  const defaultCorners = {
-    tl: { x: -14, y: -14 },
-    tr: { x: 4, y: -14 },
-    br: { x: 4, y: 4 },
-    bl: { x: -14, y: 4 }
-  };
+  const corners = cursor.querySelectorAll('.target-cursor-corner');
+  if (!corners || corners.length !== 4) return;
 
-  // Set initial corner layout
-  gsap.set(tl, defaultCorners.tl);
-  gsap.set(tr, defaultCorners.tr);
-  gsap.set(br, defaultCorners.br);
-  gsap.set(bl, defaultCorners.bl);
-  gsap.set(dot, { opacity: 1 });
+  gsap.set(cursor, {
+    xPercent: -50,
+    yPercent: -50,
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2
+  });
 
-  // Smooth position setters
-  const setX = gsap.quickTo(cursor, 'x', { duration: 0.1, ease: 'power2.out' });
-  const setY = gsap.quickTo(cursor, 'y', { duration: 0.1, ease: 'power2.out' });
+  const quickX = gsap.quickTo(cursor, 'x', { duration: 0.1, ease: 'power3.out' });
+  const quickY = gsap.quickTo(cursor, 'y', { duration: 0.1, ease: 'power3.out' });
 
-  // Continuous 360-degree rotation (2s duration, linear, infinite repeat)
-  const spinTween = gsap.to(cursor, {
+  // 360-degree continuous rotation
+  const spinDuration = 2;
+  let spinTimeline = gsap.timeline({ repeat: -1 }).to(cursor, {
     rotation: '+=360',
-    duration: 2,
-    ease: 'none',
-    repeat: -1
+    duration: spinDuration,
+    ease: 'none'
   });
 
-  let isHovering = false;
-  let activeTarget = null;
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-
-  // Track mouse coordinates
   window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    if (!isHovering) {
-      setX(mouseX);
-      setY(mouseY);
-    }
+    quickX(e.clientX);
+    quickY(e.clientY);
   });
 
-  // Attach snap behavior to all elements with .cursor-target
-  function setupHoverTargets() {
-    const targets = document.querySelectorAll('.cursor-target');
+  let activeTarget = null;
+  let moveListener = null;
+  let leaveListener = null;
 
-    targets.forEach((target) => {
-      target.addEventListener('mouseenter', () => {
-        isHovering = true;
-        activeTarget = target;
-        spinTween.pause();
-
-        const rect = target.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-
-        const pad = 6;
-        const halfW = rect.width / 2 + pad;
-        const halfH = rect.height / 2 + pad;
-        const cornerSize = 10;
-
-        // Animate cursor container to target center & reset rotation to 0
-        gsap.to(cursor, {
-          x: cx,
-          y: cy,
-          rotation: 0,
-          duration: 0.22,
-          ease: 'power2.out'
-        });
-
-        // Expand corners to snap cleanly around target element
-        gsap.to(tl, { x: -halfW, y: -halfH, duration: 0.22, ease: 'power2.out' });
-        gsap.to(tr, { x: halfW - cornerSize, y: -halfH, duration: 0.22, ease: 'power2.out' });
-        gsap.to(br, { x: halfW - cornerSize, y: halfH - cornerSize, duration: 0.22, ease: 'power2.out' });
-        gsap.to(bl, { x: -halfW, y: halfH - cornerSize, duration: 0.22, ease: 'power2.out' });
-
-        // Fade out center dot while enclosing target
-        gsap.to(dot, { opacity: 0, scale: 0, duration: 0.15 });
-      });
-
-      target.addEventListener('mouseleave', () => {
-        isHovering = false;
-        activeTarget = null;
-
-        // Snap back to current mouse position
-        gsap.to(cursor, {
-          x: mouseX,
-          y: mouseY,
-          duration: 0.2,
-          ease: 'power2.out',
-          onComplete: () => {
-            if (!isHovering) {
-              spinTween.play();
-            }
-          }
-        });
-
-        // Restore corners to default compact revolving square
-        gsap.to(tl, { ...defaultCorners.tl, duration: 0.2, ease: 'power2.out' });
-        gsap.to(tr, { ...defaultCorners.tr, duration: 0.2, ease: 'power2.out' });
-        gsap.to(br, { ...defaultCorners.br, duration: 0.2, ease: 'power2.out' });
-        gsap.to(bl, { ...defaultCorners.bl, duration: 0.2, ease: 'power2.out' });
-
-        // Fade in center dot
-        gsap.to(dot, { opacity: 1, scale: 1, duration: 0.2 });
-      });
-    });
+  function removeTargetListeners(t) {
+    if (moveListener) t.removeEventListener('mousemove', moveListener);
+    if (leaveListener) t.removeEventListener('mouseleave', leaveListener);
+    moveListener = null;
+    leaveListener = null;
   }
 
-  setupHoverTargets();
-
-  // Keep target cursor aligned during scroll if user is hovered over an element
-  window.addEventListener('scroll', () => {
-    if (isHovering && activeTarget) {
-      const rect = activeTarget.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const cy = rect.top + rect.height / 2;
-      gsap.set(cursor, { x: cx, y: cy });
+  window.addEventListener('mouseover', (e) => {
+    let el = e.target;
+    let target = null;
+    while (el && el !== document.body) {
+      if (el.matches && el.matches('.cursor-target') && !el.classList.contains('cursor-default')) {
+        target = el;
+        break;
+      }
+      el = el.parentElement;
     }
+
+    if (!target || target === activeTarget) return;
+    if (activeTarget) removeTargetListeners(activeTarget);
+    activeTarget = target;
+
+    gsap.killTweensOf(cursor, 'rotation');
+    spinTimeline.pause();
+    gsap.set(cursor, { rotation: 0 });
+
+    const cornerSize = 10;
+    const borderWidth = 3;
+    const parallaxStrength = 0.05;
+
+    const updateCorners = (mouseX, mouseY) => {
+      const r = target.getBoundingClientRect();
+      const c = cursor.getBoundingClientRect();
+      const cx = c.left + c.width / 2;
+      const cy = c.top + c.height / 2;
+
+      const [tl, tr, br, bl] = corners;
+      let posTL = { x: r.left - cx - borderWidth, y: r.top - cy - borderWidth };
+      let posTR = { x: r.right - cx + borderWidth - cornerSize, y: r.top - cy - borderWidth };
+      let posBR = { x: r.right - cx + borderWidth - cornerSize, y: r.bottom - cy + borderWidth - cornerSize };
+      let posBL = { x: r.left - cx - borderWidth, y: r.bottom - cy + borderWidth - cornerSize };
+
+      if (mouseX !== undefined && mouseY !== undefined) {
+        const tcX = r.left + r.width / 2;
+        const tcY = r.top + r.height / 2;
+        const sX = (mouseX - tcX) * parallaxStrength;
+        const sY = (mouseY - tcY) * parallaxStrength;
+        posTL.x += sX; posTL.y += sY;
+        posTR.x += sX; posTR.y += sY;
+        posBR.x += sX; posBR.y += sY;
+        posBL.x += sX; posBL.y += sY;
+      }
+
+      const tAnim = gsap.timeline();
+      const b = [posTL, posTR, posBR, posBL];
+      [tl, tr, br, bl].forEach((corner, idx) => {
+        tAnim.to(corner, { x: b[idx].x, y: b[idx].y, duration: 0.2, ease: 'power2.out' }, 0);
+      });
+    };
+
+    updateCorners();
+
+    let isTicking = false;
+    moveListener = (evt) => {
+      if (!isTicking) {
+        requestAnimationFrame(() => {
+          updateCorners(evt.clientX, evt.clientY);
+          isTicking = false;
+        });
+        isTicking = true;
+      }
+    };
+
+    leaveListener = () => {
+      activeTarget = null;
+      gsap.killTweensOf(corners);
+      const eSize = cornerSize;
+      const defaultPos = [
+        { x: -(1.5 * eSize), y: -(1.5 * eSize) },
+        { x: 0.5 * eSize, y: -(1.5 * eSize) },
+        { x: 0.5 * eSize, y: 0.5 * eSize },
+        { x: -(1.5 * eSize), y: 0.5 * eSize }
+      ];
+      const retTl = gsap.timeline();
+      corners.forEach((corner, idx) => {
+        retTl.to(corner, { x: defaultPos[idx].x, y: defaultPos[idx].y, duration: 0.3, ease: 'power3.out' }, 0);
+      });
+
+      setTimeout(() => {
+        if (!activeTarget) {
+          const curRot = gsap.getProperty(cursor, 'rotation') % 360;
+          spinTimeline.kill();
+          spinTimeline = gsap.timeline({ repeat: -1 }).to(cursor, { rotation: '+=360', duration: spinDuration, ease: 'none' });
+          gsap.to(cursor, {
+            rotation: curRot + 360,
+            duration: spinDuration * (1 - curRot / 360),
+            ease: 'none',
+            onComplete: () => { spinTimeline.restart(); }
+          });
+        }
+      }, 50);
+
+      removeTargetListeners(target);
+    };
+
+    target.addEventListener('mousemove', moveListener);
+    target.addEventListener('mouseleave', leaveListener);
   }, { passive: true });
 }
 
 /* ==========================================================================
-   1-CLICK EMAIL COPY & TOAST
+   GITHUB CONTRIBUTIONS GRID
    ========================================================================== */
-function initEmailCopy() {
-  const email = 'nandigammahesh595@gmail.com';
-  const heroBtn = document.getElementById('copy-email-btn');
-  const cardBtn = document.getElementById('copy-email-btn-card');
+function initContributionsGrid() {
+  const container = document.getElementById('contrib-grid');
+  if (!container) return;
 
-  const copyAction = (e) => {
-    e.preventDefault();
-    navigator.clipboard.writeText(email).then(() => {
-      showToast('Copied: ' + email);
-    }).catch(() => {
-      showToast(email);
-    });
-  };
+  const weeks = 53;
+  const days = 7;
+  const cellSize = 14;
+  const cellGap = 5;
+  const startX = 0;
+  const startY = 22;
 
-  if (heroBtn) heroBtn.addEventListener('click', copyAction);
-  if (cardBtn) cardBtn.addEventListener('click', copyAction);
-}
+  let html = '';
+  // Generate a realistic high-activity contribution calendar
+  for (let w = 0; w < weeks; w++) {
+    const x = startX + w * (cellSize + cellGap);
+    for (let d = 0; d < days; d++) {
+      const y = startY + d * (cellSize + cellGap);
+      // Determine activity level (0-4)
+      const seed = Math.sin(w * 13 + d * 7);
+      let level = 0;
+      if (seed > 0.65) level = 4;
+      else if (seed > 0.3) level = 3;
+      else if (seed > -0.1) level = 2;
+      else if (seed > -0.5) level = 1;
 
-function showToast(text) {
-  const toast = document.getElementById('toast');
-  if (!toast) return;
+      // Class matching pragnyan Tailwind classes
+      let fillClass = 'fill-muted-foreground/5';
+      if (level === 1) fillClass = 'fill-muted-foreground/20';
+      if (level === 2) fillClass = 'fill-muted-foreground/40';
+      if (level === 3) fillClass = 'fill-muted-foreground/60';
+      if (level === 4) fillClass = 'fill-muted-foreground/80';
 
-  toast.textContent = text;
-  toast.classList.add('show');
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 2400);
+      html += `<rect class="${fillClass} transition-colors" height="${cellSize}" width="${cellSize}" x="${x}" y="${y}" rx="2" ry="2" data-level="${level}"></rect>`;
+    }
+  }
+  container.innerHTML = html;
 }
 
 /* ==========================================================================
-   ELEVATE TO THE TOP
+   BACK TO TOP
    ========================================================================== */
 function initBackToTop() {
   const btn = document.getElementById('elevate-top-btn');
@@ -234,39 +265,36 @@ function initBackToTop() {
 }
 
 /* ==========================================================================
-   CONTACT FORM SUBMISSION
+   COPY EMAIL
    ========================================================================== */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
-  const submitBtn = document.getElementById('submit-btn');
+function initEmailCopy() {
+  const email = 'nandigammahesh595@gmail.com';
+  const copyBtn = document.getElementById('copy-email-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      navigator.clipboard.writeText(email).then(() => {
+        showToast('Copied: ' + email);
+      }).catch(() => {
+        showToast(email);
+      });
+    });
+  }
+}
 
-  if (!form) return;
+function showToast(text) {
+  let toast = document.getElementById('toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = text;
+  toast.classList.remove('opacity-0', 'pointer-events-none');
+  toast.classList.add('opacity-100');
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-
-    if (!name || !email || !message) {
-      status.style.color = '#ef4444';
-      status.textContent = 'Please fill out all fields.';
-      return;
-    }
-
-    submitBtn.disabled = true;
-    const origText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-
-    setTimeout(() => {
-      submitBtn.disabled = false;
-      submitBtn.textContent = origText;
-      status.style.color = 'hsl(var(--primary))';
-      status.innerHTML = `Thanks ${name}! Your message was dispatched. I will reply to <em>${email}</em> shortly.`;
-      form.reset();
-      showToast('Message sent to Mahesh!');
-    }, 600);
-  });
+  setTimeout(() => {
+    toast.classList.remove('opacity-100');
+    toast.classList.add('opacity-0', 'pointer-events-none');
+  }, 2200);
 }

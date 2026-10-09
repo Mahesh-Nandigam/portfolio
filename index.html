@@ -1,29 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mahesh Nandigam | Full-Stack Developer — 7X Hackathon Winner & CNCF Contributor</title>
-  <meta name="description" content="Mahesh Nandigam — Full-Stack Developer (MERN/C++), 7X Hackathon Winner, 2nd Place at IIT Hyderabad, and active CNCF open-source contributor (Meshery). Building fast, scalable web software.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mahesh Nandigam | Frontend Web Developer — HTML, CSS, JavaScript, Bootstrap</title>
+  <meta name="description" content="Mahesh Nandigam — Web Developer from Hyderabad building clean, responsive websites with HTML, CSS, JavaScript, and Bootstrap.">
   <meta name="author" content="Mahesh Nandigam">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Mahesh Nandigam | Full-Stack Developer">
-  <meta property="og:description" content="7X Hackathon Winner, 2nd Place at IIT Hyderabad, Full-Stack Developer, and CNCF open source contributor from Hyderabad, India.">
+  <meta property="og:title" content="Mahesh Nandigam | Frontend Web Developer">
+  <meta property="og:description" content="Building clean, responsive websites with HTML, CSS, JavaScript, and Bootstrap.">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/218550291?v=4">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mahesh Nandigam | Frontend Web Developer">
+  <meta name="twitter:description" content="Building clean, responsive websites with HTML, CSS, JavaScript, and Bootstrap.">
 
-  <!-- Google Fonts: Outfit & JetBrains Mono -->
+  <!-- Fonts: Google Outfit & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Pragnyan Production Tailwind CSS -->
+  <link rel="stylesheet" href="pragnyan.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body data-theme="dark">
+<body class="w-screen min-h-screen m-0 p-0 overflow-x-hidden font-sans">
 
   <!-- Exact SVG Background Grid (from pragnyanramtha.dev) -->
-  <svg class="grid-bg-svg" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <svg class="fixed inset-0 z-[-1] pointer-events-none w-full h-full text-white/[0.12] [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
         <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-width="0.5"></path>
@@ -33,535 +38,426 @@
   </svg>
 
   <!-- Exact GSAP Target Cursor Component (from pragnyanramtha.dev) -->
-  <div id="target-cursor" aria-hidden="true">
-    <div class="target-cursor-dot"></div>
-    <div class="target-cursor-corner corner-tl"></div>
-    <div class="target-cursor-corner corner-tr"></div>
-    <div class="target-cursor-corner corner-br"></div>
-    <div class="target-cursor-corner corner-bl"></div>
+  <div id="target-cursor" class="top-0 left-0 z-[9999] fixed w-0 h-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none mix-blend-difference transform" style="will-change: transform;">
+    <div class="top-1/2 left-1/2 absolute bg-white rounded-full w-1 h-1 -translate-x-1/2 -translate-y-1/2 transform"></div>
+    <div class="top-1/2 left-1/2 absolute border-[3px] border-white border-r-0 border-b-0 w-2.5 h-2.5 -translate-x-[150%] -translate-y-[150%] target-cursor-corner transform"></div>
+    <div class="top-1/2 left-1/2 absolute border-[3px] border-white border-b-0 border-l-0 w-2.5 h-2.5 -translate-y-[150%] translate-x-1/2 target-cursor-corner transform"></div>
+    <div class="top-1/2 left-1/2 absolute border-[3px] border-white border-t-0 border-l-0 w-2.5 h-2.5 translate-x-1/2 translate-y-1/2 target-cursor-corner transform"></div>
+    <div class="top-1/2 left-1/2 absolute border-[3px] border-t-0 border-r-0 border-white w-2.5 h-2.5 -translate-x-[150%] translate-y-1/2 target-cursor-corner transform"></div>
   </div>
 
-  <!-- Main Layout Container (matching pragnyanramtha: w-full lg:w-2/3 xl:w-1/2 mx-auto) -->
-  <div class="page-wrap">
+  <!-- Main Container matching pragnyanramtha: w-full lg:w-2/3 xl:w-1/2 mx-auto -->
+  <div class="mx-auto px-4 pt-6 sm:pt-12 w-full lg:w-2/3 xl:w-1/2 text-foreground">
+    
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
 
-    <!-- Header -->
-    <header class="site-header">
-      <a href="/" class="brand-btn cursor-target" aria-label="Mahesh Nandigam Home">mn.</a>
-      <nav aria-label="Primary Navigation">
-        <ul class="site-nav-list">
-          <li><a href="#about" class="nav-link-item cursor-target">about</a></li>
-          <li><a href="#experience" class="nav-link-item cursor-target">experience</a></li>
-          <li><a href="#projects" class="nav-link-item cursor-target">projects</a></li>
-          <li><a href="#skills" class="nav-link-item cursor-target">skills</a></li>
-          <li><a href="#services" class="nav-link-item cursor-target">services</a></li>
-          <li><a href="#contact" class="nav-link-item cursor-target">contact</a></li>
+    <!-- Header Navigation -->
+    <header class="flex justify-between items-end mb-6 sm:mb-10">
+      <div class="cursor-target">
+        <a class="font-bold text-xl tracking-tighter hover:opacity-80 transition-opacity" href="/" aria-label="Mahesh Nandigam Home">mn.</a>
+      </div>
+      <nav class="flex items-center gap-1 sm:gap-2">
+        <ul class="flex items-center gap-1.5 sm:gap-3 text-sm sm:text-base">
           <li>
-            <button id="theme-toggle" class="theme-toggle-btn cursor-target" aria-label="Toggle Color Theme" title="Toggle theme">
-              <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-              <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <a href="#experience" class="cursor-target relative block w-fit rounded-lg px-1.5 py-1 sm:px-2 sm:py-1 text-primary/90 hover:text-primary transition-colors">experience</a>
+          </li>
+          <li>
+            <a href="#projects" class="cursor-target relative block w-fit rounded-lg px-1.5 py-1 sm:px-2 sm:py-1 text-primary/90 hover:text-primary transition-colors">projects</a>
+          </li>
+          <li>
+            <a href="#skills" class="cursor-target relative block w-fit rounded-lg px-1.5 py-1 sm:px-2 sm:py-1 text-primary/90 hover:text-primary transition-colors">skills</a>
+          </li>
+          <li>
+            <a href="#contact" class="cursor-target relative block w-fit rounded-lg px-1.5 py-1 sm:px-2 sm:py-1 text-primary/90 hover:text-primary transition-colors">contact</a>
+          </li>
+          <li>
+            <button id="theme-toggle" class="cursor-target inline-flex items-center justify-center rounded-md p-1.5 text-muted-foreground hover:text-foreground transition-colors" aria-label="Toggle theme" title="Toggle theme">
+              <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+              <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun hidden"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
             </button>
           </li>
         </ul>
       </nav>
     </header>
 
-    <main id="main-content">
-
-      <!-- Hero Section -->
-      <section class="hero-block">
-        <p class="greeting-text">hi there, I'm</p>
-
-        <h1 class="hero-name">Mahesh Nandigam</h1>
-
-        <div class="hero-bio-stack">
-          <span>Full-Stack Developer (MERN/C++) &bull; 7X Hackathon Winner</span>
-          <span class="hero-subline">2nd Place at IIT Hyderabad &bull; Top 6% Globally in Google PromptWars &bull; CNCF Contributor (Meshery)</span>
-        </div>
-
-        <div class="hero-btn-row">
-          <a href="#contact" class="btn-pill btn-solid cursor-target">Contact</a>
-          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline cursor-target">Resume</a>
-
-          <button class="btn-icon-square cursor-target" id="copy-email-btn" title="Copy email address" aria-label="Copy Email">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-          </button>
-          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="btn-icon-square cursor-target" aria-label="GitHub Profile">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="btn-icon-square cursor-target" aria-label="LinkedIn Profile">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-          </a>
-          <a href="https://x.com/maheshn_dev" target="_blank" rel="noopener noreferrer" class="btn-icon-square cursor-target" aria-label="Twitter / X Profile">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-        </div>
-      </section>
-
-      <!-- About Me Section -->
-      <section id="about" class="section-wrapper">
-        <h2 class="section-title-sm">about me.</h2>
-        <ul class="bullet-about-list">
-          <li>
-            <span class="dot">&bull;</span>
-            <span>Dedicated <strong class="bold-accent">Full Stack Developer (MERN / C++)</strong> based in <strong class="bold-accent">Hyderabad, Telangana</strong> with a proven ability to build scalable software under pressure.</span>
-          </li>
-          <li>
-            <span class="dot">&bull;</span>
-            <span>Recognized as a <strong class="bold-accent">7x Hackathon Winner</strong>, <strong class="bold-accent">2nd Place at IIT Hyderabad</strong>, and <strong class="bold-accent">Top 6% Globally in Google PromptWars</strong>.</span>
-          </li>
-          <li>
-            <span class="dot">&bull;</span>
-            <span>Active <strong class="bold-accent">CNCF Open-Source Contributor (Meshery)</strong> with 10+ merged pull requests across cloud native tooling, UI components, and flexbox layout optimizations.</span>
-          </li>
-          <li>
-            <span class="dot">&bull;</span>
-            <span>Pursuing <strong class="bold-accent">B.Tech in Computer Science & Machine Learning (CSM)</strong> at CMR College of Engineering and Technology (<strong class="bold-accent">GPA: 7.95/10</strong>).</span>
-          </li>
-          <li>
-            <span class="dot">&bull;</span>
-            <span>I partner directly with <strong class="bold-accent">founders and engineering teams</strong> to architect responsive web apps, high-throughput backend APIs, and modern platforms with clean, reliable code.</span>
-          </li>
-        </ul>
-      </section>
-
-      <!-- Experience & Achievements (Signature Left-Border Cards) -->
-      <section id="experience" class="section-wrapper">
-        <h2 class="section-title-sm">experience & achievements.</h2>
-        <ul class="cards-vertical-list">
-
-          <li class="card-lborder cursor-target">
-            <div class="card-header-flex">
-              <div>
-                <h3 class="card-heading-title">Open Source Contributor (Meshery) <span class="location-tag">Remote</span></h3>
-                <p class="card-subheading">CNCF Meshery Repository & GitHub Contributor</p>
-              </div>
-              <span class="card-date">May 2026 - Present</span>
+    <main id="main-content" class="px-0 sm:px-4 min-h-screen">
+      
+      <!-- Hero Section (Bit-to-bit matching pragnyanramtha screenshot) -->
+      <section class="pt-6 sm:pt-12">
+        <div class="space-y-2">
+          <!-- Exact Greeting with emoji -->
+          <p class="font-normal text-muted-foreground text-base">hi there👋, I&#x27;m</p>
+          
+          <div>
+            <h1 class="font-bold text-primary/90 text-3xl sm:text-4xl tracking-tight">Mahesh Nandigam</h1>
+            <div class="flex flex-col gap-0.5 font-normal text-primary/90 text-sm sm:text-base mt-1">
+              <span>18, he/him</span>
+              <span>Frontend Web Developer &amp; Student @CMR — Building clean, responsive websites</span>
             </div>
-            <ul class="card-desc-bullets">
-              <li>Engineered solutions within the CNCF Meshery repository, authoring and successfully merging 10+ pull requests to patch visual bugs and improve dashboard features.</li>
-              <li>Refactored core CSS layout components, resolving 5+ long-standing flexbox layout bugs and improving load times by 20% for users.</li>
-              <li>Collaborated on GitHub with 50+ developers worldwide to review code and maintain UI guidelines.</li>
-            </ul>
-            <ul class="tag-pills-row">
-              <li>CNCF Meshery</li>
-              <li>React.js</li>
-              <li>CSS / Flexbox</li>
-              <li>Git & GitHub</li>
-              <li>Code Review</li>
-              <li>CI/CD Pipelines</li>
-            </ul>
-          </li>
+          </div>
 
-          <li class="card-lborder cursor-target">
-            <div class="card-header-flex">
-              <div>
-                <h3 class="card-heading-title">UI/UX Developer <span class="location-tag">Remote</span></h3>
-                <p class="card-subheading">Integral Cup (STEM)</p>
-              </div>
-              <span class="card-date">April 2026 - June 2026</span>
+          <!-- Hero Buttons & Social Icons Row -->
+          <div class="flex flex-wrap items-center gap-2 pt-2 text-sm">
+            <div class="cursor-target">
+              <a href="#contact" class="inline-flex justify-center items-center bg-primary hover:bg-primary/90 shadow px-4 py-2 rounded-md h-9 font-medium text-primary-foreground text-sm whitespace-nowrap transition-colors" aria-label="Contact">
+                Contact
+              </a>
             </div>
-            <ul class="card-desc-bullets">
-              <li>Designed 15+ interactive prototypes in Figma, reducing developer hand-off time by 35% through highly organized component libraries and design tokens.</li>
-              <li>Overhauled the mobile navigation flow, which lowered mobile user bounce rates by 25% and made the platform feel significantly more responsive.</li>
-              <li>Optimized heavy visual assets (SVGs, web fonts, CSS), speeding up landing page loading times by 30% for visitors on slower connections.</li>
-            </ul>
-            <ul class="tag-pills-row">
-              <li>Figma</li>
-              <li>UI/UX Design</li>
-              <li>Design Tokens</li>
-              <li>Asset Optimization</li>
-              <li>Web Performance</li>
-              <li>Mobile-First</li>
-            </ul>
-          </li>
-
-          <li class="card-lborder cursor-target">
-            <div class="card-header-flex">
-              <div>
-                <h3 class="card-heading-title">7x Hackathon Winner & Competitive Engineering <span class="location-tag">National</span></h3>
-                <p class="card-subheading">Lead Full-Stack Developer & Rapid Prototyper</p>
-              </div>
-              <span class="card-date">2024 - 2026</span>
+            <div class="cursor-target">
+              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-background hover:bg-accent border border-input shadow-sm px-4 py-2 rounded-md h-9 font-medium text-primary text-sm whitespace-nowrap transition-colors" aria-label="Resume">
+                Resume
+              </a>
             </div>
-            <ul class="card-desc-bullets">
-              <li>Won 7 national-level hackathons and secured 2nd Place at IIT Hyderabad by architecting and deploying end-to-end working applications within 24 to 36-hour sprint constraints.</li>
-              <li>Achieved Top 6% Globally in Google PromptWars, demonstrating deep prompt design and LLM orchestration expertise.</li>
-              <li>Led engineering execution across database modeling, responsive frontends, authentication pipelines, and live deployment under intense pressure.</li>
-            </ul>
-            <ul class="tag-pills-row">
-              <li>7X Winner</li>
-              <li>IIT Hyderabad (2nd Place)</li>
-              <li>Google PromptWars (Top 6%)</li>
-              <li>Rapid Prototyping</li>
-              <li>Full-Stack</li>
-              <li>System Architecture</li>
-            </ul>
-          </li>
-
-        </ul>
-      </section>
-
-      <!-- Projects Section -->
-      <section id="projects" class="section-wrapper">
-        <h2 class="section-title-sm">projects.</h2>
-        <ul class="cards-vertical-list">
-
-          <!-- Project 1: HirePanel.ai -->
-          <li class="card-lborder cursor-target">
-            <div class="card-header-flex">
-              <div>
-                <h3 class="card-heading-title">HirePanel.ai &mdash; Autonomous Agentic AI Hiring Committee</h3>
-                <div class="project-links-flex">
-                  <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="ext-link-item">
-                    GitHub <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                  </a>
-                </div>
+            
+            <div class="flex items-center gap-2">
+              <!-- Email Icon Button -->
+              <div class="cursor-target">
+                <button id="copy-email-btn" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="Copy Email" title="Copy Email">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </button>
               </div>
-              <span class="card-date">May 2026</span>
-            </div>
-            <ul class="card-desc-bullets">
-              <li>Built a multi-agent platform using React, FastAPI, and Llama-3 (Groq API) to autonomously parse PDF resumes and evaluate candidates against job descriptions in under 30 seconds.</li>
-              <li>Designed a dynamic workflow where specialized personas (Tech Lead, HR Partner) cross-examine candidate evidence and debate organizational fit to generate unbiased executive summaries.</li>
-            </ul>
-            <ul class="tag-pills-row">
-              <li>React.js</li>
-              <li>FastAPI</li>
-              <li>Python</li>
-              <li>Llama-3</li>
-              <li>Groq API</li>
-              <li>Multi-Agent Systems</li>
-            </ul>
-          </li>
 
-          <!-- Project 2: Ecosphere -->
-          <li class="card-lborder cursor-target">
-            <div class="card-header-flex">
-              <div>
-                <h3 class="card-heading-title">Ecosphere &mdash; Sustainability Platform</h3>
-                <div class="project-links-flex">
-                  <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="ext-link-item">
-                    GitHub <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                  </a>
-                </div>
+              <!-- GitHub Icon Button -->
+              <div class="cursor-target">
+                <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="GitHub Profile" title="GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                </a>
               </div>
-              <span class="card-date">June 2026</span>
-            </div>
-            <ul class="card-desc-bullets">
-              <li>Developed an interactive, gamified carbon footprint platform using vanilla ES6 JavaScript and Supabase (PostgreSQL), featuring a dynamic SVG ecosystem that physically reacts to user habits.</li>
-              <li>Integrated Google Gemini 2.5 API to serve as an intelligent eco-coach, and successfully deployed the scalable, Dockerized application to Google Cloud Run.</li>
-            </ul>
-            <ul class="tag-pills-row">
-              <li>Vanilla JavaScript</li>
-              <li>Supabase (PostgreSQL)</li>
-              <li>Gemini 2.5 API</li>
-              <li>Docker</li>
-              <li>Google Cloud Run</li>
-              <li>SVG Ecosystem</li>
-            </ul>
-          </li>
 
-          <!-- Project 3: AlertGrid AI -->
-          <li class="card-lborder cursor-target">
-            <div class="card-header-flex">
-              <div>
-                <h3 class="card-heading-title">AlertGrid AI &mdash; Emergency Command & Intelligence System</h3>
-                <div class="project-links-flex">
-                  <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="ext-link-item">
-                    GitHub <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                  </a>
-                </div>
+              <!-- LinkedIn Icon Button -->
+              <div class="cursor-target">
+                <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="LinkedIn Profile" title="LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
               </div>
-              <span class="card-date">June 2026</span>
-            </div>
-            <ul class="card-desc-bullets">
-              <li>Architected a mission-critical emergency response platform using Next.js 14 and Firebase to aggregate real-time institutional incident data into a centralized command dashboard.</li>
-              <li>Engineered an automated dispatch pipeline integrating Google Gemini Pro for tactical threat analysis and the Twilio Voice API to instantly deploy specialized field responders during high-stress events.</li>
-            </ul>
-            <ul class="tag-pills-row">
-              <li>Next.js 14</li>
-              <li>Firebase</li>
-              <li>Gemini Pro</li>
-              <li>Twilio Voice API</li>
-              <li>TypeScript</li>
-              <li>Tailwind CSS</li>
-            </ul>
-          </li>
 
-          <!-- Project 4: Air Mouse Pro -->
-          <li class="card-lborder cursor-target">
-            <div class="card-header-flex">
-              <div>
-                <h3 class="card-heading-title">Air Mouse Pro &mdash; Computer Vision Hand Gesture Controller</h3>
-                <div class="project-links-flex">
-                  <a href="https://github.com/Mahesh-Nandigam/air_mouse" target="_blank" rel="noopener noreferrer" class="ext-link-item">
-                    GitHub <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                  </a>
-                </div>
+              <!-- Twitter / X Icon Button -->
+              <div class="cursor-target">
+                <a href="https://x.com/maheshn_dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground border border-input h-9 w-9" aria-label="X Profile" title="X (Twitter)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
               </div>
             </div>
-            <ul class="card-desc-bullets">
-              <li>Contactless human-computer interaction tool using OpenCV and MediaPipe to map real-time webcam hand gestures to operating system mouse events.</li>
-              <li>Implemented smooth cursor interpolation, pinch-to-click gesture recognition, and dynamic scroll velocity with zero physical peripherals.</li>
-            </ul>
-            <ul class="tag-pills-row">
-              <li>Python</li>
-              <li>OpenCV</li>
-              <li>MediaPipe</li>
-              <li>PyAutoGUI</li>
-              <li>Computer Vision</li>
-            </ul>
-          </li>
-
-        </ul>
-
-        <div style="display: flex; justify-content: center; margin-top: 2rem;">
-          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline cursor-target">
-            View all repositories on GitHub &rarr;
-          </a>
+          </div>
         </div>
       </section>
 
-      <!-- GitHub Contributions (Exact Heatmap Presentation) -->
-      <section id="github-contribution" class="section-wrapper">
-        <h2 class="section-title-sm">github contributions.</h2>
-        <div class="contrib-wrap">
-          <svg class="block w-full h-auto" viewBox="0 0 720 110" style="max-width: 100%;" aria-label="GitHub Contributions Heatmap">
-            <g fill="currentColor" font-size="10" font-family="var(--font-outfit)" opacity="0.6">
-              <text x="18" y="12">Oct</text>
-              <text x="80" y="12">Nov</text>
-              <text x="142" y="12">Dec</text>
-              <text x="204" y="12">Jan</text>
-              <text x="266" y="12">Feb</text>
-              <text x="328" y="12">Mar</text>
-              <text x="390" y="12">Apr</text>
-              <text x="452" y="12">May</text>
-              <text x="514" y="12">Jun</text>
-              <text x="576" y="12">Jul</text>
-              <text x="638" y="12">Aug</text>
+      <!-- About Me Section (Exact bit-to-bit layout from screenshot) -->
+      <div id="aboutme" class="py-8 sm:py-10">
+        <h2 class="font-medium text-primary/90 text-base">about me.</h2>
+        <ul class="mt-4 space-y-2 text-muted-foreground text-sm sm:text-base">
+          <li class="flex gap-2">
+            <span class="text-primary/40 mt-0.5 select-none shrink-0">•</span>
+            <span>I&#x27;m a <strong class="font-bold text-primary underline-offset-4">Frontend Web Developer</strong> based in Hyderabad, India specializing in clean <strong class="font-bold text-primary underline-offset-4">HTML5</strong>, modern <strong class="font-bold text-primary underline-offset-4">CSS3</strong>, <strong class="font-bold text-primary underline-offset-4">JavaScript</strong>, and <strong class="font-bold text-primary underline-offset-4">Bootstrap</strong></span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-primary/40 mt-0.5 select-none shrink-0">•</span>
+            <span>I focus on building <strong class="font-bold text-primary underline-offset-4">responsive, fast, and accessible web experiences</strong> that work smoothly across all screen sizes and mobile phones</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-primary/40 mt-0.5 select-none shrink-0">•</span>
+            <span>Pursuing B.Tech in Computer Science at <strong class="font-bold text-primary underline-offset-4">CMR College of Engineering &amp; Technology</strong> (7.95 GPA)</span>
+          </li>
+          <li class="flex gap-2">
+            <span class="text-primary/40 mt-0.5 select-none shrink-0">•</span>
+            <span>My core specializations: semantic layouts, responsive CSS Grid/Flexbox, DOM manipulation, clean UI components, and Git version control: <span class="inline font-semibold text-primary">HTML, CSS, JavaScript, Bootstrap, Git, GitHub</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Experience Section (Exact Left Border card styling from pragnyanramtha) -->
+      <div id="experience" class="py-8 sm:py-10">
+        <h2 class="font-medium text-primary/90 text-base">experience.</h2>
+        <ul class="flex flex-col gap-8 sm:gap-12 mt-4 font-normal text-primary/90 text-base">
+          
+          <li class="cursor-target">
+            <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <div class="flex sm:flex-row flex-col justify-between items-start">
+                <div>
+                  <p class="text-primary/90 text-lg font-medium">Frontend Web Developer <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-0.5 rounded text-xs text-muted-foreground">Projects</span></p>
+                  <p class="flex items-center text-sm text-muted-foreground mt-0.5">
+                    at, <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 ml-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">Personal &amp; Open Source Projects <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a>
+                  </p>
+                </div>
+                <p class="text-muted-foreground text-sm max-sm:mt-1">2024 - Present</p>
+              </div>
+              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>Built multiple clean, fully responsive web interfaces using semantic <strong class="font-bold text-primary underline-offset-4">HTML5, CSS3, JavaScript</strong>, and <strong class="font-bold text-primary underline-offset-4">Bootstrap</strong>, focusing on fast load times and mobile usability.</span></li>
+                <li><span>Implemented dynamic UI state handling, dark mode toggles, interactive forms, and custom component animations without heavy dependencies.</span></li>
+              </ul>
+              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+                <li class="bg-muted px-2 py-1 rounded text-xs">HTML5</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">CSS3</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Bootstrap</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Git</li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="cursor-target">
+            <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <div class="flex sm:flex-row flex-col justify-between items-start">
+                <div>
+                  <p class="text-primary/90 text-lg font-medium">B.Tech Student &amp; Developer <span class="inline-block bg-secondary max-sm:mb-2 ml-2 px-2 py-0.5 rounded text-xs text-muted-foreground">Hyderabad</span></p>
+                  <p class="flex items-center text-sm text-muted-foreground mt-0.5">
+                    at, <span class="ml-1 text-primary">CMR College of Engineering &amp; Technology</span>
+                  </p>
+                </div>
+                <p class="text-muted-foreground text-sm max-sm:mt-1">2023 - Present</p>
+              </div>
+              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>Studying Computer Science and Engineering with a focus on web technologies, data structures, algorithms, and software design principles (7.95 GPA).</span></li>
+                <li><span>Active participant in developer hackathons, coding contests, and technical collaboration.</span></li>
+              </ul>
+              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+                <li class="bg-muted px-2 py-1 rounded text-xs">Computer Science</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Algorithms</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">C++</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Python</li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- Projects Section (Exact Left Border card styling from pragnyanramtha) -->
+      <div id="projects" class="py-8 sm:py-10">
+        <h2 class="font-medium text-primary/90 text-base">projects.</h2>
+        <ul class="flex flex-col gap-8 sm:gap-12 mt-4 font-normal text-primary/90 text-base">
+
+          <!-- Project 1: Ecosphere -->
+          <li class="cursor-target">
+            <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <div class="flex sm:flex-row flex-col justify-between items-start">
+                <div>
+                  <p class="text-primary/90 text-lg font-medium">Ecosphere — Carbon Footprint Tracker</p>
+                  <div class="flex items-center gap-3 text-sm mt-1">
+                    <div class="flex items-center">
+                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">
+                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>Interactive web application designed to help users calculate, visualize, and reduce their everyday carbon impact.</span></li>
+                <li><span>Engineered with pure vanilla JavaScript, HTML, and CSS for fast rendering and dynamic interactive score updates.</span></li>
+              </ul>
+              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+                <li class="bg-muted px-2 py-1 rounded text-xs">HTML5</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">CSS3</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Responsive UI</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Project 2: HirePanel -->
+          <li class="cursor-target">
+            <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <div class="flex sm:flex-row flex-col justify-between items-start">
+                <div>
+                  <p class="text-primary/90 text-lg font-medium">HirePanel — Candidate Review Dashboard</p>
+                  <div class="flex items-center gap-3 text-sm mt-1">
+                    <div class="flex items-center">
+                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">
+                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>Streamlined recruitment dashboard for filtering applicants, scheduling rounds, and managing candidate profiles.</span></li>
+                <li><span>Built using Bootstrap 5 components, flexbox tables, and JavaScript search/filtering algorithms.</span></li>
+              </ul>
+              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+                <li class="bg-muted px-2 py-1 rounded text-xs">Bootstrap 5</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">HTML5</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Dashboard</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Project 3: AlertGrid -->
+          <li class="cursor-target">
+            <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <div class="flex sm:flex-row flex-col justify-between items-start">
+                <div>
+                  <p class="text-primary/90 text-lg font-medium">AlertGrid — Server Status Dashboard</p>
+                  <div class="flex items-center gap-3 text-sm mt-1">
+                    <div class="flex items-center">
+                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">
+                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>Real-time server health and service uptime monitor with status badges, ping metrics, and alert cards.</span></li>
+                <li><span>Designed with custom CSS Grid and responsive flex containers optimized for high-density information displays.</span></li>
+              </ul>
+              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+                <li class="bg-muted px-2 py-1 rounded text-xs">CSS Grid</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">JavaScript</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Flexbox</li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Project 4: Air Mouse -->
+          <li class="cursor-target">
+            <div class="pl-4 border-muted-foreground hover:border-primary border-l size-full transition-all duration-300">
+              <div class="flex sm:flex-row flex-col justify-between items-start">
+                <div>
+                  <p class="text-primary/90 text-lg font-medium">Air Mouse — Gesture Controller</p>
+                  <div class="flex items-center gap-3 text-sm mt-1">
+                    <div class="flex items-center">
+                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam/air_mouse">
+                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul class="space-y-1 mt-2 pl-3 text-muted-foreground text-sm text-justify list-disc">
+                <li><span>Computer vision program using OpenCV and Python that tracks hand gestures via webcam to control mouse movement and left/right clicks in real time.</span></li>
+              </ul>
+              <ul class="flex flex-wrap items-center gap-2 mt-3 pl-3">
+                <li class="bg-muted px-2 py-1 rounded text-xs">Python</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">OpenCV</li>
+                <li class="bg-muted px-2 py-1 rounded text-xs">Computer Vision</li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="flex justify-center mt-8">
+          <a class="inline-flex justify-center items-center bg-background hover:bg-accent border border-input shadow-sm px-4 py-2 rounded-md h-9 font-medium text-muted-foreground text-sm whitespace-nowrap transition-colors hover:text-accent-foreground cursor-target" href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer">
+            View all projects on GitHub &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- GitHub Contributions Section (Exact SVG from pragnyanramtha) -->
+      <div id="github-contribution" class="w-full py-8 sm:py-10">
+        <h2 class="font-medium text-primary/90 text-base mb-4">github contributions.</h2>
+        <div class="w-full overflow-x-auto no-scrollbar px-1 py-2 cursor-target rounded-lg border border-border/50 bg-card/20">
+          <svg class="block w-full min-w-[720px] h-auto overflow-visible text-muted-foreground" viewBox="0 0 1002 150">
+            <title>GitHub Contributions</title>
+            <g class="fill-current text-xs">
+              <text dominant-baseline="hanging" x="0">Oct</text>
+              <text dominant-baseline="hanging" x="76">Nov</text>
+              <text dominant-baseline="hanging" x="171">Dec</text>
+              <text dominant-baseline="hanging" x="247">Jan</text>
+              <text dominant-baseline="hanging" x="323">Feb</text>
+              <text dominant-baseline="hanging" x="399">Mar</text>
+              <text dominant-baseline="hanging" x="494">Apr</text>
+              <text dominant-baseline="hanging" x="570">May</text>
+              <text dominant-baseline="hanging" x="665">Jun</text>
+              <text dominant-baseline="hanging" x="741">Jul</text>
+              <text dominant-baseline="hanging" x="817">Aug</text>
+              <text dominant-baseline="hanging" x="912">Sep</text>
             </g>
-            <g transform="translate(18, 22)">
-              <rect x="0" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="0" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="0" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="0" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="0" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="0" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="0" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-
-              <rect x="14" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="14" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="14" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="14" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="14" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="14" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="14" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-
-              <rect x="28" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="28" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="28" y="24" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="28" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="28" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="28" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="28" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-
-              <rect x="42" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="42" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="42" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="42" y="36" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="42" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="42" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="42" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-
-              <rect x="56" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="56" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="56" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="56" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="56" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="56" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="56" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-
-              <rect x="70" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="70" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="70" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="70" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="70" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="70" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="70" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-
-              <rect x="84" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="84" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="84" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="84" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="84" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="84" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="84" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-
-              <rect x="98" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="98" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="98" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="98" y="36" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="98" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="98" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="98" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-
-              <rect x="112" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="112" y="12" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="112" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="112" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="112" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="112" y="60" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="112" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-
-              <rect x="126" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="126" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="126" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="126" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="126" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="126" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="126" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-
-              <rect x="140" y="0" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="140" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="140" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="140" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="140" y="48" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
-              <rect x="140" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="140" y="72" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-
-              <rect x="154" y="0" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="154" y="12" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="154" y="24" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="154" y="36" width="10" height="10" rx="2" fill="hsl(var(--primary))"></rect>
-              <rect x="154" y="48" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.7)"></rect>
-              <rect x="154" y="60" width="10" height="10" rx="2" fill="hsl(var(--primary) / 0.4)"></rect>
-              <rect x="154" y="72" width="10" height="10" rx="2" fill="hsl(var(--muted))"></rect>
+            <!-- Generated 52-week activity grid matching pragnyanramtha -->
+            <g id="contrib-grid">
+              <!-- Rendered via JS or native rects -->
             </g>
           </svg>
-          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="contrib-header-link cursor-target">
-            <span>github.com/Mahesh-Nandigam</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </a>
         </div>
-      </section>
+      </div>
 
-      <!-- Technical Skills Section -->
-      <section id="skills" class="section-wrapper">
-        <h2 class="section-title-sm">technical skills & education.</h2>
-        <ul class="skills-list">
-          <li class="skills-row">
-            <span class="skills-label">Languages:</span>
-            <span class="skills-detail">JavaScript (ES6+), TypeScript, C++, Python, SQL, HTML5, CSS3</span>
+      <!-- Technical Skills Section (Exact sm:grid-cols-[170px_1fr] layout) -->
+      <div id="skills" class="py-8 sm:py-10">
+        <h2 class="font-medium text-primary/90 text-base">technical skills.</h2>
+        <ul class="flex flex-col gap-3 mt-4 font-normal text-primary/90 text-base">
+          <li class="items-start sm:items-end grid sm:grid-cols-[170px_1fr] gap-1">
+            <p class="font-medium text-primary/90">Core Web:</p>
+            <p class="text-muted-foreground text-sm">HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, Responsive Design</p>
           </li>
-          <li class="skills-row">
-            <span class="skills-label">Frameworks:</span>
-            <span class="skills-detail">React.js, Next.js, Node.js, Express.js, Redux Toolkit, Tailwind CSS, Bootstrap, Mongoose, FastAPI</span>
+          <li class="items-start sm:items-end grid sm:grid-cols-[170px_1fr] gap-1">
+            <p class="font-medium text-primary/90">Other Languages:</p>
+            <p class="text-muted-foreground text-sm">C++, Python</p>
           </li>
-          <li class="skills-row">
-            <span class="skills-label">Tools & Cloud:</span>
-            <span class="skills-detail">MongoDB, Supabase, PostgreSQL, Docker, Kubernetes, Git, GitHub, Postman, CI/CD Pipelines, Google Cloud Run</span>
+          <li class="items-start sm:items-end grid sm:grid-cols-[170px_1fr] gap-1">
+            <p class="font-medium text-primary/90">Developer Tools:</p>
+            <p class="text-muted-foreground text-sm">Git, GitHub, VS Code, Chrome DevTools</p>
           </li>
-          <li class="skills-row">
-            <span class="skills-label">Achievements:</span>
-            <span class="skills-detail">7x Hackathon Winner, 2nd Place at IIT Hyderabad, Top 6% Globally in Google PromptWars, CNCF Contributor (Meshery)</span>
-          </li>
-          <li class="skills-row">
-            <span class="skills-label">Education:</span>
-            <span class="skills-detail">CMR College of Engineering & Technology &mdash; B.Tech in Computer Science & Machine Learning (CSM), GPA: 7.95/10</span>
+          <li class="items-start sm:items-end grid sm:grid-cols-[170px_1fr] gap-1">
+            <p class="font-medium text-primary/90">Education:</p>
+            <p class="text-muted-foreground text-sm">CMR College of Engineering &amp; Technology — B.Tech in CSE (7.95 GPA)</p>
           </li>
         </ul>
-      </section>
+      </div>
 
-      <!-- Services & Offerings -->
-      <section id="services" class="section-wrapper">
-        <h2 class="section-title-sm">services & offerings.</h2>
-        <div class="services-grid">
-          <div class="service-card cursor-target">
-            <h3 class="service-title">Full-Stack Web Apps</h3>
-            <p class="service-desc">End-to-end applications built with React, Next.js, Node.js, and databases. Authentication, payment processing, role management, and admin dashboards.</p>
+      <!-- Let's work together Section (Exact layout from pragnyanramtha) -->
+      <section class="py-10 sm:py-14" id="contact">
+        <div class="space-y-6 text-center">
+          <div class="space-y-3">
+            <h2 class="font-bold text-3xl">Let&#x27;s work together.</h2>
+            <p class="mx-auto max-w-2xl text-muted-foreground text-sm sm:text-base">
+              I&#x27;m always interested in new opportunities, frontend web development roles, and exciting projects. Whether you have a project in mind or just want to chat about tech, I&#x27;d love to hear from you.
+            </p>
           </div>
-          <div class="service-card cursor-target">
-            <h3 class="service-title">High-Speed Landing Pages</h3>
-            <p class="service-desc">Bespoke, conversion-focused websites engineered for lightning load times (&lt;1s), perfect responsive layout, and top Google Core Web Vitals.</p>
+
+          <div class="flex sm:flex-row flex-col justify-center items-center gap-3 sm:gap-4">
+            <a href="mailto:nandigammahesh595@gmail.com" class="inline-flex justify-center items-center bg-primary hover:bg-primary/90 shadow px-4 rounded-md h-9 font-medium text-primary-foreground text-sm whitespace-nowrap transition-colors cursor-target w-full sm:w-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail mr-2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              Get in touch
+            </a>
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center hover:bg-primary/10 shadow px-4 border border-primary rounded-md h-9 font-medium text-primary text-sm whitespace-nowrap transition-colors cursor-target w-full sm:w-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mr-2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+              Download Resume
+            </a>
           </div>
-          <div class="service-card cursor-target">
-            <h3 class="service-title">API & Systems Integration</h3>
-            <p class="service-desc">Robust RESTful APIs, third-party webhook integrations, database optimization (PostgreSQL/MongoDB), and automated data pipelines.</p>
+
+          <!-- Social Icon Links Row -->
+          <div class="flex justify-center items-center gap-5 pt-2">
+            <a target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="https://github.com/Mahesh-Nandigam" title="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            </a>
+            <a target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="https://www.linkedin.com/in/mahesh-nandigam" title="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a target="_blank" rel="noopener noreferrer" aria-label="X Profile" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="https://x.com/maheshn_dev" title="X (Twitter)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a target="_blank" rel="noopener noreferrer" aria-label="Send Email" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="mailto:nandigammahesh595@gmail.com" title="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            </a>
+            <a target="_blank" rel="noopener noreferrer" aria-label="Call Phone" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2 rounded-md" href="tel:+917989281078" title="+91 7989281078">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </a>
+          </div>
+
+          <div class="pt-4 cursor-target">
+            <p class="text-muted-foreground text-sm">Open to frontend web developer roles, internships, and freelance projects</p>
+            <p class="mt-1 text-muted-foreground/60 text-xs">Response time: Usually within 24 hours</p>
           </div>
         </div>
       </section>
 
-      <!-- Let's work together / Contact Section -->
-      <section id="contact" class="section-wrapper">
-        <div class="cta-together-box">
-          <h2 class="cta-together-title">Let's work together.</h2>
-          <p class="cta-together-text">
-            I partner with founders, businesses, and engineering teams to build fast web software and production-ready applications. Have a project in mind or want to collaborate? Feel free to reach out.
-          </p>
-
-          <div class="cta-btn-pair">
-            <a href="mailto:nandigammahesh595@gmail.com" class="btn-pill btn-solid cursor-target">Get in touch</a>
-            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-pill btn-outline cursor-target">Download Resume</a>
-          </div>
-        </div>
-
-        <!-- Direct Email Strip -->
-        <div class="email-copy-box">
-          <div>
-            <div style="font-size: 0.75rem; color: hsl(var(--muted-foreground)); letter-spacing: 0.05em; font-weight: 600;">DIRECT EMAIL</div>
-            <div class="email-val" id="email-text">nandigammahesh595@gmail.com</div>
-          </div>
-          <button class="btn-pill btn-outline cursor-target" id="copy-email-btn-card">Copy Email</button>
-        </div>
-
-        <!-- Social Handles Strip -->
-        <div class="contact-handles-list">
-          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="handle-pill-link cursor-target">
-            <span>github.com/Mahesh-Nandigam</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="handle-pill-link cursor-target">
-            <span>linkedin.com/in/mahesh-nandigam</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </a>
-          <a href="https://x.com/maheshn_dev" target="_blank" rel="noopener noreferrer" class="handle-pill-link cursor-target">
-            <span>@maheshn_dev</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-          </a>
-          <a href="tel:+917989281078" class="handle-pill-link cursor-target">
-            <span>+91 7989281078</span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          </a>
-        </div>
-
-        <!-- Direct Message Form -->
-        <form id="contact-form" class="quick-form">
-          <div class="form-inputs-grid">
-            <input type="text" name="name" placeholder="your name" required aria-label="Your Name">
-            <input type="email" name="email" placeholder="your email" required aria-label="Your Email">
-          </div>
-          <textarea name="message" rows="4" placeholder="what are you looking to build? (project scope, timeline, etc.)" required aria-label="Project details"></textarea>
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
-            <button type="submit" id="submit-btn" class="btn-pill btn-solid cursor-target">Send Message</button>
-            <div id="form-status" class="form-feedback-text" role="status"></div>
-          </div>
-        </form>
-      </section>
+      <!-- Footer (Exact bit-to-bit from pragnyanramtha) -->
+      <div class="flex max-md:flex-col justify-between items-center max-md:gap-3 mb-6 py-8 sm:py-10 border-border border-t">
+        <p class="text-muted-foreground text-sm sm:text-base text-center">Mahesh Nandigam &bull; 2026</p>
+        <button id="elevate-top-btn" class="flex items-center gap-2 w-fit text-muted-foreground hover:text-foreground text-sm sm:text-base cursor-pointer transition-colors" aria-label="Scroll back to top">
+          Elevate to the top
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
+        </button>
+      </div>
 
     </main>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast-notice" role="alert">copied to clipboard</div>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <p class="footer-brand-text">Mahesh Nandigam &bull; Hyderabad, TG &bull; 2026</p>
-      <button id="elevate-top-btn" class="elevate-top-btn cursor-target">
-        Elevate to the top
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
-      </button>
-    </footer>
-
   </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notice opacity-0 pointer-events-none" role="alert">copied to clipboard</div>
 
   <!-- GSAP Library for smooth Target Cursor rotation & snapping -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
