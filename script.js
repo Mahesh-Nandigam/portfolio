@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTargetCursor();
   initContributionsGrid();
   initBackToTop();
-  initEmailCopy();
 });
 
 /* ==========================================================================
@@ -264,37 +263,4 @@ function initBackToTop() {
   }
 }
 
-/* ==========================================================================
-   COPY EMAIL
-   ========================================================================== */
-function initEmailCopy() {
-  const email = 'nandigammahesh595@gmail.com';
-  const copyBtn = document.getElementById('copy-email-btn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      navigator.clipboard.writeText(email).then(() => {
-        showToast('Copied: ' + email);
-      }).catch(() => {
-        showToast(email);
-      });
-    });
-  }
-}
 
-function showToast(text) {
-  let toast = document.getElementById('toast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'toast';
-    document.body.appendChild(toast);
-  }
-  toast.textContent = text;
-  toast.classList.remove('opacity-0', 'pointer-events-none');
-  toast.classList.add('opacity-100');
-
-  setTimeout(() => {
-    toast.classList.remove('opacity-100');
-    toast.classList.add('opacity-0', 'pointer-events-none');
-  }, 2200);
-}
