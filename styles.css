@@ -131,7 +131,18 @@ body {
   }
 }
 
-/* Grid background theme sensitivity */
-html.light svg[width="100%"] {
-  color: rgba(0, 0, 0, 0.08) !important;
+/* Exact SVG Background Grid (matching pragnyanramtha.dev) */
+svg.absolute.inset-0.z-\[-1\],
+svg[class*="mask-image"] {
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom right, #ffffff, transparent, transparent) !important;
+  mask-image: linear-gradient(to bottom right, #ffffff, transparent, transparent) !important;
 }
+
+html.light svg.absolute.inset-0.z-\[-1\],
+html.light svg[class*="mask-image"] {
+  color: rgba(0, 0, 0, 0.12) !important;
+  -webkit-mask-image: linear-gradient(to bottom right, #000000, transparent, transparent) !important;
+  mask-image: linear-gradient(to bottom right, #000000, transparent, transparent) !important;
+}
+

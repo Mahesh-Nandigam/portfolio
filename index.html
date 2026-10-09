@@ -25,17 +25,7 @@
   <link rel="stylesheet" href="pragnyan.css">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="w-screen min-h-screen m-0 p-0 overflow-x-hidden font-sans">
-
-  <!-- Exact SVG Background Grid (from pragnyanramtha.dev) -->
-  <svg class="fixed inset-0 z-[-1] pointer-events-none w-full h-full text-white/[0.12] [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <defs>
-      <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-width="0.5"></path>
-      </pattern>
-    </defs>
-    <rect width="100%" height="100%" fill="url(#grid)" x="-1" y="-1"></rect>
-  </svg>
+<body class="w-screen min-h-screen m-0 p-0 overflow-x-hidden font-sans relative">
 
   <!-- Exact GSAP Target Cursor Component (from pragnyanramtha.dev) -->
   <div id="target-cursor" class="top-0 left-0 z-[9999] fixed w-0 h-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none mix-blend-difference transform" style="will-change: transform;">
@@ -70,6 +60,9 @@
         </ul>
       </nav>
     </header>
+
+    <!-- Exact SVG Background Grid (from pragnyanramtha.dev - 100% identical placement & classes) -->
+    <svg class="absolute inset-0 z-[-1] [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-width="0.5"></path></pattern></defs><rect width="100%" height="100%" fill="url(#grid)" x="-1" y="-1"></rect></svg>
 
     <main id="main-content" class="px-0 sm:px-4 min-h-screen">
 
