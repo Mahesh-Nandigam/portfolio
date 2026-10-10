@@ -463,3 +463,226 @@ html.light svg.hero-landing-grid {
   .sm\:space-y-3\.5 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.875rem; margin-bottom: 0; }
   .sm\:text-primary\/85 { color: hsl(var(--primary) / 0.85); }
 }
+
+
+/* ==========================================================================
+   AUTHENTIC GITHUB CONTRIBUTION GRAPH STYLES (Exact Vector Component)
+   ========================================================================== */
+.github-wrapper {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .github-wrapper {
+    flex-direction: column;
+  }
+}
+
+.github-main-col {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+.github-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.github-contrib-title {
+  color: #e6edf3;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+html:not(.dark) .github-contrib-title {
+  color: #1f2328;
+}
+
+.github-settings-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #8b949e;
+  font-size: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.github-settings-dropdown:hover {
+  color: #58a6ff;
+}
+
+.github-card-container {
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 16px 18px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+html:not(.dark) .github-card-container {
+  background-color: #ffffff;
+  border-color: #d0d7de;
+}
+
+.github-graph-labels {
+  fill: #8b949e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+}
+
+html:not(.dark) .github-graph-labels {
+  fill: #656d76;
+}
+
+.contrib-cell {
+  rx: 2px;
+  ry: 2px;
+  cursor: pointer;
+  transition: stroke 0.12s ease;
+}
+
+.contrib-cell:hover {
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 1px;
+}
+
+/* Exact GitHub Dark Mode Green Palette */
+.contrib-lvl-0, .contrib-legend-0 {
+  background-color: #161b22;
+  fill: #161b22;
+}
+.contrib-lvl-1, .contrib-legend-1 {
+  background-color: #0e4429;
+  fill: #0e4429;
+}
+.contrib-lvl-2, .contrib-legend-2 {
+  background-color: #006d32;
+  fill: #006d32;
+}
+.contrib-lvl-3, .contrib-legend-3 {
+  background-color: #26a641;
+  fill: #26a641;
+}
+.contrib-lvl-4, .contrib-legend-4 {
+  background-color: #39d353;
+  fill: #39d353;
+}
+
+/* Light Theme Fallback */
+html:not(.dark) .contrib-lvl-0, html:not(.dark) .contrib-legend-0 {
+  background-color: #ebedf0;
+  fill: #ebedf0;
+}
+html:not(.dark) .contrib-lvl-1, html:not(.dark) .contrib-legend-1 {
+  background-color: #9be9a8;
+  fill: #9be9a8;
+}
+html:not(.dark) .contrib-lvl-2, html:not(.dark) .contrib-legend-2 {
+  background-color: #40c463;
+  fill: #40c463;
+}
+html:not(.dark) .contrib-lvl-3, html:not(.dark) .contrib-legend-3 {
+  background-color: #30a14e;
+  fill: #30a14e;
+}
+html:not(.dark) .contrib-lvl-4, html:not(.dark) .contrib-legend-4 {
+  background-color: #216e39;
+  fill: #216e39;
+}
+
+/* Legend Swatches */
+.github-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.github-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #8b949e;
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.github-card-footer a {
+  color: #8b949e;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.github-card-footer a:hover {
+  color: #58a6ff;
+  text-decoration: underline;
+}
+
+.github-legend-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #8b949e;
+}
+
+/* Year Sidebar Column */
+.github-year-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  padding-top: 26px;
+}
+
+@media (max-width: 640px) {
+  .github-year-col {
+    flex-direction: row;
+    padding-top: 0;
+  }
+}
+
+.github-year-btn-active {
+  background-color: #1f6feb;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  min-width: 62px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.github-year-btn-inactive {
+  background-color: transparent;
+  color: #8b949e;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  min-width: 62px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.github-year-btn-inactive:hover {
+  color: #e6edf3;
+  background-color: rgba(110, 118, 129, 0.15);
+}

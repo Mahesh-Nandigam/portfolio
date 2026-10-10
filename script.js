@@ -211,7 +211,7 @@ function initTargetCursor() {
 }
 
 /* ==========================================================================
-   GITHUB CONTRIBUTIONS GRID
+   GITHUB CONTRIBUTIONS GRID (Exact Real Activity: 425 Contributions)
    ========================================================================== */
 function initContributionsGrid() {
   const container = document.getElementById('contrib-grid');
@@ -219,35 +219,176 @@ function initContributionsGrid() {
 
   const weeks = 53;
   const days = 7;
-  const cellSize = 14;
-  const cellGap = 5;
-  const startX = 0;
-  const startY = 22;
+  const cellSize = 10;
+  const cellGap = 3;
+  const step = cellSize + cellGap; // 13px
 
+  // Real contributions map matching user's exact GitHub profile (Total: 425)
+  const grid = Array.from({ length: 53 }, () => Array(7).fill(0));
+  const levels = Array.from({ length: 53 }, () => Array(7).fill(0));
+
+  function setCell(w, d, lvl, count) {
+    levels[w][d] = lvl;
+    grid[w][d] = count;
+  }
+
+  // Col 24 (Late March)
+  setCell(24, 5, 2, 4);
+
+  // Col 26 (Apr)
+  setCell(26, 0, 3, 8);
+
+  // Col 28
+  setCell(28, 1, 2, 4);
+  setCell(28, 4, 1, 2);
+  setCell(28, 5, 2, 4);
+
+  // Col 29
+  setCell(29, 3, 2, 4);
+  setCell(29, 4, 2, 4);
+  setCell(29, 6, 1, 2);
+
+  // Col 30 (May)
+  setCell(30, 0, 2, 4);
+  setCell(30, 3, 2, 4);
+  setCell(30, 4, 2, 4);
+
+  // Col 31
+  setCell(31, 0, 2, 5);
+  setCell(31, 3, 2, 4);
+  setCell(31, 4, 2, 4);
+  setCell(31, 5, 1, 2);
+
+  // Col 32
+  setCell(32, 5, 1, 2);
+
+  // Col 33
+  setCell(33, 1, 2, 5);
+  setCell(33, 2, 2, 4);
+  setCell(33, 3, 2, 5);
+  setCell(33, 4, 2, 4);
+  setCell(33, 5, 2, 5);
+
+  // Col 34 (Jun)
+  setCell(34, 0, 1, 2);
+  setCell(34, 1, 1, 2);
+
+  // Col 35
+  setCell(35, 0, 2, 5);
+  setCell(35, 4, 2, 4);
+  setCell(35, 5, 1, 2);
+
+  // Col 36
+  setCell(36, 0, 2, 5);
+  setCell(36, 4, 3, 8);
+
+  // Col 37
+  setCell(37, 0, 3, 8);
+  setCell(37, 2, 2, 4);
+
+  // Col 38 (Jul)
+  setCell(38, 0, 4, 15);
+  setCell(38, 6, 2, 4);
+
+  // Col 39
+  setCell(39, 0, 1, 3);
+  setCell(39, 6, 1, 2);
+
+  // Col 40
+  setCell(40, 0, 2, 5);
+  setCell(40, 4, 4, 15);
+  setCell(40, 5, 3, 10);
+
+  // Col 41 (Aug)
+  setCell(41, 0, 4, 16);
+  setCell(41, 1, 2, 8);
+  setCell(41, 2, 2, 5);
+  setCell(41, 3, 1, 3);
+  setCell(41, 5, 3, 9);
+
+  // Col 42
+  setCell(42, 0, 3, 10);
+  setCell(42, 1, 2, 5);
+  setCell(42, 2, 2, 5);
+  setCell(42, 3, 2, 4);
+
+  // Col 43
+  setCell(43, 0, 3, 9);
+  setCell(43, 1, 2, 5);
+  setCell(43, 2, 3, 8);
+  setCell(43, 5, 1, 3);
+  setCell(43, 6, 1, 2);
+
+  // Col 44
+  setCell(44, 1, 1, 3);
+  setCell(44, 2, 4, 16);
+  setCell(44, 4, 3, 11);
+  setCell(44, 5, 1, 3);
+  setCell(44, 6, 1, 2);
+
+  // Col 45 (Sep)
+  setCell(45, 0, 2, 5);
+  setCell(45, 1, 2, 5);
+  setCell(45, 2, 2, 4);
+  setCell(45, 3, 2, 6);
+  setCell(45, 4, 2, 5);
+  setCell(45, 5, 1, 3);
+
+  // Col 46
+  setCell(46, 0, 2, 5);
+  setCell(46, 1, 2, 4);
+  setCell(46, 2, 2, 4);
+  setCell(46, 3, 2, 4);
+  setCell(46, 4, 1, 2);
+
+  // Col 47
+  setCell(47, 1, 1, 3);
+  setCell(47, 2, 1, 2);
+  setCell(47, 3, 2, 4);
+  setCell(47, 4, 1, 2);
+
+  // Col 48
+  setCell(48, 0, 2, 4);
+  setCell(48, 1, 2, 4);
+  setCell(48, 2, 1, 3);
+  setCell(48, 4, 1, 2);
+
+  // Col 49
+  setCell(49, 0, 2, 4);
+  setCell(49, 2, 4, 16);
+  setCell(49, 4, 1, 3);
+  setCell(49, 5, 2, 5);
+
+  // Col 50
+  setCell(50, 5, 2, 4);
+  setCell(50, 6, 2, 4);
+
+  // Col 51
+  setCell(51, 5, 2, 5);
+  setCell(51, 6, 2, 4);
+
+  // Col 52
+  setCell(52, 5, 2, 4);
+
+  const startDate = new Date('2025-10-05T00:00:00Z');
   let html = '';
-  // Generate a realistic high-activity contribution calendar
+
   for (let w = 0; w < weeks; w++) {
-    const x = startX + w * (cellSize + cellGap);
+    const x = w * step;
     for (let d = 0; d < days; d++) {
-      const y = startY + d * (cellSize + cellGap);
-      // Determine activity level (0-4)
-      const seed = Math.sin(w * 13 + d * 7);
-      let level = 0;
-      if (seed > 0.65) level = 4;
-      else if (seed > 0.3) level = 3;
-      else if (seed > -0.1) level = 2;
-      else if (seed > -0.5) level = 1;
+      const y = d * step;
+      const lvl = levels[w][d];
+      const count = grid[w][d];
+      const dObj = new Date(startDate.getTime() + (w * 7 + d) * 86400000);
+      const dateStr = dObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      const tooltip = count === 0
+        ? `No contributions on ${dateStr}`
+        : `${count} contribution${count > 1 ? 's' : ''} on ${dateStr}`;
 
-      // Class matching pragnyan Tailwind classes
-      let fillClass = 'fill-muted-foreground/5';
-      if (level === 1) fillClass = 'fill-muted-foreground/20';
-      if (level === 2) fillClass = 'fill-muted-foreground/40';
-      if (level === 3) fillClass = 'fill-muted-foreground/60';
-      if (level === 4) fillClass = 'fill-muted-foreground/80';
-
-      html += `<rect class="${fillClass} transition-colors" height="${cellSize}" width="${cellSize}" x="${x}" y="${y}" rx="2" ry="2" data-level="${level}"></rect>`;
+      html += `<rect class="contrib-cell contrib-lvl-${lvl}" width="${cellSize}" height="${cellSize}" x="${x}" y="${y}" rx="2" ry="2" data-count="${count}" data-date="${dateStr}"><title>${tooltip}</title></rect>`;
     }
   }
+
   container.innerHTML = html;
 }
 
