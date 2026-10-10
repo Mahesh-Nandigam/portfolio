@@ -466,61 +466,8 @@ html.light svg.hero-landing-grid {
 
 
 /* ==========================================================================
-   AUTHENTIC GITHUB CONTRIBUTION GRAPH STYLES (Exact Vector Component)
+   AUTHENTIC GITHUB CONTRIBUTION GRAPH STYLES (Clean Vector Component)
    ========================================================================== */
-.github-wrapper {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  width: 100%;
-}
-
-@media (max-width: 640px) {
-  .github-wrapper {
-    flex-direction: column;
-  }
-}
-
-.github-main-col {
-  flex: 1;
-  min-width: 0;
-  width: 100%;
-}
-
-.github-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-.github-contrib-title {
-  color: #e6edf3;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-html:not(.dark) .github-contrib-title {
-  color: #1f2328;
-}
-
-.github-settings-dropdown {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  color: #8b949e;
-  font-size: 12px;
-  cursor: pointer;
-  user-select: none;
-  transition: color 0.15s ease;
-}
-
-.github-settings-dropdown:hover {
-  color: #58a6ff;
-}
-
 .github-card-container {
   background-color: #0d1117;
   border: 1px solid #30363d;
@@ -636,53 +583,4 @@ html:not(.dark) .contrib-lvl-4, html:not(.dark) .contrib-legend-4 {
   gap: 4px;
   font-size: 11px;
   color: #8b949e;
-}
-
-/* Year Sidebar Column */
-.github-year-col {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex-shrink: 0;
-  padding-top: 26px;
-}
-
-@media (max-width: 640px) {
-  .github-year-col {
-    flex-direction: row;
-    padding-top: 0;
-  }
-}
-
-.github-year-btn-active {
-  background-color: #1f6feb;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 6px 14px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  min-width: 62px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.github-year-btn-inactive {
-  background-color: transparent;
-  color: #8b949e;
-  font-size: 13px;
-  font-weight: 400;
-  padding: 6px 14px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  min-width: 62px;
-  transition: color 0.15s ease, background-color 0.15s ease;
-}
-
-.github-year-btn-inactive:hover {
-  color: #e6edf3;
-  background-color: rgba(110, 118, 129, 0.15);
 }
