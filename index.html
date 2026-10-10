@@ -41,18 +41,14 @@
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
 
     <!-- Header Navigation: Uncongested layout with standalone top-left logo and well-spaced nav/theme controls -->
-    <header class="pb-5 sm:pb-6 mb-10 sm:mb-14 border-b border-border/30">
-      <!-- Top Row: Logo alone at the top left with comfortable breathing space (not on the same line) -->
-      <div class="flex items-center justify-between pt-1 sm:pt-2 mb-3.5 sm:mb-5">
-        <div class="cursor-target">
-          <a class="inline-flex items-center font-bold text-2xl sm:text-3xl tracking-tighter hover:opacity-80 transition-opacity text-primary" href="/" aria-label="Home">mn.</a>
-        </div>
+    <header class="flex justify-between items-center pb-6 sm:pb-10 mb-8 sm:mb-12">
+      <div class="cursor-target">
+        <a class="font-bold text-xl sm:text-2xl tracking-tighter hover:opacity-80 transition-opacity text-primary" href="/" aria-label="Home">mn.</a>
       </div>
 
-      <!-- Second Row: Navigation links & theme mode toggle with generous gaps between each other -->
-      <div class="flex items-center justify-between gap-3 sm:gap-6 flex-wrap">
+      <div class="flex items-center gap-3 sm:gap-6">
         <nav class="flex items-center">
-          <ul class="flex items-center gap-2.5 sm:gap-6 flex-wrap">
+          <ul class="flex items-center gap-2 sm:gap-5">
             <li><a href="#experience" class="cursor-target block rounded-md text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary whitespace-nowrap px-1.5 py-1 hover:bg-muted/40 transition-colors">experience</a></li>
             <li><a href="#projects" class="cursor-target block rounded-md text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary whitespace-nowrap px-1.5 py-1 hover:bg-muted/40 transition-colors">projects</a></li>
             <li><a href="#content" class="cursor-target block rounded-md text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary whitespace-nowrap px-1.5 py-1 hover:bg-muted/40 transition-colors">content</a></li>
@@ -60,14 +56,10 @@
           </ul>
         </nav>
 
-        <!-- Theme Mode Toggle with comfortable gap separating it from navigation -->
-        <div class="ml-auto pl-2 sm:pl-4">
-          <button id="theme-toggle" class="cursor-target inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs font-mono text-muted-foreground hover:text-foreground border border-border/50 hover:border-primary/50 bg-secondary/50 hover:bg-secondary transition-all active:scale-95" aria-label="Toggle theme" title="Toggle theme">
-            <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-            <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun hidden"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-            <span class="text-[11px] font-medium hidden sm:inline">Theme</span>
-          </button>
-        </div>
+        <button id="theme-toggle" class="cursor-target inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-mono text-muted-foreground hover:text-foreground border border-border/50 hover:border-primary/50 bg-secondary/50 hover:bg-secondary transition-all active:scale-95" aria-label="Toggle theme" title="Toggle theme">
+          <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun hidden"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+        </button>
       </div>
     </header>
 
