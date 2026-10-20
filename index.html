@@ -1,631 +1,506 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mahesh Nandigam | Full Stack Developer & Content Creator</title>
-  <meta name="description" content="Mahesh Nandigam — Full Stack Developer & Content Creator from Hyderabad building clean web applications and tech content.">
-  <meta name="author" content="Mahesh Nandigam">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahesh Nandigam — Engineer &amp; Creator</title>
+  <meta name="description" content="Mahesh Nandigam — 19-year-old Engineer &amp; Creator from Hyderabad, India. Building cool stuff on the internet." />
+  <link rel="canonical" href="https://themahesh.tech/" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Mahesh Nandigam | Full Stack Developer & Content Creator">
-  <meta property="og:description" content="Building modern full-stack web applications and tech content • HTML, CSS, JavaScript, Bootstrap.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/218550291?v=4">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mahesh Nandigam | Full Stack Developer & Content Creator">
-  <meta name="twitter:description" content="Building modern full-stack web applications and tech content.">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mahesh Nandigam — Engineer &amp; Creator" />
+  <meta property="og:description" content="I love building cool stuff on the internet." />
+  <meta property="og:url" content="https://themahesh.tech/" />
+  <meta property="og:image" content="https://themahesh.tech/favicon.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://themahesh.tech/" />
 
-  <!-- Google Fonts: Outfit & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Bold High-Contrast MN Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=8" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=8" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=8" />
+  <link rel="apple-touch-icon" href="/favicon.png?v=8" />
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="pragnyan.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="w-full min-h-screen m-0 p-0 overflow-x-hidden font-sans relative">
+<body>
+  <!-- Heatmap Tooltip -->
+  <div id="gh-tooltip" class="gh-tooltip" role="tooltip"></div>
 
-  <!-- Exact GSAP Target Cursor Component (Desktop only) -->
-  <div id="target-cursor" class="top-0 left-0 z-[9999] fixed w-0 h-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none mix-blend-difference transform" style="will-change: transform;">
-    <div class="top-1/2 left-1/2 absolute bg-white rounded-full w-1 h-1 -translate-x-1/2 -translate-y-1/2 transform"></div>
-    <div class="top-1/2 left-1/2 absolute border-[3px] border-white border-r-0 border-b-0 w-2.5 h-2.5 -translate-x-[150%] -translate-y-[150%] target-cursor-corner transform"></div>
-    <div class="top-1/2 left-1/2 absolute border-[3px] border-white border-b-0 border-l-0 w-2.5 h-2.5 -translate-y-[150%] translate-x-1/2 target-cursor-corner transform"></div>
-    <div class="top-1/2 left-1/2 absolute border-[3px] border-white border-t-0 border-l-0 w-2.5 h-2.5 translate-x-1/2 translate-y-1/2 target-cursor-corner transform"></div>
-    <div class="top-1/2 left-1/2 absolute border-[3px] border-t-0 border-r-0 border-white w-2.5 h-2.5 -translate-x-[150%] translate-y-1/2 target-cursor-corner transform"></div>
-  </div>
+  <!-- Neat Single Vertical Track -->
+  <div class="page-wrapper">
+    
+    <!-- Top Header Navigation -->
+    <header class="top-header">
+      <a href="#hero" class="brand-logo" aria-label="Mahesh Nandigam">mn.</a>
 
-  <!-- Main Container: centered, with generous mobile breathing space -->
-  <div class="portfolio-main-container mx-auto px-5 sm:px-8 pt-8 sm:pt-14 md:pt-16 pb-24 w-full lg:w-2/3 xl:w-1/2 text-foreground">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded">Skip to content</a>
-
-    <!-- Header Navigation: Uncongested layout with standalone top-left logo and well-spaced nav/theme controls -->
-    <header class="flex justify-between items-center pb-6 sm:pb-10 mb-8 sm:mb-12">
-      <div class="cursor-target">
-        <a class="font-bold text-xl sm:text-2xl tracking-tighter hover:opacity-80 transition-opacity text-primary" href="/" aria-label="Home">mn.</a>
-      </div>
-
-      <div class="flex items-center gap-3 sm:gap-6">
-        <nav class="flex items-center">
-          <ul class="flex items-center gap-2 sm:gap-5">
-            <li><a href="#experience" class="cursor-target block rounded-md text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary whitespace-nowrap px-1.5 py-1 hover:bg-muted/40 transition-colors">experience</a></li>
-            <li><a href="#projects" class="cursor-target block rounded-md text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary whitespace-nowrap px-1.5 py-1 hover:bg-muted/40 transition-colors">projects</a></li>
-            <li><a href="#content" class="cursor-target block rounded-md text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary whitespace-nowrap px-1.5 py-1 hover:bg-muted/40 transition-colors">content</a></li>
-            <li><a href="#skills" class="cursor-target block rounded-md text-xs sm:text-sm font-medium text-muted-foreground hover:text-primary whitespace-nowrap px-1.5 py-1 hover:bg-muted/40 transition-colors">skills</a></li>
-          </ul>
-        </nav>
-
-        <button id="theme-toggle" class="cursor-target inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-mono text-muted-foreground hover:text-foreground border border-border/50 hover:border-primary/50 bg-secondary/50 hover:bg-secondary transition-all active:scale-95" aria-label="Toggle theme" title="Toggle theme">
-          <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
-          <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun hidden"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
-        </button>
+      <div class="header-right">
+        <div class="theme-switch-group" role="group" aria-label="Theme mode switcher">
+          <button type="button" id="btn-theme-dark" class="theme-toggle-btn active" aria-label="Dark mode" title="Switch to Dark mode">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span>Dark</span>
+          </button>
+          <button type="button" id="btn-theme-light" class="theme-toggle-btn" aria-label="Light mode" title="Switch to Light mode">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span>Light</span>
+          </button>
+        </div>
       </div>
     </header>
 
-    <!-- Subtle Hero Landing Background Grid (Soft, non-glowing, disappears on scroll to total solid black) -->
-    <svg class="hero-landing-grid absolute inset-0 z-[-1] [mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-          <path d="M 30 0 L 0 0 0 30" fill="none" stroke="currentColor" stroke-width="0.5"></path>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#grid)" x="-1" y="-1"></rect>
-    </svg>
-
-    <main id="main-content" class="px-0 sm:px-4 min-h-screen">
-
-      <!-- Hero Section: Spacious, modern, uncluttered breathing room -->
-      <section class="pt-4 sm:pt-8 pb-12 sm:pb-16">
-        <div class="space-y-6 sm:space-y-7">
-          
-          <!-- Greeting, Name & Status -->
-          <div class="space-y-3 sm:space-y-3.5">
-            <div class="flex items-center gap-2">
-              <span class="inline-flex size-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <p class="font-mono text-xs sm:text-sm text-muted-foreground tracking-wide">hi there 👋, I&#x27;m</p>
-            </div>
-            
-            <h1 class="font-bold text-primary text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight">
-              Mahesh Nandigam
-            </h1>
-            
-            <!-- Clean, light metadata line (elegant, no heavy chunky badges) -->
-            <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm font-mono text-muted-foreground pt-0.5">
-              <span class="text-primary/90 font-medium">18 · he/him</span>
-              <span class="text-border/60 select-none">•</span>
-              <span>Hyderabad, India</span>
-              <span class="text-border/60 select-none">•</span>
-              <span class="text-emerald-500 font-medium">Available for work</span>
-            </div>
-          </div>
-
-          <!-- Professional Bio with relaxed typography and breathing space -->
-          <p class="font-normal text-muted-foreground sm:text-primary/85 text-base sm:text-lg leading-relaxed max-w-xl">
-            Full Stack Developer &amp; Content Creator — Building modern, responsive web applications and sharing developer insights.
-          </p>
-
-          <!-- Primary Actions (Row 1) -->
-          <div class="flex items-center gap-3 pt-1">
-            <div class="cursor-target">
-              <a href="#contact" class="inline-flex justify-center items-center bg-primary hover:bg-primary/90 shadow px-5 py-2.5 rounded-lg font-medium text-primary-foreground text-sm whitespace-nowrap transition-all duration-200 active:scale-95" aria-label="Contact">
-                Contact Me
-              </a>
-            </div>
-            <div class="cursor-target">
-              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center bg-background hover:bg-accent border border-input shadow-sm px-5 py-2.5 rounded-lg font-medium text-primary text-sm whitespace-nowrap transition-all duration-200 active:scale-95 gap-1.5" aria-label="Resume">
-                Resume
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Dedicated Social Bar (Row 2: clean and uncrowded) -->
-          <div class="pt-5 border-t border-border/40">
-            <div class="flex items-center gap-3 flex-wrap">
-              <span class="text-xs font-mono text-muted-foreground mr-1 hidden sm:inline">connect:</span>
-
-              <!-- Direct Email Link -->
-              <div class="cursor-target">
-                <a href="mailto:nandigammahesh595@gmail.com" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground border border-input/80 h-10 w-10 sm:h-9 sm:w-9 active:scale-95" aria-label="Email" title="Send Email">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-                </a>
-              </div>
-
-              <!-- GitHub Profile -->
-              <div class="cursor-target">
-                <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground border border-input/80 h-10 w-10 sm:h-9 sm:w-9 active:scale-95" aria-label="Github Profile" title="GitHub">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                </a>
-              </div>
-
-              <!-- LinkedIn Profile -->
-              <div class="cursor-target">
-                <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground border border-input/80 h-10 w-10 sm:h-9 sm:w-9 active:scale-95" aria-label="Linkedin Profile" title="LinkedIn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-              </div>
-
-              <!-- Twitter / X Profile -->
-              <div class="cursor-target">
-                <a href="https://x.com/maheshn_dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground border border-input/80 h-10 w-10 sm:h-9 sm:w-9 active:scale-95" aria-label="X Profile" title="X (Twitter)">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-              </div>
-
-              <!-- Instagram Profile -->
-              <div class="cursor-target">
-                <a href="https://www.instagram.com/maheshnandigam_" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all hover:bg-accent hover:text-accent-foreground border border-input/80 h-10 w-10 sm:h-9 sm:w-9 active:scale-95" aria-label="Instagram Profile" title="Instagram (@maheshnandigam_)">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- About Me Section -->
-      <div id="aboutme" class="py-14 sm:py-20 border-t border-border/40">
-        <h2 class="font-medium text-primary text-base sm:text-lg tracking-tight mb-6">about me.</h2>
-        <ul class="space-y-4 sm:space-y-5 text-muted-foreground text-sm sm:text-base">
-          <li class="flex items-start gap-3">
-            <span class="text-primary/50 mt-1 select-none shrink-0">•</span>
-            <span class="leading-relaxed">I&#x27;m a <strong class="font-bold text-primary underline-offset-4">Full Stack Web Developer &amp; Content Creator</strong> based in Hyderabad, India building full-stack web applications and sharing developer insights.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-primary/50 mt-1 select-none shrink-0">•</span>
-            <span class="leading-relaxed">I focus on writing clean, accessible <strong class="font-bold text-primary underline-offset-4">HTML5</strong>, modern <strong class="font-bold text-primary underline-offset-4">CSS3</strong>, vanilla <strong class="font-bold text-primary underline-offset-4">JavaScript</strong>, responsive layouts with <strong class="font-bold text-primary underline-offset-4">Bootstrap 5</strong>, and backend services.</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-primary/50 mt-1 select-none shrink-0">•</span>
-            <span class="leading-relaxed">Pursuing B.Tech in Computer Science at <strong class="font-bold text-primary underline-offset-4">CMR College of Engineering &amp; Technology</strong> (7.95 GPA).</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-primary/50 mt-1 select-none shrink-0">•</span>
-            <span class="leading-relaxed">My core focus: building functional web tools, practical UI dashboards, and breaking down coding concepts for the developer community on <strong class="font-bold text-primary underline-offset-4">X (@maheshn_dev)</strong> and GitHub.</span>
-          </li>
-        </ul>
+    <!-- 1. HERO SECTION -->
+    <section class="hero-block" id="hero">
+      <div class="hero-name-meta">
+        <h1 class="hero-name">Mahesh Nandigam</h1>
+        <p class="hero-meta">19, Engineer &amp; Creator</p>
       </div>
 
-      <!-- Experience Section -->
-      <div id="experience" class="py-14 sm:py-20 border-t border-border/40">
-        <h2 class="font-medium text-primary text-base sm:text-lg tracking-tight mb-8">experience.</h2>
-        <ul class="flex flex-col gap-12 sm:gap-14 font-normal text-primary/90 text-base">
-          
-          <li class="cursor-target">
-            <div class="pl-4 sm:pl-5 border-muted-foreground/30 hover:border-primary border-l-2 size-full transition-all duration-300">
-              <div class="flex sm:flex-row flex-col justify-between items-start gap-1">
-                <div>
-                  <p class="text-primary/90 text-lg font-medium leading-snug">Full Stack Developer &amp; Content Creator <span class="inline-block bg-secondary ml-1 sm:ml-2 px-2 py-0.5 rounded text-xs align-middle">Independent</span></p>
-                  <p class="flex items-center text-sm text-muted-foreground mt-1">at, <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 ml-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">Personal Projects &amp; Open Source <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p>
-                </div>
-                <p class="text-muted-foreground text-xs sm:text-sm font-mono mt-1 sm:mt-0">2024 - Present</p>
-              </div>
-              <ul class="space-y-2 mt-3 pl-3 sm:pl-4 text-muted-foreground text-sm text-left list-disc">
-                <li class="leading-relaxed"><span>Built and shipped end-to-end web applications with semantic <strong class="font-bold text-primary underline-offset-4">HTML5, CSS3, JavaScript</strong>, and <strong class="font-bold text-primary underline-offset-4">Bootstrap</strong>, focusing on fast load times, clean code, and intuitive UX.</span></li>
-                <li class="leading-relaxed"><span>Creates developer tutorials, UI breakdowns, and web development content across social platforms to help aspiring engineers learn web fundamentals.</span></li>
-              </ul>
-              <ul class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5 pl-0 sm:pl-3">
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">HTML5</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">CSS3</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">JavaScript</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Bootstrap 5</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Content Creation</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Git</li>
-              </ul>
-            </div>
-          </li>
+      <p class="hero-pitch">
+        I love building cool stuff on the internet.
+      </p>
 
-          <li class="cursor-target">
-            <div class="pl-4 sm:pl-5 border-muted-foreground/30 hover:border-primary border-l-2 size-full transition-all duration-300">
-              <div class="flex sm:flex-row flex-col justify-between items-start gap-1">
-                <div>
-                  <p class="text-primary/90 text-lg font-medium leading-snug">B.Tech CSE Student &amp; Developer <span class="inline-block bg-secondary ml-1 sm:ml-2 px-2 py-0.5 rounded text-xs align-middle">Hyderabad</span></p>
-                  <p class="flex items-center text-sm text-muted-foreground mt-1">at, <span class="ml-1 text-primary">CMR College of Engineering &amp; Technology</span></p>
-                </div>
-                <p class="text-muted-foreground text-xs sm:text-sm font-mono mt-1 sm:mt-0">2023 - Present</p>
-              </div>
-              <ul class="space-y-2 mt-3 pl-3 sm:pl-4 text-muted-foreground text-sm text-left list-disc">
-                <li class="leading-relaxed"><span>Studying Computer Science and Engineering with a focus on data structures, algorithms, web technologies, and software engineering (7.95 GPA).</span></li>
-                <li class="leading-relaxed"><span>Active participant in developer hackathons, coding contests, and collaborative projects.</span></li>
-              </ul>
-              <ul class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5 pl-0 sm:pl-3">
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Computer Science</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Algorithms</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">C++</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Python</li>
-              </ul>
-            </div>
-          </li>
+      <ul class="hero-bullets">
+        <li class="hero-bullet">I love AI, open source, and CP.</li>
+        <li class="hero-bullet">Building something that 99% of the world spend their time.</li>
+        <li class="hero-bullet">Currently juggling with fundamentals and experimenting with AI tools.</li>
+      </ul>
 
-        </ul>
+      <!-- Action Triggers -->
+      <div class="hero-actions">
+        <!-- Book a 1:1 Call -->
+        <a href="https://topmate.io/mahesh_nandigam" target="_blank" rel="noopener noreferrer" class="btn-primary" id="btn-call">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>Book a 1:1 Call</span>
+        </a>
+
+        <!-- Send an Email -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nandigammahesh595@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-secondary" id="btn-email">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          <span>Send an Email</span>
+        </a>
+
+        <!-- Resume PDF -->
+        <a href="resume.pdf?v=8" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
+          <span>Resume PDF</span>
+        </a>
       </div>
 
-      <!-- Projects Section -->
-      <div id="projects" class="py-14 sm:py-20 border-t border-border/40">
-        <h2 class="font-medium text-primary text-base sm:text-lg tracking-tight mb-8">projects.</h2>
-        <ul class="flex flex-col gap-12 sm:gap-14 font-normal text-primary/90 text-base">
-
-          <!-- Project 1: Ecosphere -->
-          <li class="cursor-target">
-            <div class="pl-4 sm:pl-5 border-muted-foreground/30 hover:border-primary border-l-2 size-full transition-all duration-300">
-              <div class="flex sm:flex-row flex-col justify-between items-start gap-1">
-                <div>
-                  <p class="text-primary/90 text-lg font-medium leading-snug">Ecosphere — Carbon Footprint Tracker</p>
-                  <div class="flex items-center gap-3 text-sm mt-1">
-                    <div class="flex items-center">
-                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">
-                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ul class="space-y-2 mt-3 pl-3 sm:pl-4 text-muted-foreground text-sm text-left list-disc">
-                <li class="leading-relaxed"><span>Interactive web application designed to help users calculate, visualize, and reduce their everyday carbon impact.</span></li>
-                <li class="leading-relaxed"><span>Engineered with pure vanilla JavaScript, HTML, and CSS with responsive SVG graphics that update based on user input.</span></li>
-              </ul>
-              <ul class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5 pl-0 sm:pl-3">
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">HTML5</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">CSS3</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">JavaScript</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Responsive UI</li>
-              </ul>
-            </div>
-          </li>
-
-          <!-- Project 2: HirePanel -->
-          <li class="cursor-target">
-            <div class="pl-4 sm:pl-5 border-muted-foreground/30 hover:border-primary border-l-2 size-full transition-all duration-300">
-              <div class="flex sm:flex-row flex-col justify-between items-start gap-1">
-                <div>
-                  <p class="text-primary/90 text-lg font-medium leading-snug">HirePanel — Candidate Review Dashboard</p>
-                  <div class="flex items-center gap-3 text-sm mt-1">
-                    <div class="flex items-center">
-                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">
-                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ul class="space-y-2 mt-3 pl-3 sm:pl-4 text-muted-foreground text-sm text-left list-disc">
-                <li class="leading-relaxed"><span>Streamlined recruitment dashboard for filtering applicants, scheduling rounds, and managing candidate profiles.</span></li>
-                <li class="leading-relaxed"><span>Built using Bootstrap 5 components, flexbox tables, and JavaScript search/filtering algorithms.</span></li>
-              </ul>
-              <ul class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5 pl-0 sm:pl-3">
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Bootstrap 5</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">JavaScript</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">HTML5</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Dashboard</li>
-              </ul>
-            </div>
-          </li>
-
-          <!-- Project 3: AlertGrid -->
-          <li class="cursor-target">
-            <div class="pl-4 sm:pl-5 border-muted-foreground/30 hover:border-primary border-l-2 size-full transition-all duration-300">
-              <div class="flex sm:flex-row flex-col justify-between items-start gap-1">
-                <div>
-                  <p class="text-primary/90 text-lg font-medium leading-snug">AlertGrid — Server Status Dashboard</p>
-                  <div class="flex items-center gap-3 text-sm mt-1">
-                    <div class="flex items-center">
-                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam">
-                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ul class="space-y-2 mt-3 pl-3 sm:pl-4 text-muted-foreground text-sm text-left list-disc">
-                <li class="leading-relaxed"><span>Real-time server health and service uptime monitor with status badges, ping metrics, and alert panels.</span></li>
-                <li class="leading-relaxed"><span>Designed with custom CSS Grid and responsive flex containers optimized for high-density information displays.</span></li>
-              </ul>
-              <ul class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5 pl-0 sm:pl-3">
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">CSS Grid</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">JavaScript</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Flexbox</li>
-              </ul>
-            </div>
-          </li>
-
-          <!-- Project 4: Air Mouse -->
-          <li class="cursor-target">
-            <div class="pl-4 sm:pl-5 border-muted-foreground/30 hover:border-primary border-l-2 size-full transition-all duration-300">
-              <div class="flex sm:flex-row flex-col justify-between items-start gap-1">
-                <div>
-                  <p class="text-primary/90 text-lg font-medium leading-snug">Air Mouse — Gesture Controller</p>
-                  <div class="flex items-center gap-3 text-sm mt-1">
-                    <div class="flex items-center">
-                      <a target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline" href="https://github.com/Mahesh-Nandigam/air_mouse">
-                        View Project <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ul class="space-y-2 mt-3 pl-3 sm:pl-4 text-muted-foreground text-sm text-left list-disc">
-                <li class="leading-relaxed"><span>Computer vision program using OpenCV and Python that tracks hand gestures via webcam to control mouse movement and left/right clicks in real time.</span></li>
-              </ul>
-              <ul class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5 pl-0 sm:pl-3">
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Python</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">OpenCV</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Computer Vision</li>
-              </ul>
-            </div>
-          </li>
-
-        </ul>
-
-        <div class="flex justify-center mt-10">
-          <a class="inline-flex justify-center items-center bg-background hover:bg-accent disabled:opacity-50 shadow-sm px-4 py-2 border border-input rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-9 font-medium text-muted-foreground text-sm whitespace-nowrap transition-colors hover:text-accent-foreground cursor-target" href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer">View all projects on GitHub &rarr;</a>
-        </div>
-      </div>
-
-      <!-- GitHub Contributions Section (Real Vector GitHub Graph - 425 Contributions) -->
-      <div id="github-contribution" class="py-10 sm:py-14 w-full">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="font-medium text-primary/90 text-base tracking-tight">github contributions.</h2>
-          <span class="text-xs text-muted-foreground font-mono">425 contributions in the last year</span>
-        </div>
-
-        <!-- Clean High-Definition GitHub Card (No unresponding buttons) -->
-        <div class="github-card-container">
-          <!-- Scrollable SVG Graph for mobile responsiveness -->
-          <div class="mobile-scroll-container w-full">
-            <div class="min-w-[640px] sm:min-w-0 w-full">
-              <svg id="github-graph-svg" class="block w-full h-auto overflow-visible select-none" viewBox="0 0 720 128">
-                <!-- Month Labels -->
-                <g class="github-graph-labels">
-                  <text x="30" y="14">Oct</text>
-                  <text x="82" y="14">Nov</text>
-                  <text x="147" y="14">Dec</text>
-                  <text x="199" y="14">Jan</text>
-                  <text x="251" y="14">Feb</text>
-                  <text x="316" y="14">Mar</text>
-                  <text x="368" y="14">Apr</text>
-                  <text x="420" y="14">May</text>
-                  <text x="485" y="14">Jun</text>
-                  <text x="537" y="14">Jul</text>
-                  <text x="602" y="14">Aug</text>
-                  <text x="654" y="14">Sep</text>
-                </g>
-                <!-- Day Labels -->
-                <g class="github-graph-labels" font-size="9">
-                  <text x="14" y="44" text-anchor="middle">Mon</text>
-                  <text x="14" y="70" text-anchor="middle">Wed</text>
-                  <text x="14" y="96" text-anchor="middle">Fri</text>
-                </g>
-                <!-- Contribution Rect Grid -->
-                <g id="contrib-grid" transform="translate(30, 24)"></g>
+      <!-- 3 Distinct Profile Categories: Dev, CP, Creator -->
+      <div class="profile-groups">
+        <!-- 1. Dev Profiles -->
+        <div class="profile-group">
+          <span class="profile-group-label">Dev Profiles</span>
+          <div class="profile-pills-row">
+            <!-- GitHub -->
+            <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="social-pill" title="GitHub: Mahesh-Nandigam">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
               </svg>
-            </div>
-          </div>
-
-          <!-- Card Footer: Direct GitHub Link & Exact Green Legend -->
-          <div class="github-card-footer">
-            <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center gap-1.5 cursor-target text-xs">
-              <span>@Mahesh-Nandigam on GitHub</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right inline"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+              <span>GitHub</span>
             </a>
-            <div class="github-legend-wrap">
-              <span>Less</span>
-              <span class="github-legend-swatch contrib-legend-0" style="border: 1px solid rgba(255,255,255,0.06);"></span>
-              <span class="github-legend-swatch contrib-legend-1"></span>
-              <span class="github-legend-swatch contrib-legend-2"></span>
-              <span class="github-legend-swatch contrib-legend-3"></span>
-              <span class="github-legend-swatch contrib-legend-4"></span>
-              <span>More</span>
-            </div>
+
+            <!-- X (Twitter) -->
+            <a href="https://x.com/maheshn_dev" target="_blank" rel="noopener noreferrer" class="social-pill" title="X: @maheshn_dev">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span>X</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer" class="social-pill" title="LinkedIn: Mahesh Nandigam">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <!-- Discord (Enhanced Official Clyde Logo) -->
+            <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="social-pill" id="discord-pill" title="Discord: nandigammaheshbabu (Click to copy tag &amp; open Discord)">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+              </svg>
+              <span>Discord</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. CP Profiles (Competitive Programming) -->
+        <div class="profile-group">
+          <span class="profile-group-label">CP Profiles</span>
+          <div class="profile-pills-row">
+            <!-- LeetCode -->
+            <a href="https://leetcode.com/u/mahesh-nandigam/" target="_blank" rel="noopener noreferrer" class="social-pill" title="LeetCode: mahesh-nandigam">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+              </svg>
+              <span>LeetCode</span>
+            </a>
+
+            <!-- Codeforces -->
+            <a href="https://codeforces.com/profile/mahesh_nandigam01" target="_blank" rel="noopener noreferrer" class="social-pill" title="Codeforces: mahesh_nandigam01">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.673 21 0 20.328 0 19.5V9c0-.828.673-1.5 1.5-1.5h3zm9-4.5c.828 0 1.5.672 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-3c-.827 0-1.5-.672-1.5-1.5v-15c0-.828.673-1.5 1.5-1.5h3zm9 7.5c.828 0 1.5.672 1.5 1.5v7.5c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5V12c0-.828.672-1.5 1.5-1.5h3z"/>
+              </svg>
+              <span>Codeforces</span>
+            </a>
+
+            <!-- AtCoder -->
+            <a href="https://atcoder.jp/users/maheshcodesx" target="_blank" rel="noopener noreferrer" class="social-pill" title="AtCoder: maheshcodesx">
+              <svg class="social-icon atcoder-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8.246 20.655c-.067 0-.07.012-.07.095v.737c0 .229.027.437.288.437a.299.298 0 0 0 .106-.02c.036-.011.088-.053.1-.053.03 0 .047.043.038.067a.544.543 0 0 1-.414.181c-.34 0-.41-.189-.41-.425v-.905c0-.107-.004-.115-.083-.115h-.11a.065.065 0 0 1-.013-.082.8.799 0 0 0 .253-.122 1.013 1.011 0 0 0 .166-.233c.02-.008.067-.008.083.02v.176c0 .072.004.076.071.076h.439a.13.13 0 0 1 .003.166zm1.467-.76c.266-.207.604-.308.981-.308a2.795 2.79 0 0 1 .644.087.3.3 0 0 0 .102.014c.003.084.022.312.05.533a.08.08 0 0 1-.097.006c-.054-.246-.219-.53-.747-.53-.556 0-1.03.353-1.03 1.104 0 .762.484 1.182 1.081 1.182.468 0 .676-.304.759-.518a.08.08 0 0 1 .095.014c-.026.19-.12.429-.174.497a.715.714 0 0 0-.128.037 2.125 2.12 0 0 1-.574.083c-.327 0-.64-.065-.907-.242a1.173 1.171 0 0 1-.516-1 1.21 1.207 0 0 1 .46-.959Zm3.943 1.355c0 .493-.34.848-.833.848-.454 0-.81-.32-.81-.813a.83.829 0 0 1 .842-.851.79.79 0 0 1 .801.816m-.849-.697c-.26 0-.453.249-.453.681 0 .36.16.746.509.746.35 0 .453-.363.453-.667 0-.334-.134-.76-.509-.76m2.826.915c0 .31.003.456.114.456a.7.7 0 0 0 .17-.039c.028.008.031.107-.004.126a2.917 2.911 0 0 0-.521.126c-.024 0-.043-.011-.043-.032v-.066a.4.4 0 0 0-.008-.122h-.016c-.174.118-.309.181-.498.181-.438 0-.73-.342-.73-.757 0-.551.418-.905.955-.905a.82.818 0 0 1 .267.035c.02 0 .024-.023.024-.053v-.598c0-.233-.004-.257-.123-.327l-.04-.024a.06.06 0 0 1 0-.079 2.822 2.817 0 0 0 .427-.165.04.04 0 0 1 .039.023c-.004.119-.012.315-.012.489zm-.292-.592a.23.23 0 0 0-.044-.154.41.41 0 0 0-.332-.165c-.359 0-.545.311-.545.654 0 .359.202.698.587.698a.483.482 0 0 0 .304-.11c.024-.024.028-.083.028-.147zm1.293.158c-.102 0-.107.008-.107.106 0 .398.234.737.656.737.13 0 .241-.039.363-.193a.053.053 0 0 1 .071.047c-.13.266-.414.367-.62.367a.707.706 0 0 1-.57-.26.837.836 0 0 1-.166-.513c0-.485.32-.89.793-.89.34 0 .56.232.56.469a.24.24 0 0 1-.015.102c-.012.024-.067.028-.233.028zm.245-.119c.292 0 .38-.015.41-.039.013-.008.024-.023.024-.074 0-.111-.075-.249-.304-.249-.23 0-.434.213-.438.342 0 .009 0 .02.027.02zm1.43-.004c0-.153 0-.173-.107-.244l-.035-.024a.053.053 0 0 1 .004-.07 3.12 3.114 0 0 0 .399-.194q.03.005.031.028v.228q0 .03.012.036c.138-.114.288-.236.434-.236a.163.163 0 0 1 .178.157.175.175 0 0 1-.17.182.15.15 0 0 1-.086-.028.33.33 0 0 0-.175-.063.17.17 0 0 0-.142.08c-.04.052-.053.168-.053.303v.535c0 .284.008.331.16.343l.142.012a.07.07 0 0 1-.008.098c-.186-.007-.3-.012-.439-.012q-.208 0-.363.012a.07.07 0 0 1-.007-.098l.075-.012c.145-.023.15-.059.15-.343zM7.365 21.956l-.107-.012c-.169-.02-.22-.079-.335-.418l-.542-1.584c-.059-.173-.122-.355-.173-.528a.06.06 0 0 0-.06-.035.443.442 0 0 1-.204.15c.011.062-.013.137-.068.28l-.403 1.064c-.165.441-.276.698-.347.879-.053.142-.142.186-.237.193l-.13.012a.08.08 0 0 0 .007.098c.107-.003.249-.011.38-.011.185.004.307.004.41.011a.064.064 0 0 0 .008-.098l-.13-.012c-.095-.007-.114-.03-.114-.079a1.534 1.531 0 0 1 .086-.327l.139-.414c.027-.082.053-.094.15-.094h.526l-.049-.16h-.418c-.111 0-.114-.003-.084-.094l.25-.686a3 3 0 0 1 .095-.232h.008a2.62 2.614 0 0 1 .09.248l.177.528.152.461.012.032.172.539a.795.794 0 0 1 .054.209c0 .04-.054.063-.139.07l-.114.012a.066.065 0 0 0 .008.099c.114-.003.267-.012.454-.012.178 0 .316.004.48.012a.08.08 0 0 0-.004-.101m11.248-10.433c.048-.075.62-.373.614-.379-.18-.137-.575-.049-.897-.08-.07-.006-.31-.085-.389-.09-.118-.006-.117.107-.115.174 0 .007-.034.65-.034.905a.2.2 0 0 0 .014.075c.005.01.214-.186.281-.248-.087-.09-.053-.44-.057-.589 0-.057.025-.09.056-.057a.88.878 0 0 0 .527.292m-.648.916c.092.066.132.046.199.08a.435.434 0 0 1 .134.142.5.498 0 0 1 .053.152.16.16 0 0 0 .219.114c.042-.013.213-.508.06-.575-.107-.049-.183.043-.25.034-.042-.005-.022-.123-.021-.128a.09.09 0 0 0-.07-.085.523.522 0 0 0-.071.01c-.01 0-.254.256-.254.256m2.694 2.357a4.93 4.921 0 0 0 .113.966.07.07 0 0 1-.028.09c-.29.248-.59.55-.853.681-.084.041-.171.057-.22.115-.041.049-.04.133-.038.198a.427.426 0 0 1-.113.325.17.169 0 0 0-.03.031c-.053.103-.046.373.039.42.045.024.247-.154.324-.295.014-.026-.032-.14-.05-.203a.117.117 0 0 1 .094-.14.13.13 0 0 0 .072-.034c.032-.035.025-.104.007-.163a.107.106 0 0 1-.005-.075c.004-.017.297-.208.395-.282.213-.16.703-.294.862-.498.05-.064.06-.137-.005-.194-.066-.058-.514-.662-.562-.942m3.34-.407c.006.003-.373-.413-.98-.112-.004 0-.32-.24-.42-.327-.025-.022.067-.291-.217-.561-.23-.22-.956-.589-1.26-1.16-.184-.348.121-1.093.076-1.703-.007-.094-.142-.22-.164-.295-.14-.485-.179-.692-.256-.895a.3.3 0 0 1-.137.173c.044-.072.107-.213.057-.344a.624.623 0 0 0-.042-.063.379.378 0 0 1-.107.31c.02-.045.078-.308.039-.387l-.054-.048c-.018-.015-.025-.019-.037-.028a.657.656 0 0 1-.041.34 1.097 1.095 0 0 0-.035-.387 1.092 1.09 0 0 0-.834-.063.524.523 0 0 0-.298.31l-1.401-.247-.012.006.007.01 1.343.542c-.017.224.005.456-.026.61s-.107.188-.107.242c0 .062.065.198.214.078.032-.026.059-.08.12-.068.1.02.022.152.104.16.126.009.065-.207.077-.272s.095-.373.249-.351c.138.02.115.11.116.213a.921.92 0 0 1-.049.397c-.07.06-.533.526-.675.75-.008.014-.561.296-.776.449-.733.52-1.08 1.097-1.056 1.281 0 .014.136.277.219.435.013.088-.025.407.07.426.113.023.392-.381.307-.489-.062-.08-.142-.043-.17-.088a.1.1 0 0 1-.018-.033c-.012-.027.058-.106.035-.178-.043-.127-.134-.073-.15-.131a.628.627 0 0 1-.024-.143.2.2 0 0 1 .03-.117c.144-.208.52-.627.84-.693.02-.004.51.529.83.575.012 0 .382 1.018 1.085 1.084-.084.552.495 1.985 1 2.263.058.033.053.15.027.184-.027.035-.694.657-.985.966-.036.037-.028.261-.032.29-.012.084-.118.46-.047.514.094.072.468-.202.346-.35-.023-.027-.146-.08-.095-.167.027-.047.192-.022.244-.107.033-.053.005-.16.004-.213s.71-.713.894-.882a.122.121 0 0 0 .063-.095 1 1 0 0 0-.01-.137c-.01-.067-.486-.647-.086-.927.137-.095.63-.4.753-.77a1.422 1.42 0 0 1 .279.243c-.226.173-.393.512-.423.577-.006.011.216-.17.41-.223.008 0-.618.817-.586 1.197a1.363 1.36 0 0 1 .417-.578c.013-.01-.567 1.168.17 1.957 0 0-.246-.805-.116-1.05.003-.006.348.734.902.71.009 0-.452-.394-.558-1.007a.837.835 0 0 0 .423.27c.023.005-.457-.58-.164-1.014.013.346.241.565.32.59.012.003-.173-.438-.035-.742.069.078.143.213.335.21a1.699 1.696 0 0 1-.24-.886c.001-.046.143-.103.318-.031m-4.433-5.676h.007a1.25 1.247 0 0 1 .37-.057 1.12 1.118 0 0 1 .529.127l.032.017.03.02.022.016.042.03c.014.01.04.036.06.053l.011.013.037.039.027.035a.765.764 0 0 1 .046.07l.006.009.035.067c.071.146.12.327.185.577.075-.33.172-.66.02-1.065-.081-.213-.474-.847-1.44-.702-.657.098-1.017.733-1.017.733l.625.266s.232-.19.373-.248m-14.18 2.807c-.048-.075-.62-.373-.614-.379.181-.137.575-.049.897-.08.07-.006.31-.085.39-.09.117-.006.116.107.114.174 0 .007.035.65.035.905a.2.2 0 0 1-.015.075c-.005.01-.214-.186-.281-.248.087-.09.053-.44.057-.589 0-.057-.025-.09-.056-.057a.878.877 0 0 1-.527.292m.647.916c-.091.066-.132.046-.199.08a.445.444 0 0 0-.133.142.485.484 0 0 0-.053.152.16.16 0 0 1-.22.114c-.043-.013-.21-.508-.06-.575.107-.049.182.043.25.034.042-.005.022-.123.022-.128a.09.09 0 0 1 .07-.085.533.532 0 0 1 .07.01c.01 0 .254.256.254.256m-2.693 2.357a4.93 4.92 0 0 1-.114.966.07.07 0 0 0 .029.09c.29.248.59.55.853.681.083.041.17.057.219.115.041.049.04.133.037.198a.431.43 0 0 0 .115.325.2.2 0 0 1 .029.031c.053.103.046.373-.04.42-.044.024-.246-.154-.322-.295-.015-.026.03-.14.05-.203a.12.12 0 0 0-.091-.14.123.122 0 0 1-.072-.034c-.033-.035-.025-.104-.008-.163a.107.106 0 0 0 .005-.074c-.005-.017-.297-.208-.395-.282-.213-.16-.704-.294-.862-.498-.05-.064-.061-.137.005-.194.066-.058.513-.663.562-.943M0 14.392c-.007.003.373-.413.98-.112.004 0 .32-.24.419-.327.026-.022-.066-.291.217-.561.232-.22.956-.589 1.26-1.16.184-.348-.12-1.093-.076-1.703.008-.094.143-.22.164-.295.141-.485.179-.692.256-.895a.3.299 0 0 0 .14.174c-.044-.071-.107-.213-.057-.343a.621.62 0 0 1 .042-.063.37.37 0 0 0 .106.309c-.018-.044-.077-.307-.038-.386a.675.674 0 0 1 .054-.048l.037-.028a.653.652 0 0 0 .04.339 1.11 1.107 0 0 1 .035-.386 1.092 1.09 0 0 1 .835-.063.525.524 0 0 1 .298.309l1.4-.246.013.006-.007.01-1.347.541c.018.225-.004.457.026.61s.107.189.107.243c0 .062-.065.198-.213.078-.033-.026-.06-.08-.12-.068-.1.02-.022.152-.104.16-.126.009-.065-.208-.077-.273-.012-.064-.096-.372-.25-.35-.137.019-.115.11-.116.213a.943.941 0 0 0 .05.397c.068.059.532.525.674.75.01.013.561.296.777.449.733.519 1.08 1.097 1.056 1.281 0 .014-.136.276-.22.435-.013.088.025.406-.07.426-.111.023-.391-.382-.307-.49.062-.079.142-.042.17-.087l.018-.033c.013-.027-.058-.107-.034-.178.042-.127.133-.074.149-.132a.662.661 0 0 0 .025-.143.219.218 0 0 0-.03-.117c-.145-.208-.52-.626-.84-.692-.022-.004-.51.528-.83.575-.014 0-.382 1.018-1.086 1.083.084.553-.494 1.986-1 2.264-.058.032-.05.149-.026.184.023.034.693.657.985.965.036.038.028.262.032.292.011.083.118.459.047.513-.095.072-.469-.203-.347-.35.024-.028.146-.08.096-.168-.027-.047-.193-.021-.245-.106-.032-.053-.004-.16-.003-.213.002-.053-.713-.714-.896-.883a.12.12 0 0 1-.064-.095 1.02 1.017 0 0 1 .011-.137c.01-.068.486-.647.086-.927-.136-.096-.63-.401-.753-.77a1.41 1.408 0 0 0-.276.242c.226.173.393.513.423.577.005.012-.216-.169-.411-.222-.007 0 .619.817.586 1.197a1.363 1.36 0 0 0-.416-.58c-.014-.01.567 1.17-.17 1.958 0 0 .245-.805.115-1.05-.003-.006-.348.734-.902.71-.008 0 .452-.394.558-1.007a.834.832 0 0 1-.423.268c-.022.004.457-.58.165-1.015-.013.346-.241.565-.32.59-.012.003.172-.437.035-.741-.07.077-.144.213-.335.21a1.714 1.71 0 0 0 .24-.887c-.001-.043-.144-.1-.318-.028m4.433-5.676h-.007a1.247 1.245 0 0 0-.374-.057 1.12 1.118 0 0 0-.528.127l-.032.017-.03.02-.022.016a1 1 0 0 0-.101.084l-.013.012-.036.039-.026.035a.673.671 0 0 0-.047.07l-.006.009-.035.067c-.071.146-.12.327-.186.577-.074-.33-.17-.66-.018-1.065.08-.213.473-.847 1.44-.702.656.098 1.017.733 1.017.733l-.625.266s-.23-.19-.37-.248zm7.367 4.265a.07.07 0 0 0 .107-.068v-.373a.117.117 0 0 0-.117-.117h-.527c-.064 0-.082.04-.04.09zm-.806-.46a.241.24 0 0 0-.182-.097h-.452c-.065 0-.073.028-.018.063l.9.435c.06.022.074 0 .03-.045zm.912-1.049a.117.117 0 0 0-.117-.117h-.935a.085.085 0 0 0-.086.113s.141.51.272.765h.75a.117.117 0 0 0 .116-.117zm0-3.96a.07.07 0 0 0-.107-.069l-.552.435c-.042.048-.025.088.04.088h.502a.117.117 0 0 0 .117-.117Zm-2.72 4.669a.4.4 0 0 0 .09.065.4.4 0 0 1 .118-.009h.26c.064 0 .085-.042.046-.093l-.435-.685a.21.21 0 0 0-.172-.104h-.586c-.065 0-.085.042-.045.092zm2.72-3.914a.117.117 0 0 0-.117-.117h-.61c-.065 0-.125.012-.132.028l-.008.013c-.124.247-.262.728-.262.728a.084.084 0 0 0 .085.113h.927a.117.117 0 0 0 .117-.118zm0 1.069a.117.117 0 0 0-.117-.118h-.962a.14.139 0 0 0-.134.117l-.065.648a.11.11 0 0 0 .11.118h1.054a.117.117 0 0 0 .117-.118zm0 1.068a.117.117 0 0 0-.117-.117h-1.054a.11.11 0 0 0-.111.117l.06.648a.139.138 0 0 0 .133.117h.972a.117.117 0 0 0 .117-.117zm-1.86 2.094a.4.4 0 0 0-.207-.074h-.176c-.065 0-.07.023-.012.053l.744.312q.092.03.012-.025zm.67-.26a.075.075 0 0 0 .075-.107l-.213-.66a.16.16 0 0 0-.148-.113h-.899c-.065 0-.091.046-.06.102l.48.692a.292.291 0 0 0 .195.09zM10.5 9.334a.1.1 0 0 0-.102-.117H9.47a.165.165 0 0 0-.15.113l-.132.653a.102.102 0 0 0 .103.117h1.023a.126.126 0 0 0 .124-.118Zm-.313-1.185a.3.3 0 0 0-.196.088l-.502.692c-.032.056-.006.101.058.101h.888a.16.16 0 0 0 .149-.113l.223-.66a.074.073 0 0 0-.073-.106zM8.24 11.06a.18.18 0 0 0 .16.109h.622a.087.087 0 0 0 .089-.113l-.114-.652a.133.133 0 0 0-.13-.117h-.7a.097.097 0 0 0-.099.116zm1.066-.004a.16.16 0 0 0 .149.113h.937a.1.1 0 0 0 .102-.117l-.058-.648a.125.125 0 0 0-.123-.117H9.29a.103.103 0 0 0-.107.116ZM8.073 9.985a.096.096 0 0 0 .098.116h.699A.135.135 0 0 0 9 9.983l.123-.651a.086.086 0 0 0-.087-.114H8.42a.19.189 0 0 0-.16.107Zm3.198-2.437c.045-.046.031-.067-.03-.045l-.849.4c-.053.033-.047.06.017.06h.427a.25.25 0 0 0 .184-.096zM8.486 8.943c-.04.05-.021.09.044.09h.579a.22.22 0 0 0 .173-.103l.45-.686c.04-.054.021-.092-.044-.092h-.267a.4.4 0 0 0-.208.074Zm1.395-.98a.393.392 0 0 0 .209-.073l.316-.228c.054-.035.05-.046-.011-.024l-.675.275c-.059.028-.053.05.011.05zm4.827 2.138a.1.1 0 0 0 .103-.117l-.132-.653a.165.165 0 0 0-.15-.113H13.6a.1.1 0 0 0-.101.117l.062.648a.126.126 0 0 0 .124.118zm-2.615 2.02a.12.12 0 0 0 .118.116h.748c.13-.256.272-.765.272-.765a.085.085 0 0 0-.086-.112h-.932a.12.12 0 0 0-.117.117zm0-1.07a.12.12 0 0 0 .118.118h.972a.14.14 0 0 0 .133-.117l.06-.648a.11.11 0 0 0-.111-.117h-1.052a.12.12 0 0 0-.117.117zm0-1.068a.12.12 0 0 0 .118.118h1.053a.11.11 0 0 0 .11-.118l-.064-.648a.14.139 0 0 0-.135-.117h-.962a.12.12 0 0 0-.117.118zm2.436 1.475c.031-.057.004-.103-.06-.103h-.897a.16.16 0 0 0-.147.114l-.217.66a.075.075 0 0 0 .075.106h.569a.293.292 0 0 0 .194-.09zm-.367.966a.4.4 0 0 0-.209.074l-.36.266q-.079.054.012.025l.742-.314c.058-.028.053-.053-.012-.053zm-2.069-3.51a.117.117 0 0 0 .118.118h.926a.084.084 0 0 0 .085-.113s-.137-.479-.261-.728l-.008-.013c-.008-.016-.067-.028-.132-.028h-.608a.12.12 0 0 0-.117.117zm3.838 1.489a.098.098 0 0 0-.1-.116h-.7a.133.133 0 0 0-.129.117l-.114.652a.087.087 0 0 0 .089.113h.738l.042-.106zm-2.743 2.02a.243.242 0 0 0-.182.099l-.278.355c-.044.046-.03.067.03.045l.9-.435c.053-.035.046-.063-.019-.063zm-.41.09c.042-.05.023-.09-.041-.09h-.524a.12.12 0 0 0-.117.118v.373a.07.07 0 0 0 .107.068zm3.051-2.412a.096.096 0 0 0 .098-.116l-.186-.658a.19.189 0 0 0-.16-.106h-.618a.085.085 0 0 0-.086.113l.123.652a.133.133 0 0 0 .13.117zm-1.822-1.863a.3.3 0 0 0-.194-.088h-.548a.074.073 0 0 0-.073.106l.222.66a.164.163 0 0 0 .15.113h.89c.064 0 .09-.044.057-.1zm.78-.014a.387.386 0 0 0-.21-.074h-.266c-.065 0-.085.04-.045.092l.451.687a.21.21 0 0 0 .174.103h.578c.065 0 .085-.04.044-.09zM12.2 7.443a.07.07 0 0 0-.107.07v.334a.117.117 0 0 0 .117.116h.502c.065 0 .083-.04.04-.087zm3.338 4.002c.04-.05.02-.092-.045-.092h-.586a.21.21 0 0 0-.172.104l-.435.685c-.039.053-.018.093.047.093h.257a.331.33 0 0 1 .118.01.377.376 0 0 0 .09-.065zm-.725-1.042a.103.103 0 0 0-.106-.116h-1.022a.125.125 0 0 0-.123.117l-.058.648a.1.1 0 0 0 .102.117h.936a.164.163 0 0 0 .15-.113zm-1.832-2.536a.251.25 0 0 0 .184.096h.427c.064 0 .072-.027.017-.06l-.85-.4c-.06-.022-.074 0-.03.045zm.928.023a.4.4 0 0 0 .21.073h.148c.065 0 .07-.022.011-.05l-.674-.275c-.06-.022-.066-.01-.012.024zm-.63 7.193a.65.648 0 0 1-1.111-.053l-.04-.069a45 45 0 0 1-.617-1.118l-.124-.246-.128.244c-.087.167-.53 1.118-.72 1.524-.035.077-.128.257-.136.275l.32-.006.07-.15c.13-.28.423-.906.594-1.267a90 90 0 0 0 .529.946.932.93 0 0 0 1.683-.08zm-.541-1.292a.93.928 0 0 0-.837.522l.184.295a1.317 1.315 0 0 1 .067-.166.65.648 0 0 1 1.127-.08h.32a.931.93 0 0 0-.861-.57zm-.806 4.927c-.03-.022-3.088-2.252-4.22-5.33-.662-1.798-1.105-4.51-1.105-5.918v-.076l.068-.032C7.253 7.092 12 5.505 12 5.505s4.747 1.587 5.324 1.857l.068.032v.076c0 1.408-.444 4.121-1.105 5.917-1.13 3.075-4.19 5.309-4.22 5.33l-.067.049zM12 5.744S7.787 7.137 6.855 7.542l-.014.006v.016c.018 1.384.44 3.975 1.09 5.74 1.007 2.739 3.554 4.777 4.055 5.158l.013.01.014-.01c.5-.38 3.048-2.42 4.054-5.159.65-1.764 1.071-4.352 1.089-5.74v-.015l-.015-.006C16.216 7.137 12 5.756 12 5.744m-.05 12.196c-.028-.02-2.794-2.026-3.825-4.829-.6-1.628-1.001-4.089-1.001-5.364v-.058l.053-.024c.525-.244 4.825-1.683 4.825-1.683s4.3 1.437 4.824 1.683l.053.024v.058c0 1.278-.402 3.736-1.001 5.364-1.03 2.803-3.796 4.81-3.824 4.83l-.05.035zM12 6.16S7.932 7.526 7.314 7.797l-.014.005v.017c.015 1.259.397 3.616.99 5.226.524 1.428 1.51 2.64 2.29 3.442.45.47 1.066 1.024 1.42 1.277.32-.232.916-.775 1.364-1.224.8-.798 1.81-2.04 2.346-3.498.593-1.61.975-3.967.99-5.226V7.8l-.014-.006C16.053 7.52 12 6.16 12 6.16m.504-1.4.32-1.997a3.353 3.347 0 0 1-.386-.334l-.17 2.33Zm-.505 0h.112l.183-2.489A2.459 2.454 0 0 1 12 1.863a2.444 2.44 0 0 1-.294.408l.183 2.488zm.907 0 .427-1.687a3.315 3.309 0 0 1-.364-.21l-.306 1.896zm.488 0 .432-1.491a3.319 3.313 0 0 1-.348-.129l-.408 1.62Zm-2.923 0-.459-1.429a2.197 2.193 0 0 1-.4-.134l.578 1.522zm1.258 0-.172-2.331a3.345 3.338 0 0 1-.385.334l.32 1.996zm2.08-.04.577-1.523a2.197 2.193 0 0 1-.4.134l-.459 1.428zm-2.88.04-.408-1.62a3.275 3.27 0 0 1-.35.13l.433 1.49zm.408 0-.307-1.896a3.266 3.26 0 0 1-.363.209l.426 1.686Zm-.932.77L12 5.186l1.606.346.205-.683h-3.624Zm-4.47 1.24.373.34 3.88-1.512-.153-.411Zm3.772-1.328s.104.067.118.107a.077.077 0 0 1-.043.097.074.073 0 0 1-.095-.044c-.014-.04.02-.16.02-.16m-.314.122s.103.067.118.107a.076.076 0 0 1-.043.097.073.073 0 0 1-.095-.043.458.457 0 0 1 .02-.16zm-.314.123s.103.067.118.106a.077.077 0 0 1-.042.098.074.073 0 0 1-.096-.044.5.5 0 0 1 .021-.16zm-.314.122s.104.067.118.107a.076.076 0 0 1-.042.097.073.072 0 0 1-.095-.044c-.014-.039.02-.16.02-.16Zm-.314.123s.107.067.118.106a.076.076 0 0 1-.043.097.074.073 0 0 1-.095-.043.5.5 0 0 1 .021-.16Zm-.313.122s.103.067.118.107a.077.077 0 0 1-.043.097.074.074 0 0 1-.095-.044.5.5 0 0 1 .02-.16m-.313.12s.103.068.118.107a.077.077 0 0 1-.043.098.073.072 0 0 1-.095-.044c-.015-.038.02-.16.02-.16zm-.315.124s.107.066.12.106a.077.077 0 0 1-.044.098.073.073 0 0 1-.095-.044c-.014-.039.02-.16.02-.16zm-.313.122s.103.067.118.106a.075.075 0 0 1-.042.097.074.073 0 0 1-.096-.043c-.014-.039.02-.16.02-.16m-.314.122s.106.067.118.107a.076.076 0 0 1-.043.097.073.073 0 0 1-.094-.044c-.015-.038.019-.159.019-.159zm-.314.123s.107.067.119.106a.076.076 0 0 1-.043.098.073.073 0 0 1-.096-.044c-.014-.039.02-.16.02-.16m-.81-.056 4.197-1.647.051.14L5.881 6.72Zm-1.167-.29.007-.015a.113.112 0 0 0 0-.014l-.039-.021a.04.04 0 0 1 0 .028l-.008.004a.234.233 0 0 0 .035.02l.005-.003zm.581.271a.116.116 0 1 1-.15-.067.116.116 0 0 1 .15.067m1.08-.55a.116.116 0 1 1-.15-.068.116.116 0 0 1 .15.068m1.267-.512a.116.116 0 1 1-.213.082.116.116 0 0 1 .213-.082m1.328-.458a.116.116 0 1 1-.15-.066.116.116 0 0 1 .15.066m.715-.413a.644.643 0 0 1-.324.12.636.635 0 0 1-.349-.107c-.088-.05-.098-.16-.069-.247.03-.088.145-.18.262-.126a.267.266 0 0 0-.32-.138c-.01-.148-.065-.297-.16-.309a.12.12 0 0 0-.112.067.542.54 0 0 0-.038-.061l.014-.004a.12.12 0 1 0-.086-.224l-.016.009v-.006a.137.137 0 1 0-.256.096l.002.005-.018.005a.12.12 0 1 0 .085.224.025.024 0 0 0 .012-.006.612.61 0 0 0 .012.072.12.12 0 0 0-.128.023c-.065.073-.008.22.082.338a.267.266 0 0 0-.16.32c.054-.117.2-.118.28-.078.08.041.088.17.053.249-.068.151-.277.23-.37.256a.464.463 0 0 1-.397-.062c-.113-.092-.175-.225-.145-.313.029-.087.144-.179.26-.126a.26.26 0 0 0-.266-.147c-.003-.18-.067-.372-.186-.387a.135.135 0 0 0-.132.076.598.597 0 0 0-.043-.07l.015-.003a.138.138 0 1 0-.098-.258c-.007 0-.013.007-.02.01v-.007a.157.157 0 1 0-.294.111l.003.006-.02.005a.138.138 0 1 0 .096.258l.015-.007a.677.676 0 0 0 .013.082.14.14 0 0 0-.147.026c-.078.089 0 .273.113.41a.26.26 0 0 0-.122.299c.054-.117.2-.118.28-.077s.122.186.097.33a.465.464 0 0 1-.261.308c-.086.042-.296.12-.447.054-.079-.036-.155-.132-.125-.22.03-.09.145-.18.26-.127a.267.266 0 0 0-.331-.134c-.01-.148-.065-.296-.16-.308a.12.12 0 0 0-.111.066l-.038-.061.012-.003a.12.12 0 1 0-.084-.224.177.176 0 0 0-.018.008v-.006a.137.137 0 0 0-.256.097v.005l-.019.005a.12.12 0 0 0 .085.224.099.098 0 0 0 .013-.005.608.607 0 0 0 .011.07.12.12 0 0 0-.127.024c-.065.072-.008.221.083.338a.267.266 0 0 0-.149.313c.053-.116.2-.117.28-.077a.3.3 0 0 1 .134.286c-.02.165-.069.23-.27.319a.581.58 0 0 1-.174.04c-.126-.01-.186-.075-.197-.16v-.05c0-.11-.04-.232-.112-.241a.08.08 0 0 0-.076.045c-.048-.088-.11-.135-.16-.116-.05.018-.063.093-.042.191a.08.08 0 0 0-.087.016c-.033.037-.02.103.015.167a.36.359 0 0 0-.112-.053l-.022-.005h-.034a.06.06 0 0 0-.042.021.2.2 0 0 0-.047-.017l-.021-.005h-.028l-.004-.008a.06.06 0 0 0-.045.023.06.06 0 0 0-.007.05l.003.013q.001.006.005.012a.17.169 0 0 0 .015.026.3.3 0 0 0 .097.094l.007.004a.27.27 0 0 0-.142.165v.01c-.048.31.32.484.773.382-.286-.02-.534-.147-.505-.325.028-.106.17-.146.348-.139.072.003.148.018.244.025.17.012.234.028.405-.036.228-.086.389-.245.417-.36a.891.89 0 0 0 .026-.289.494.493 0 0 0 .092.061c.273.134.57.005.723-.053a.753.752 0 0 0 .384-.357.731.73 0 0 0 .077-.286.732.73 0 0 0 .248.164.75.749 0 0 0 .524.015c.151-.05.459-.15.578-.431a.475.474 0 0 0 .029-.106 1.936 1.932 0 0 0 .347.167c.137.048.276.073.537-.025.165-.063.33-.308.264-.56-.004.064-.052.205-.2.345Zm-5.13 1.618-.024-.014a.3.3 0 0 1-.093-.09l-.003-.008V6.12l.003-.003h.036a.258.257 0 0 1 .06.018v.023l.004.012q0 .005.006.012l.014.026a.304.303 0 0 0 .049.053.508.507 0 0 0-.052.014m.249-.053a.63.628 0 0 0-.156.018.294.293 0 0 1-.064-.065l-.004-.008v-.008l-.003-.005v-.03l.004-.003h.039a.3.3 0 0 1 .126.06.309.308 0 0 1 .06.056zm.037-.046c-.064-.078-.089-.16-.066-.186.012-.013.041-.008.077.011a.4.4 0 0 1 .09.075.4.4 0 0 1 .066.104zm.148-.108a.221.22 0 0 0-.014-.017.418.417 0 0 0-.094-.08c-.03-.1-.017-.166.006-.175.022-.008.08.04.12.128a.417.416 0 0 0-.018.122zm.175.09-.024.028h-.082l-.006-.015a.4.4 0 0 1-.019-.123.4.4 0 0 1 .018-.116c.013-.038.033-.063.05-.06.034.002.074.09.074.196a.388.387 0 0 1-.01.089Zm.676-1.459a.057.056 0 1 1-.033.073.057.056 0 0 1 .033-.073m-.195-.076a.073.073 0 1 1-.042.094.074.073 0 0 1 .042-.095Zm-.053.291a.057.057 0 0 1-.073-.032.057.056 0 0 1 .033-.073.057.057 0 1 1 .04.106Zm.309.47.007.02a.221.22 0 0 0-.022-.014.3.3 0 0 0-.23-.014c-.094-.114-.13-.236-.098-.271.017-.019.061-.012.112.016a.516.515 0 0 1 .133.11.625.623 0 0 1 .098.153m-.03-.202v.034l-.021-.026a.596.595 0 0 0-.139-.118c-.043-.144-.023-.241.01-.253q.022-.008.053.018l.009.008a.489.488 0 0 1 .11.16.611.61 0 0 0-.024.176zm.118.169a.31.309 0 0 0-.014.045.242.241 0 0 1-.014-.035.57.569 0 0 1-.027-.18.5.5 0 0 1 .025-.17c.02-.053.05-.09.074-.086.049.006.102.122.107.27a.312.311 0 0 0-.151.156m1.262-1.079c.022-.063.053-.103.084-.099.058.007.123.15.123.33a.32.32 0 0 0-.204.175v-.005a.654.653 0 0 1-.031-.206.612.611 0 0 1 .027-.195Zm-.136-.36a.065.065 0 1 1-.038.084.066.065 0 0 1 .037-.083zm-.224-.087a.084.084 0 1 1-.048.107.084.084 0 0 1 .047-.107zm.086.225a.07.07 0 0 1 .063.022l.01.007a.537.536 0 0 1 .127.184.683.682 0 0 0-.03.204v.039L7 4.476a.665.664 0 0 0-.157-.135c-.051-.166-.026-.277.01-.29zm-.15.11a.065.065 0 1 1-.045-.121.065.065 0 1 1 .045.12zm.088.548c-.12-.137-.165-.286-.126-.33.02-.022.07-.014.129.02a.602.601 0 0 1 .15.127.663.662 0 0 1 .112.175l.011.032-.027-.017a.31.309 0 0 0-.25-.007Zm1.611-1.02a.057.056 0 1 1-.033.074.057.057 0 0 1 .033-.073zm-.195-.076a.073.073 0 1 1-.043.094.074.074 0 0 1 .043-.094m-.053.292a.057.056 0 0 1-.073-.033.057.056 0 1 1 .073.033m.307.47a.267.266 0 0 1 .013.037l-.04-.026a.315.314 0 0 0-.216-.017c-.095-.114-.131-.237-.099-.274.017-.018.061-.011.113.017a.518.517 0 0 1 .131.11.6.6 0 0 1 .098.153m-.03-.169-.022-.025a.6.598 0 0 0-.137-.118.467.466 0 0 1-.022-.192v-.012q.008-.04.03-.05c.032-.012.111.047.174.185a.587.586 0 0 0-.026.179q.003.016.003.033m.107.141-.008.025q-.002-.01-.007-.02a.6.6 0 0 1-.028-.18.537.536 0 0 1 .026-.169c.02-.053.048-.09.074-.087.048.006.1.12.107.266a.3.3 0 0 0-.166.165Zm5.423.84-.153.412 3.88 1.513.373-.34zm.348.416a.074.073 0 0 1-.095.043.077.077 0 0 1-.043-.097c.015-.039.119-.106.119-.106s.034.12.02.16zm.315.122a.074.073 0 0 1-.095.044.076.076 0 0 1-.043-.098c.014-.039.118-.106.118-.106s.034.121.02.16m.313.122a.073.073 0 0 1-.095.044.077.077 0 0 1-.042-.098c.014-.038.117-.106.117-.106s.035.121.02.16m.314.123a.073.073 0 0 1-.095.043.076.076 0 0 1-.043-.097c.015-.04.118-.106.118-.106s.035.121.02.16m.314.122a.075.075 0 0 1-.096.044.076.076 0 0 1-.042-.097c.014-.04.119-.107.119-.107a.5.5 0 0 1 .02.16zm.314.122a.074.073 0 0 1-.095.044.076.076 0 0 1-.043-.098c.014-.038.118-.106.118-.106s.032.122.02.16m.314.122a.073.073 0 0 1-.096.044.076.076 0 0 1-.042-.098c.014-.039.118-.106.118-.106s.035.122.02.16m.314.123a.074.073 0 0 1-.096.043.077.077 0 0 1-.042-.097c.014-.04.118-.107.118-.107a.454.453 0 0 1 .02.161m.313.122a.073.072 0 0 1-.095.043.076.076 0 0 1-.042-.097c.014-.039.118-.106.118-.106s.034.121.02.16zm.315.122a.074.073 0 0 1-.096.044.077.077 0 0 1-.043-.097c.015-.04.119-.107.119-.107s.034.122.02.16m.313.122a.073.073 0 0 1-.095.044.077.077 0 0 1-.043-.097c.014-.039.119-.107.119-.107s.033.122.02.16zm.79-.215-4.196-1.647-.05.14 4.125 1.618Zm1.168-.29a.074.073 0 0 1-.008-.015.113.112 0 0 1 0-.014l.04-.021a.04.04 0 0 0 0 .028l.009.004a.243.242 0 0 1-.036.02l-.005-.003zm-.581.271a.116.116 0 1 0 .149-.067.117.117 0 0 0-.15.067zm-1.08-.55a.116.116 0 1 0 .149-.068.116.116 0 0 0-.15.068zm-1.267-.512a.116.116 0 0 0 .213.082.116.116 0 0 0-.213-.082m-1.329-.458a.116.116 0 0 0 .069.15.116.116 0 0 0 .081-.216.117.117 0 0 0-.15.066m-.915-.758c-.066.252.098.497.264.56.26.098.4.073.536.026a1.936 1.932 0 0 0 .35-.167.505.504 0 0 0 .029.107c.117.28.427.378.578.436a.751.75 0 0 0 .524-.015.727.726 0 0 0 .248-.164.731.73 0 0 0 .078.286.752.75 0 0 0 .384.356c.153.058.45.188.723.054a.494.493 0 0 0 .092-.061.89.889 0 0 0 .025.288c.029.115.189.274.417.36.171.064.235.048.406.036.095-.007.171-.021.243-.025.179-.007.32.032.35.14.029.178-.221.304-.507.324.454.102.821-.071.774-.381v-.01a.275.274 0 0 0-.142-.166l.006-.003a.3.3 0 0 0 .097-.094.228.227 0 0 0 .015-.026q.002-.008.006-.012l.002-.013a.065.064 0 0 0-.006-.05.06.06 0 0 0-.048-.03h-.034l-.023.005a.236.235 0 0 0-.046.017.06.06 0 0 0-.043-.02H19.5l-.021.004a.4.4 0 0 0-.111.054c.034-.065.047-.13.014-.168a.08.08 0 0 0-.087-.016c.022-.098.006-.173-.042-.191s-.11.028-.16.116a.08.08 0 0 0-.076-.045c-.073.009-.112.13-.112.241q0 .025.003.05c-.012.088-.07.151-.197.16a.587.586 0 0 1-.174-.04c-.202-.087-.25-.153-.27-.32a.29.29 0 0 1 .133-.285c.08-.04.227-.04.28.077a.263.263 0 0 0-.149-.313c.092-.117.149-.266.084-.338a.12.12 0 0 0-.128-.024.508.507 0 0 0 .011-.07l.013.005a.12.12 0 1 0 .067-.229v-.005a.137.137 0 1 0-.256-.097v.006l-.018-.008a.12.12 0 1 0-.084.224l.012.003-.038.061a.12.12 0 0 0-.112-.066c-.096.012-.151.16-.16.308a.267.266 0 0 0-.331.134c.116-.054.227.043.26.126.034.084-.046.186-.124.22-.152.07-.36-.008-.448-.053a.46.46 0 0 1-.257-.307c-.025-.145.017-.284.097-.331.081-.048.228-.04.28.077a.26.26 0 0 0-.122-.298c.114-.138.192-.32.113-.41a.14.14 0 0 0-.146-.027.677.676 0 0 0 .012-.082l.015.007a.138.138 0 0 0 .098-.258.1.099 0 0 0-.021-.005l.002-.006a.157.157 0 1 0-.293-.11v.006l-.02-.01a.138.138 0 1 0-.097.258l.015.004a.679.678 0 0 0-.044.07.14.14 0 0 0-.132-.07c-.118.014-.183.207-.187.387a.26.26 0 0 0-.266.147c.117-.054.228.043.262.126.033.084-.032.22-.146.313a.463.462 0 0 1-.397.062c-.094-.026-.302-.107-.37-.256-.036-.079-.028-.202.053-.249s.227-.039.28.077a.267.266 0 0 0-.16-.32c.09-.116.147-.266.083-.337a.12.12 0 0 0-.127-.023.603.602 0 0 0 .01-.072l.012.006a.12.12 0 1 0 .067-.23l.002-.004a.137.137 0 1 0-.256-.096v.006l-.018-.01a.12.12 0 1 0-.084.225l.013.004q-.019.027-.038.06a.12.12 0 0 0-.112-.066c-.096.012-.152.16-.16.31a.267.266 0 0 0-.32.137c.117-.054.228.043.261.126s.02.197-.069.247a.636.635 0 0 1-.349.107.647.646 0 0 1-.324-.12c-.151-.139-.199-.28-.203-.344m5.28 1.944a.386.385 0 0 0 .05-.053l.014-.026.005-.012.004-.012a.107.106 0 0 0 0-.022.267.266 0 0 1 .06-.019h.035l.005.003v.043l-.004.007a.3.3 0 0 1-.092.09.196.195 0 0 1-.024.015l-.054-.016zm-.197-.03a.314.313 0 0 1 .06-.057.3.3 0 0 1 .126-.06h.04l.004.004v.043l-.004.008a.287.286 0 0 1-.063.07.637.636 0 0 0-.156-.019zm-.204-.042a.388.387 0 0 1 .066-.103.352.351 0 0 1 .09-.075c.035-.02.065-.024.077-.011.022.024-.002.106-.066.186zm.018-.137a.417.416 0 0 0-.017-.122c.04-.087.094-.137.12-.127s.036.075.006.175a.408.407 0 0 0-.095.078l-.015.017zm-.185.023c0-.106.04-.194.074-.198.017-.003.037.021.05.06a.357.356 0 0 1 .018.115.4.4 0 0 1-.019.124l-.005.014h-.083l-.024-.028a.4.4 0 0 1-.012-.089zm-.633-1.298a.057.056 0 1 1-.034-.073.058.057 0 0 1 .034.073m.204-.054a.073.072 0 0 1-.094.043.073.073 0 1 1 .094-.043m-.02.125a.057.056 0 1 1 .033.073.057.056 0 0 1-.033-.075zm-.276.543a.597.596 0 0 1 .099-.153.514.513 0 0 1 .131-.112c.054-.028.095-.035.112-.016.033.035-.003.16-.097.27a.309.308 0 0 0-.23.015l-.022.015.006-.02zm.005-.381a.473.472 0 0 1 .109-.16l.01-.007a.06.06 0 0 1 .053-.019c.032.012.053.107.01.254a.583.582 0 0 0-.139.118l-.02.025v-.033a.6.6 0 0 0-.023-.18zm-.245.193c.005-.15.059-.266.107-.271.024-.003.053.031.072.087a.5.5 0 0 1 .027.17.587.586 0 0 1-.027.179l-.015.035a.398.397 0 0 0-.014-.045.309.308 0 0 0-.15-.157zm-1.081-.73a.67.669 0 0 1-.031.205v.005a.32.32 0 0 0-.204-.175c0-.18.065-.323.123-.33.029-.004.062.036.084.1a.583.582 0 0 1 .028.194zm.144-.472a.065.065 0 1 1-.038-.083.066.065 0 0 1 .038.083m.234-.063a.084.084 0 1 1-.157-.059.084.084 0 1 1 .157.06zm-.124.408a.687.686 0 0 0-.157.135.332.331 0 0 0-.025.03v-.039a.7.7 0 0 0-.028-.204.522.521 0 0 1 .126-.184l.01-.007q.039-.03.064-.022c.037.014.06.125.01.291m.102-.266a.065.065 0 1 1 .037.083.065.064 0 0 1-.037-.081zm-.3.64-.028.016.01-.032a.681.68 0 0 1 .114-.174.6.599 0 0 1 .15-.127c.06-.033.11-.041.13-.02.039.044-.007.194-.126.33a.31.309 0 0 0-.248.007zm-1.331-.953a.057.056 0 1 1-.034-.073.057.057 0 0 1 .034.073m.204-.054a.073.073 0 1 1-.043-.094.074.074 0 0 1 .045.092zm-.018.124a.057.057 0 1 1 .107.04.057.057 0 1 1-.107-.04m-.274.544a.578.577 0 0 1 .097-.153.5.5 0 0 1 .132-.11c.053-.029.096-.036.113-.017.032.037-.004.16-.1.274a.313.312 0 0 0-.215.017.301.3 0 0 0-.04.025zm.029-.203a.587.586 0 0 0-.026-.178c.063-.139.142-.197.175-.185q.021.009.03.05v.012a.476.475 0 0 1-.023.192.6.6 0 0 0-.138.117l-.021.026.003-.035zm-.27.012c.006-.148.058-.262.107-.266.024 0 .053.031.073.087a.495.494 0 0 1 .026.17.587.586 0 0 1-.027.18l-.008.018q-.002-.012-.007-.024a.305.304 0 0 0-.164-.167Z" />
+              </svg>
+              <span>AtCoder</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Creator Profiles -->
+        <div class="profile-group">
+          <span class="profile-group-label">Creator Profiles</span>
+          <div class="profile-pills-row">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/maheshnandigam_" target="_blank" rel="noopener noreferrer" class="social-pill" title="Instagram: @maheshnandigam_">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>Instagram</span>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@MAHESHNANDIGAM-t9z" target="_blank" rel="noopener noreferrer" class="social-pill" title="YouTube: @MAHESHNANDIGAM-t9z">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+              <span>YouTube</span>
+            </a>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Content & Articles Section (Real LinkedIn Publications) -->
-      <div id="content" class="py-12 sm:py-16">
-        <h2 class="font-medium text-primary/90 text-base tracking-tight mb-6">content &amp; articles.</h2>
-        <ul class="flex flex-col gap-12 sm:gap-14 font-normal text-primary/90 text-base">
-          
-          <!-- Real LinkedIn Pulse Article 1: The Art of Winning in Tech -->
-          <li class="cursor-target">
-            <div class="block pl-4 sm:pl-5 border-muted-foreground/30 hover:border-primary border-l-2 size-full transition-all duration-300">
-              <p class="text-primary/90 text-lg font-medium leading-snug">The Art of Winning in Tech <span class="inline-block bg-secondary ml-1 sm:ml-2 px-2 py-0.5 rounded text-xs align-middle">LinkedIn Pulse</span></p>
-              <div class="flex flex-wrap items-center gap-3 mt-1.5 text-sm">
-                <a href="https://www.linkedin.com/pulse/art-winning-tech-mahesh-nandigam-sdixf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline font-medium">
-                  Read on LinkedIn <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                </a>
-                <span class="text-muted-foreground text-xs font-mono">Published on LinkedIn · 12 min read</span>
-              </div>
-              <ul class="space-y-2 mt-3 pl-3 sm:pl-4 text-muted-foreground text-sm text-left list-disc">
-                <li class="leading-relaxed"><span><em>&ldquo;If you spend any time online today, the tech community feels like one giant bubble of existential dread. Every comment section is flooded with doomsday warnings about AI replacing junior developers, software engineering being dead, and CS degrees being useless.&rdquo;</em></span></li>
-                <li class="leading-relaxed"><span>An in-depth breakdown of how to win in the modern tech ecosystem by cultivating real depth, ignoring the social doom-loops, and building high-leverage software engineering skills that AI cannot replace.</span></li>
-              </ul>
-              <ul class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5 pl-0 sm:pl-3">
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">LinkedIn Pulse</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Tech Strategy</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">AI &amp; Future of Dev</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Career Leverage</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Mental Models</li>
-              </ul>
+    <!-- 2. PROJECTS SECTION (4 Exact Projects: HirePanel.Ai, FounderCopilot.os, ApplyJack, Ecosphere) -->
+    <section class="section-boundary" id="projects">
+      <div class="section-line"></div>
+      <span class="cross-l">+</span>
+      <span class="cross-r">+</span>
+
+      <div class="section-title">
+        <span>Projects</span>
+        <span class="section-sub">Shipped</span>
+      </div>
+
+      <div class="projects-column" id="projects-list">
+        <!-- 1. HirePanel.Ai -->
+        <article class="project-item">
+          <div class="project-head">
+            <h3 class="project-name">HirePanel.Ai</h3>
+            <div class="project-action-links">
+              <a href="https://hire-panel-ai.vercel.app" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open Live Demo">
+                <span>Live Demo</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a href="https://github.com/Mahesh-Nandigam/HirePanel.Ai" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open GitHub Repo">
+                <span>GitHub</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
             </div>
-          </li>
+          </div>
+          <p class="project-desc">Autonomous multi-agent technical interview committee. Evaluates candidate resumes, GitHub repositories, and LinkedIn profiles to deliver mathematically weighted consensus scores in seconds.</p>
+          <div class="project-tag-row">
+            <span class="project-tag">Agentic AI</span>
+            <span class="project-tag">Multi-Agent Panel</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Full Stack</span>
+          </div>
+        </article>
 
-          <!-- Real LinkedIn Pulse Article 2: Overwhelmed by Tech -->
-          <li class="cursor-target">
-            <div class="block pl-4 sm:pl-5 border-muted-foreground/30 hover:border-primary border-l-2 size-full transition-all duration-300">
-              <p class="text-primary/90 text-lg font-medium leading-snug">To anyone currently overwhelmed by DSA, Web Dev, Web3, and AI/ML — DO NOT open VS Code today until you read this <span class="inline-block bg-secondary ml-1 sm:ml-2 px-2 py-0.5 rounded text-xs align-middle">LinkedIn Pulse</span></p>
-              <div class="flex flex-wrap items-center gap-3 mt-1.5 text-sm">
-                <a href="https://www.linkedin.com/pulse/anyone-currently-overwhelmed-dsa-web-dev-web3-aiml-do-mahesh-nandigam-j4kbf" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline font-medium">
-                  Read on LinkedIn <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                </a>
-                <span class="text-muted-foreground text-xs font-mono">Published on LinkedIn · 7 min read</span>
-              </div>
-              <ul class="space-y-2 mt-3 pl-3 sm:pl-4 text-muted-foreground text-sm text-left list-disc">
-                <li class="leading-relaxed"><span><em>&ldquo;Grab some coffee, my friend. Take out 30 to 40 minutes of your life, get a notebook and a pen, and sit down.&rdquo;</em> A raw, deep breakdown cutting through the analysis paralysis caused by roadmap influencers and endless buzzwords.</span></li>
-                <li class="leading-relaxed"><span>Deconstructs why real tech success comes down to three non-negotiable pillars: <strong>DSA</strong> (daily brain exercise and analytical IQ), <strong>Active Development</strong> (building real systems people use), and <strong>Open Source</strong> (public proof of engineering competence).</span></li>
-                <li class="leading-relaxed"><span>Deep dives into low-latency HFT systems engineering, Harkirat Singh&#x27;s build-first remote engineering philosophy, and breaking free from tutorial hell.</span></li>
-              </ul>
-              <ul class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5 pl-0 sm:pl-3">
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">LinkedIn Pulse</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Engineering Philosophy</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">DSA</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Full-Stack</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Systems Engineering</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Career</li>
-              </ul>
+        <!-- 2. FounderCopilot.os -->
+        <article class="project-item">
+          <div class="project-head">
+            <h3 class="project-name">FounderCopilot.os</h3>
+            <div class="project-action-links">
+              <a href="https://founder-copilot-os.vercel.app" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open Live Demo">
+                <span>Live Demo</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a href="https://github.com/Mahesh-Nandigam/FounderCopilot.os" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open GitHub Repo">
+                <span>GitHub</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
             </div>
-          </li>
+          </div>
+          <p class="project-desc">Productivity workspace and system architecture copilot for early-stage founders. Decomposes high-level product specs into modular development sprints and actionable milestones.</p>
+          <div class="project-tag-row">
+            <span class="project-tag">Founder OS</span>
+            <span class="project-tag">Product Architecture</span>
+            <span class="project-tag">Next.js</span>
+            <span class="project-tag">Vercel</span>
+          </div>
+        </article>
 
-          <!-- Real LinkedIn Pulse Article 3: Guidance to CS 30 by CS 29 -->
-          <li class="cursor-target">
-            <div class="block pl-4 sm:pl-5 border-muted-foreground/30 hover:border-primary border-l-2 size-full transition-all duration-300">
-              <p class="text-primary/90 text-lg font-medium leading-snug">Guidance to CS 30 by CS 29. One year, World changed a lot <span class="inline-block bg-secondary ml-1 sm:ml-2 px-2 py-0.5 rounded text-xs align-middle">LinkedIn Pulse</span></p>
-              <div class="flex flex-wrap items-center gap-3 mt-1.5 text-sm">
-                <a href="https://www.linkedin.com/pulse/guidance-cs-30-29-one-year-world-changed-lot-mahesh-nandigam-7poof" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 text-primary hover:underline font-medium">
-                  Read on LinkedIn <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
-                </a>
-                <span class="text-muted-foreground text-xs font-mono">Published on LinkedIn · 4 min read</span>
-              </div>
-              <ul class="space-y-2 mt-3 pl-3 sm:pl-4 text-muted-foreground text-sm text-left list-disc">
-                <li class="leading-relaxed"><span><em>&ldquo;Please don&#x27;t consume this article like a normal one. Take a book and pen.&rdquo;</em> An honest, actionable guide for incoming CS students navigating DSA, web development, open source, hackathons, and overcoming the tier-3 college mindset.</span></li>
-                <li class="leading-relaxed"><span>Written during daily 2-hour college bus rides as a day scholar: breaking down scary technical terms into practical, bite-sized weekly execution steps.</span></li>
-              </ul>
-              <ul class="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-3.5 pl-0 sm:pl-3">
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">LinkedIn Pulse</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Career Roadmap</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Web Development</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">Open Source</li>
-                <li class="bg-muted px-2.5 py-1 rounded text-xs font-mono">DSA</li>
-              </ul>
-        </ul>
+        <!-- 3. ApplyJack -->
+        <article class="project-item">
+          <div class="project-head">
+            <h3 class="project-name">ApplyJack</h3>
+            <div class="project-action-links">
+              <a href="https://apply-jack.vercel.app" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open Live Demo">
+                <span>Live Demo</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a href="https://github.com/Mahesh-Nandigam/ApplyJack" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open GitHub Repo">
+                <span>GitHub</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">Intelligent job application copilot with a Chrome extension and web dashboard. Autofills portal applications and dynamically personalizes resumes and cover letters for target roles.</p>
+          <div class="project-tag-row">
+            <span class="project-tag">Manifest V3 Extension</span>
+            <span class="project-tag">Next.js</span>
+            <span class="project-tag">Google Cloud Run</span>
+            <span class="project-tag">NLP</span>
+          </div>
+        </article>
 
-        <div class="flex justify-center mt-10">
-          <a class="inline-flex justify-center items-center bg-background hover:bg-accent disabled:opacity-50 shadow-sm px-4 py-2 border border-input rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-9 font-medium text-muted-foreground text-sm whitespace-nowrap transition-colors hover:text-accent-foreground cursor-target" href="https://www.linkedin.com/in/mahesh-nandigam" target="_blank" rel="noopener noreferrer">
-            View all articles on LinkedIn &rarr;
+        <!-- 4. Ecosphere -->
+        <article class="project-item">
+          <div class="project-head">
+            <h3 class="project-name">Ecosphere</h3>
+            <div class="project-action-links">
+              <a href="https://ecosphere-qkg43gmgq-mahesh-nandigams-projects.vercel.app" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open Live Demo">
+                <span>Live Demo</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a href="https://github.com/Mahesh-Nandigam/Ecosphere" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open GitHub Repo">
+                <span>GitHub</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p class="project-desc">Living carbon awareness dashboard that turns sustainability tracking into an interactive digital terrarium with real-time responsive SVG ecosystem visualizations.</p>
+          <div class="project-tag-row">
+            <span class="project-tag">Dynamic SVG</span>
+            <span class="project-tag">Carbon Intelligence</span>
+            <span class="project-tag">Vanilla JS</span>
+            <span class="project-tag">Cloud Run</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. GITHUB ACTIVITY SECTION (Verified Live API) -->
+    <section class="section-boundary" id="github-activity">
+      <div class="section-line"></div>
+      <span class="cross-l">+</span>
+      <span class="cross-r">+</span>
+
+      <div class="section-title">
+        <span>GitHub Activity</span>
+        <span class="section-sub" id="gh-total-count">415 contributions</span>
+      </div>
+
+      <div class="gh-card">
+        <div class="gh-card-top">
+          <div>
+            <span class="gh-bold-val" id="gh-metric-text">415 contributions</span>
+            <span class="section-sub"> in the last year</span>
+          </div>
+          <a href="https://github.com/Mahesh-Nandigam" target="_blank" rel="noopener noreferrer" class="project-github-link">
+            <span>@Mahesh-Nandigam</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
           </a>
         </div>
-      </div>
 
-      <!-- Technical Skills Section -->
-      <div id="skills" class="py-12 sm:py-16">
-        <h2 class="font-medium text-primary/90 text-base tracking-tight mb-6">technical skills.</h2>
-        <ul class="flex flex-col gap-5 sm:gap-3 font-normal text-primary/90 text-base">
-          <li class="flex flex-col sm:grid sm:grid-cols-[170px_1fr] sm:items-end gap-1 sm:gap-0">
-            <p class="font-medium sm:font-normal">Languages:</p>
-            <p class="text-muted-foreground text-sm leading-relaxed">HTML5, CSS3, JavaScript (ES6+), C++, Python</p>
-          </li>
-          <li class="flex flex-col sm:grid sm:grid-cols-[170px_1fr] sm:items-end gap-1 sm:gap-0">
-            <p class="font-medium sm:font-normal">Full Stack Web:</p>
-            <p class="text-muted-foreground text-sm leading-relaxed">Bootstrap 5, Responsive Design, CSS Grid, Flexbox, Semantic HTML, DOM APIs</p>
-          </li>
-          <li class="flex flex-col sm:grid sm:grid-cols-[170px_1fr] sm:items-end gap-1 sm:gap-0">
-            <p class="font-medium sm:font-normal">Developer Tools:</p>
-            <p class="text-muted-foreground text-sm leading-relaxed">Git, GitHub, VS Code, Chrome DevTools, Figma</p>
-          </li>
-          <li class="flex flex-col sm:grid sm:grid-cols-[170px_1fr] sm:items-start gap-1 sm:gap-0">
-            <p class="font-medium sm:font-normal">Focus Areas:</p>
-            <ul class="flex flex-col gap-1.5 text-muted-foreground text-sm leading-relaxed">
-              <li>• Full Stack Web Development &amp; Responsive UI</li>
-              <li>• Developer Content Creation &amp; Technical Breakdowns</li>
-              <li>• Building Practical Software &amp; Hackathon Projects</li>
-            </ul>
-          </li>
-          <li class="flex flex-col sm:grid sm:grid-cols-[170px_1fr] sm:items-end gap-1 sm:gap-0">
-            <p class="font-medium sm:font-normal">Education:</p>
-            <p class="text-muted-foreground text-sm leading-relaxed">CMR College of Engineering &amp; Technology — B.Tech in CSE (7.95 GPA)</p>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Let's work together Section -->
-      <section class="py-14 sm:py-20" id="contact">
-        <div class="space-y-6 text-center">
-          <div class="space-y-3">
-            <h2 class="font-bold text-3xl sm:text-4xl tracking-tight">Let&#x27;s work together.</h2>
-            <p class="mx-auto max-w-xl text-muted-foreground text-sm sm:text-base leading-relaxed px-2">
-              Have a website you want built, need full-stack web development, or want to collaborate on tech content? Send me a message below or reach out directly.
-            </p>
-          </div>
-
-          <!-- Real Working Message Form -->
-          <div class="contact-form-card cursor-target">
-            <form id="contact-form">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label for="contact-name" class="block text-xs font-medium text-muted-foreground mb-1.5 text-left">Your Name</label>
-                  <input type="text" id="contact-name" name="name" placeholder="John Doe" required class="contact-input-field cursor-target">
-                </div>
-                <div>
-                  <label for="contact-email" class="block text-xs font-medium text-muted-foreground mb-1.5 text-left">Your Email</label>
-                  <input type="email" id="contact-email" name="email" placeholder="john@example.com" required class="contact-input-field cursor-target">
-                </div>
-              </div>
-              <div class="mb-4">
-                <label for="contact-message" class="block text-xs font-medium text-muted-foreground mb-1.5 text-left">Your Message</label>
-                <textarea id="contact-message" name="message" rows="4" placeholder="What are you looking to build or collaborate on?" required class="contact-input-field resize-y cursor-target"></textarea>
-              </div>
-              <div class="flex sm:flex-row flex-col sm:items-center justify-between gap-3 pt-1">
-                <button type="submit" id="submit-btn" class="contact-submit-btn cursor-target w-full sm:w-auto">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
-                  <span>Send Message</span>
-                </button>
-                <div id="form-status" class="contact-status-msg" role="status"></div>
-              </div>
-            </form>
-          </div>
-
-          <div class="flex sm:flex-row flex-col justify-center items-center gap-3 pt-3">
-            <a href="mailto:nandigammahesh595@gmail.com" class="inline-flex justify-center items-center bg-primary hover:bg-primary/90 shadow px-4 rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-10 w-full sm:w-auto font-medium text-primary-foreground text-sm whitespace-nowrap transition-colors cursor-target">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail mr-2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-              Direct Email
-            </a>
-            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center hover:bg-primary/10 shadow px-4 border border-primary rounded-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring h-10 w-full sm:w-auto font-medium text-primary text-sm whitespace-nowrap transition-colors cursor-target">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mr-2"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
-              Download Resume
-            </a>
-          </div>
-
-          <!-- Pure Profile Icons Row -->
-          <div class="flex justify-center items-center gap-6 pt-4">
-            <a target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2" href="https://github.com/Mahesh-Nandigam" title="GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-            </a>
-            <a target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2" href="https://www.linkedin.com/in/mahesh-nandigam" title="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </a>
-            <a target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2" href="https://x.com/maheshn_dev" title="X (Twitter)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2" href="https://www.instagram.com/maheshnandigam_" title="Instagram (@maheshnandigam_)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-            </a>
-            <a target="_blank" rel="noopener noreferrer" aria-label="Email" class="text-muted-foreground hover:text-foreground transition-colors cursor-target p-2" href="mailto:nandigammahesh595@gmail.com" title="Email">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-            </a>
-          </div>
-
-          <div class="pt-4 cursor-target">
-            <p class="text-muted-foreground text-sm">Open to full stack developer roles, freelance projects, and content collaborations</p>
-            <p class="mt-2 text-muted-foreground/60 text-xs">Response time: Usually within 24 hours</p>
+        <div class="gh-scroll">
+          <div class="gh-grid" id="gh-grid">
+            <!-- Heatmap generated live by script.js -->
           </div>
         </div>
-      </section>
 
-      <!-- Footer -->
-      <div class="flex max-md:flex-col justify-between items-center max-md:gap-2 mb-6 py-10 border-gray-800 border-t">
-        <p class="text-muted-foreground text-base text-center">Mahesh Nandigam · 2026</p>
-        <button id="elevate-top-btn" class="flex items-center gap-2 w-fit text-muted-foreground text-base cursor-pointer hover:text-foreground transition-colors" aria-label="Scroll back to top">
-          Elevate to the top
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
-        </button>
+        <div class="gh-footer">
+          <span>Less</span>
+          <div class="gh-legend">
+            <div class="gh-legend-box" style="background-color: var(--gh-level-0)"></div>
+            <div class="gh-legend-box" style="background-color: var(--gh-level-1)"></div>
+            <div class="gh-legend-box" style="background-color: var(--gh-level-2)"></div>
+            <div class="gh-legend-box" style="background-color: var(--gh-level-3)"></div>
+            <div class="gh-legend-box" style="background-color: var(--gh-level-4)"></div>
+          </div>
+          <span>More</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SKILLS & TECHNOLOGIES SECTION (Exact Full Stack & Languages) -->
+    <section class="section-boundary" id="skills">
+      <div class="section-line"></div>
+      <span class="cross-l">+</span>
+      <span class="cross-r">+</span>
+
+      <div class="section-title">
+        <span>Skills &amp; Technologies</span>
+        <span class="section-sub">Full Stack &amp; Languages</span>
       </div>
 
-    </main>
+      <div class="skills-column" id="skills-list">
+        <div style="margin-bottom: 16px;">
+          <h3 style="font-size: 13.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Full Stack Development</h3>
+          
+          <div style="margin-bottom: 12px;">
+            <h4 class="skill-cat-title">Frontend Development</h4>
+            <div class="skill-chips-row">
+              <div class="skill-pill"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
+              <div class="skill-pill"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
+              <div class="skill-pill"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+              <div class="skill-pill"><i class="devicon-bootstrap-plain"></i><span>Bootstrap</span></div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <h4 class="skill-cat-title">Backend Development</h4>
+            <div class="skill-chips-row">
+              <div class="skill-pill"><i class="devicon-nodejs-plain"></i><span>Node.js</span></div>
+              <div class="skill-pill"><i class="devicon-express-original"></i><span>Express.js</span></div>
+              <div class="skill-pill"><i class="devicon-mongodb-plain"></i><span>MongoDB</span></div>
+              <div class="skill-pill"><i class="devicon-mysql-plain"></i><span>SQL</span></div>
+              <div class="skill-pill"><i class="devicon-fastapi-plain"></i><span>REST APIs</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <h3 style="font-size: 13.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Programming Languages</h3>
+          
+          <div>
+            <h4 class="skill-cat-title">Core Languages</h4>
+            <div class="skill-chips-row">
+              <div class="skill-pill"><i class="devicon-cplusplus-plain"></i><span>C++</span></div>
+              <div class="skill-pill"><i class="devicon-python-plain"></i><span>Python</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BLOGS & ARTICLES SECTION -->
+    <section class="section-boundary" id="blogs">
+      <div class="section-line"></div>
+      <span class="cross-l">+</span>
+      <span class="cross-r">+</span>
+
+      <div class="section-title">
+        <span>Blogs &amp; Articles</span>
+        <span class="section-sub">LinkedIn Pulse</span>
+      </div>
+
+      <div class="blogs-column" id="blogs-list">
+        <a href="https://www.linkedin.com/pulse/art-winning-tech-mahesh-nandigam-sdixf" target="_blank" rel="noopener noreferrer" class="blog-item">
+          <div class="blog-meta-top">
+            <span>LinkedIn Pulse</span>
+            <span>•</span>
+            <span>12 min read</span>
+          </div>
+          <h3 class="blog-heading">The Art of Winning in Tech ↗</h3>
+          <p class="blog-snippet">An in-depth breakdown of cultivating real depth, ignoring social doom-loops, and building high-leverage software engineering skills.</p>
+        </a>
+
+        <a href="https://www.linkedin.com/pulse/anyone-currently-overwhelmed-dsa-web-dev-web3-aiml-do-mahesh-nandigam-j4kbf" target="_blank" rel="noopener noreferrer" class="blog-item">
+          <div class="blog-meta-top">
+            <span>LinkedIn Pulse</span>
+            <span>•</span>
+            <span>7 min read</span>
+          </div>
+          <h3 class="blog-heading">To anyone currently overwhelmed by DSA, Web Dev, Web3, and AI/ML — DO NOT open VS Code today until you read this ↗</h3>
+          <p class="blog-snippet">Deconstructing roadmap paralysis and cutting through noise to focus on three non-negotiables: DSA, active development, and open source proof.</p>
+        </a>
+
+        <a href="https://www.linkedin.com/pulse/guidance-cs-30-29-one-year-world-changed-lot-mahesh-nandigam-7poof" target="_blank" rel="noopener noreferrer" class="blog-item">
+          <div class="blog-meta-top">
+            <span>LinkedIn Pulse</span>
+            <span>•</span>
+            <span>4 min read</span>
+          </div>
+          <h3 class="blog-heading">Guidance to CS 30 by CS 29. One year, World changed a lot ↗</h3>
+          <p class="blog-snippet">An actionable, grounded guide for incoming engineering students navigating foundational data structures, development workflows, and hackathons.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER (Exact Quote and Back to Top) -->
+    <footer class="site-footer" id="contact">
+      <div class="footer-nav">
+        <a href="#hero">Back to top ↑</a>
+      </div>
+      <div class="footer-quote-box">
+        <p class="footer-quote">&ldquo;I do live for code.&rdquo;</p>
+        <span class="footer-author">&mdash; Mahesh</span>
+      </div>
+    </footer>
+
   </div>
 
-  <!-- GSAP Library for Target Cursor -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-msg">Email copied to clipboard</div>
+
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

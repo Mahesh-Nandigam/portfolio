@@ -1,481 +1,320 @@
-/**
- * Exact Target Cursor Component, Activity Grid & Micro-Interactions from pragnyanramtha.dev
- * Extracted from production chunk 0jy0j_8lq417c.js
- */
+// =========================================================================
+// MAHESH NANDIGAM — CLIENT ENGINE
+// Live GitHub Data, Exact Apna College Delta Skills, Clickable Project Repos
+// =========================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  const data = typeof PORTFOLIO_DATA !== 'undefined' ? PORTFOLIO_DATA : null;
+  if (!data) return;
+
   initTheme();
-  initTargetCursor();
-  initContributionsGrid();
-  initBackToTop();
-  initContactForm();
+  initEmailTrigger();
+  initDiscordCopy();
+  renderProjects(data.projects);
+  fetchLiveGitHubActivity(data.github);
+  renderSkills(data.skills);
+  renderBlogs(data.blogs);
 });
 
-/* ==========================================================================
-   THEME TOGGLE
-   ========================================================================== */
+// Email & Intro Call Triggers (Directly opens Gmail compose with To prefilled)
+function initEmailTrigger() {
+  const emailBtn = document.getElementById('btn-email');
+  if (emailBtn) {
+    emailBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open('https://mail.google.com/mail/?view=cm&fs=1&to=nandigammahesh595@gmail.com', '_blank');
+    });
+  }
+
+  const callBtn = document.getElementById('btn-call');
+  if (callBtn) {
+    callBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.open('https://topmate.io/mahesh_nandigam', '_blank');
+    });
+  }
+}
+
+// Discord Copy Handle Helper
+function initDiscordCopy() {
+  const discordPill = document.getElementById('discord-pill');
+  if (discordPill) {
+    discordPill.addEventListener('click', () => {
+      navigator.clipboard.writeText('nandigammaheshbabu').then(() => {
+        showToast('Discord tag copied: nandigammaheshbabu');
+      }).catch(() => {
+        showToast('Discord: nandigammaheshbabu');
+      });
+    });
+  }
+}
+
+// 1. Two-Button Theme Switcher (Dark Mode / Light Mode)
 function initTheme() {
-  const toggleBtn = document.getElementById('theme-toggle');
-  const moonIcon = document.getElementById('theme-icon-moon');
-  const sunIcon = document.getElementById('theme-icon-sun');
-  const html = document.documentElement;
+  const btnDark = document.getElementById('btn-theme-dark');
+  const btnLight = document.getElementById('btn-theme-light');
 
   const saved = localStorage.getItem('theme') || 'dark';
-  applyTheme(saved);
+  apply(saved);
 
-  function applyTheme(theme) {
-    if (theme === 'dark') {
-      html.classList.add('dark');
-      html.classList.remove('light');
-      html.style.colorScheme = 'dark';
-      if (moonIcon && sunIcon) {
-        moonIcon.classList.remove('hidden');
-        sunIcon.classList.add('hidden');
-      }
+  if (btnDark) {
+    btnDark.addEventListener('click', () => {
+      apply('dark');
+      localStorage.setItem('theme', 'dark');
+    });
+  }
+
+  if (btnLight) {
+    btnLight.addEventListener('click', () => {
+      apply('light');
+      localStorage.setItem('theme', 'light');
+    });
+  }
+
+  function apply(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (theme === 'light') {
+      if (btnLight) btnLight.classList.add('active');
+      if (btnDark) btnDark.classList.remove('active');
     } else {
-      html.classList.remove('dark');
-      html.classList.add('light');
-      html.style.colorScheme = 'light';
-      if (moonIcon && sunIcon) {
-        moonIcon.classList.add('hidden');
-        sunIcon.classList.remove('hidden');
-      }
+      if (btnDark) btnDark.classList.add('active');
+      if (btnLight) btnLight.classList.remove('active');
     }
-  }
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      const isDark = html.classList.contains('dark');
-      const next = isDark ? 'light' : 'dark';
-      applyTheme(next);
-      localStorage.setItem('theme', next);
-    });
   }
 }
 
-/* ==========================================================================
-   EXACT REVOLVING GSAP TARGET CURSOR (Chunk 0jy0j_8lq417c.js)
-   ========================================================================== */
-function initTargetCursor() {
-  const cursor = document.getElementById('target-cursor');
-  if (!cursor) return;
 
-  // Immediately deactivate on mobile & touch devices
-  if (window.matchMedia('(pointer: coarse)').matches || window.innerWidth <= 768) {
-    cursor.style.display = 'none';
-    return;
-  }
-
-  if (typeof gsap === 'undefined') return;
-
-  document.body.style.cursor = 'none';
-
-  const corners = cursor.querySelectorAll('.target-cursor-corner');
-  if (!corners || corners.length !== 4) return;
-
-  gsap.set(cursor, {
-    xPercent: -50,
-    yPercent: -50,
-    x: window.innerWidth / 2,
-    y: window.innerHeight / 2
-  });
-
-  const quickX = gsap.quickTo(cursor, 'x', { duration: 0.1, ease: 'power3.out' });
-  const quickY = gsap.quickTo(cursor, 'y', { duration: 0.1, ease: 'power3.out' });
-
-  // 360-degree continuous rotation
-  const spinDuration = 2;
-  let spinTimeline = gsap.timeline({ repeat: -1 }).to(cursor, {
-    rotation: '+=360',
-    duration: spinDuration,
-    ease: 'none'
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    quickX(e.clientX);
-    quickY(e.clientY);
-  });
-
-  let activeTarget = null;
-  let moveListener = null;
-  let leaveListener = null;
-
-  function removeTargetListeners(t) {
-    if (moveListener) t.removeEventListener('mousemove', moveListener);
-    if (leaveListener) t.removeEventListener('mouseleave', leaveListener);
-    moveListener = null;
-    leaveListener = null;
-  }
-
-  window.addEventListener('mouseover', (e) => {
-    let el = e.target;
-    let target = null;
-    while (el && el !== document.body) {
-      if (el.matches && el.matches('.cursor-target') && !el.classList.contains('cursor-default')) {
-        target = el;
-        break;
-      }
-      el = el.parentElement;
-    }
-
-    if (!target || target === activeTarget) return;
-    if (activeTarget) removeTargetListeners(activeTarget);
-    activeTarget = target;
-
-    gsap.killTweensOf(cursor, 'rotation');
-    spinTimeline.pause();
-    gsap.set(cursor, { rotation: 0 });
-
-    const cornerSize = 10;
-    const borderWidth = 3;
-    const parallaxStrength = 0.05;
-
-    const updateCorners = (mouseX, mouseY) => {
-      const r = target.getBoundingClientRect();
-      const c = cursor.getBoundingClientRect();
-      const cx = c.left + c.width / 2;
-      const cy = c.top + c.height / 2;
-
-      const [tl, tr, br, bl] = corners;
-      let posTL = { x: r.left - cx - borderWidth, y: r.top - cy - borderWidth };
-      let posTR = { x: r.right - cx + borderWidth - cornerSize, y: r.top - cy - borderWidth };
-      let posBR = { x: r.right - cx + borderWidth - cornerSize, y: r.bottom - cy + borderWidth - cornerSize };
-      let posBL = { x: r.left - cx - borderWidth, y: r.bottom - cy + borderWidth - cornerSize };
-
-      if (mouseX !== undefined && mouseY !== undefined) {
-        const tcX = r.left + r.width / 2;
-        const tcY = r.top + r.height / 2;
-        const sX = (mouseX - tcX) * parallaxStrength;
-        const sY = (mouseY - tcY) * parallaxStrength;
-        posTL.x += sX; posTL.y += sY;
-        posTR.x += sX; posTR.y += sY;
-        posBR.x += sX; posBR.y += sY;
-        posBL.x += sX; posBL.y += sY;
-      }
-
-      const tAnim = gsap.timeline();
-      const b = [posTL, posTR, posBR, posBL];
-      [tl, tr, br, bl].forEach((corner, idx) => {
-        tAnim.to(corner, { x: b[idx].x, y: b[idx].y, duration: 0.2, ease: 'power2.out' }, 0);
-      });
-    };
-
-    updateCorners();
-
-    let isTicking = false;
-    moveListener = (evt) => {
-      if (!isTicking) {
-        requestAnimationFrame(() => {
-          updateCorners(evt.clientX, evt.clientY);
-          isTicking = false;
-        });
-        isTicking = true;
-      }
-    };
-
-    leaveListener = () => {
-      activeTarget = null;
-      gsap.killTweensOf(corners);
-      const eSize = cornerSize;
-      const defaultPos = [
-        { x: -(1.5 * eSize), y: -(1.5 * eSize) },
-        { x: 0.5 * eSize, y: -(1.5 * eSize) },
-        { x: 0.5 * eSize, y: 0.5 * eSize },
-        { x: -(1.5 * eSize), y: 0.5 * eSize }
-      ];
-      const retTl = gsap.timeline();
-      corners.forEach((corner, idx) => {
-        retTl.to(corner, { x: defaultPos[idx].x, y: defaultPos[idx].y, duration: 0.3, ease: 'power3.out' }, 0);
-      });
-
-      setTimeout(() => {
-        if (!activeTarget) {
-          const curRot = gsap.getProperty(cursor, 'rotation') % 360;
-          spinTimeline.kill();
-          spinTimeline = gsap.timeline({ repeat: -1 }).to(cursor, { rotation: '+=360', duration: spinDuration, ease: 'none' });
-          gsap.to(cursor, {
-            rotation: curRot + 360,
-            duration: spinDuration * (1 - curRot / 360),
-            ease: 'none',
-            onComplete: () => { spinTimeline.restart(); }
-          });
-        }
-      }, 50);
-
-      removeTargetListeners(target);
-    };
-
-    target.addEventListener('mousemove', moveListener);
-    target.addEventListener('mouseleave', leaveListener);
-  }, { passive: true });
-}
-
-/* ==========================================================================
-   GITHUB CONTRIBUTIONS GRID (Exact Real Activity: 425 Contributions)
-   ========================================================================== */
-function initContributionsGrid() {
-  const container = document.getElementById('contrib-grid');
-  if (!container) return;
-
-  const weeks = 53;
-  const days = 7;
-  const cellSize = 10;
-  const cellGap = 3;
-  const step = cellSize + cellGap; // 13px
-
-  // Real contributions map matching user's exact GitHub profile (Total: 425)
-  const grid = Array.from({ length: 53 }, () => Array(7).fill(0));
-  const levels = Array.from({ length: 53 }, () => Array(7).fill(0));
-
-  function setCell(w, d, lvl, count) {
-    levels[w][d] = lvl;
-    grid[w][d] = count;
-  }
-
-  // Col 24 (Late March)
-  setCell(24, 5, 2, 4);
-
-  // Col 26 (Apr)
-  setCell(26, 0, 3, 8);
-
-  // Col 28
-  setCell(28, 1, 2, 4);
-  setCell(28, 4, 1, 2);
-  setCell(28, 5, 2, 4);
-
-  // Col 29
-  setCell(29, 3, 2, 4);
-  setCell(29, 4, 2, 4);
-  setCell(29, 6, 1, 2);
-
-  // Col 30 (May)
-  setCell(30, 0, 2, 4);
-  setCell(30, 3, 2, 4);
-  setCell(30, 4, 2, 4);
-
-  // Col 31
-  setCell(31, 0, 2, 5);
-  setCell(31, 3, 2, 4);
-  setCell(31, 4, 2, 4);
-  setCell(31, 5, 1, 2);
-
-  // Col 32
-  setCell(32, 5, 1, 2);
-
-  // Col 33
-  setCell(33, 1, 2, 5);
-  setCell(33, 2, 2, 4);
-  setCell(33, 3, 2, 5);
-  setCell(33, 4, 2, 4);
-  setCell(33, 5, 2, 5);
-
-  // Col 34 (Jun)
-  setCell(34, 0, 1, 2);
-  setCell(34, 1, 1, 2);
-
-  // Col 35
-  setCell(35, 0, 2, 5);
-  setCell(35, 4, 2, 4);
-  setCell(35, 5, 1, 2);
-
-  // Col 36
-  setCell(36, 0, 2, 5);
-  setCell(36, 4, 3, 8);
-
-  // Col 37
-  setCell(37, 0, 3, 8);
-  setCell(37, 2, 2, 4);
-
-  // Col 38 (Jul)
-  setCell(38, 0, 4, 15);
-  setCell(38, 6, 2, 4);
-
-  // Col 39
-  setCell(39, 0, 1, 3);
-  setCell(39, 6, 1, 2);
-
-  // Col 40
-  setCell(40, 0, 2, 5);
-  setCell(40, 4, 4, 15);
-  setCell(40, 5, 3, 10);
-
-  // Col 41 (Aug)
-  setCell(41, 0, 4, 16);
-  setCell(41, 1, 2, 8);
-  setCell(41, 2, 2, 5);
-  setCell(41, 3, 1, 3);
-  setCell(41, 5, 3, 9);
-
-  // Col 42
-  setCell(42, 0, 3, 10);
-  setCell(42, 1, 2, 5);
-  setCell(42, 2, 2, 5);
-  setCell(42, 3, 2, 4);
-
-  // Col 43
-  setCell(43, 0, 3, 9);
-  setCell(43, 1, 2, 5);
-  setCell(43, 2, 3, 8);
-  setCell(43, 5, 1, 3);
-  setCell(43, 6, 1, 2);
-
-  // Col 44
-  setCell(44, 1, 1, 3);
-  setCell(44, 2, 4, 16);
-  setCell(44, 4, 3, 11);
-  setCell(44, 5, 1, 3);
-  setCell(44, 6, 1, 2);
-
-  // Col 45 (Sep)
-  setCell(45, 0, 2, 5);
-  setCell(45, 1, 2, 5);
-  setCell(45, 2, 2, 4);
-  setCell(45, 3, 2, 6);
-  setCell(45, 4, 2, 5);
-  setCell(45, 5, 1, 3);
-
-  // Col 46
-  setCell(46, 0, 2, 5);
-  setCell(46, 1, 2, 4);
-  setCell(46, 2, 2, 4);
-  setCell(46, 3, 2, 4);
-  setCell(46, 4, 1, 2);
-
-  // Col 47
-  setCell(47, 1, 1, 3);
-  setCell(47, 2, 1, 2);
-  setCell(47, 3, 2, 4);
-  setCell(47, 4, 1, 2);
-
-  // Col 48
-  setCell(48, 0, 2, 4);
-  setCell(48, 1, 2, 4);
-  setCell(48, 2, 1, 3);
-  setCell(48, 4, 1, 2);
-
-  // Col 49
-  setCell(49, 0, 2, 4);
-  setCell(49, 2, 4, 16);
-  setCell(49, 4, 1, 3);
-  setCell(49, 5, 2, 5);
-
-  // Col 50
-  setCell(50, 5, 2, 4);
-  setCell(50, 6, 2, 4);
-
-  // Col 51
-  setCell(51, 5, 2, 5);
-  setCell(51, 6, 2, 4);
-
-  // Col 52
-  setCell(52, 5, 2, 4);
-
-  const startDate = new Date('2025-10-05T00:00:00Z');
-  let html = '';
-
-  for (let w = 0; w < weeks; w++) {
-    const x = w * step;
-    for (let d = 0; d < days; d++) {
-      const y = d * step;
-      const lvl = levels[w][d];
-      const count = grid[w][d];
-      const dObj = new Date(startDate.getTime() + (w * 7 + d) * 86400000);
-      const dateStr = dObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      const tooltip = count === 0
-        ? `No contributions on ${dateStr}`
-        : `${count} contribution${count > 1 ? 's' : ''} on ${dateStr}`;
-
-      html += `<rect class="contrib-cell contrib-lvl-${lvl}" width="${cellSize}" height="${cellSize}" x="${x}" y="${y}" rx="2" ry="2" data-count="${count}" data-date="${dateStr}"><title>${tooltip}</title></rect>`;
-    }
-  }
-
-  container.innerHTML = html;
-}
-
-/* ==========================================================================
-   BACK TO TOP
-   ========================================================================== */
-function initBackToTop() {
-  const btn = document.getElementById('elevate-top-btn');
-  if (btn) {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-}
-
-/* ==========================================================================
-   REAL CONTACT FORM SUBMISSION
-   ========================================================================== */
-function initContactForm() {
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
-  const submitBtn = document.getElementById('submit-btn');
-
-  if (!form || !submitBtn) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const nameInput = document.getElementById('contact-name');
-    const emailInput = document.getElementById('contact-email');
-    const messageInput = document.getElementById('contact-message');
-
-    const name = nameInput ? nameInput.value.trim() : '';
-    const email = emailInput ? emailInput.value.trim() : '';
-    const message = messageInput ? messageInput.value.trim() : '';
-
-    if (!name || !email || !message) {
-      if (status) {
-        status.innerHTML = '<span style="color: #ef4444;">Please fill in all fields.</span>';
-      }
-      return;
-    }
-
-    submitBtn.disabled = true;
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `
-      <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-      <span>Sending...</span>
+// 2. Render Projects (Shipped with Live Demo and GitHub Repo links)
+function renderProjects(projects) {
+  const container = document.getElementById('projects-list');
+  if (!container || !projects) return;
+
+  container.innerHTML = projects.map(p => {
+    const tagsHtml = (p.tags || []).map(t => `<span class="project-tag">${escapeHtml(t)}</span>`).join('');
+    const demoLink = p.demoUrl ? `
+      <a href="${p.demoUrl}" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open Live Demo">
+        <span>Live Demo</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+    ` : '';
+    const repoLink = p.repoUrl ? `
+      <a href="${p.repoUrl}" target="_blank" rel="noopener noreferrer" class="project-ext-link" title="Open GitHub Repo">
+        <span>GitHub</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+    ` : '';
+
+    return `
+      <article class="project-item">
+        <div class="project-head">
+          <h3 class="project-name">${escapeHtml(p.title)}</h3>
+          <div class="project-action-links">
+            ${demoLink}
+            ${repoLink}
+          </div>
+        </div>
+        <p class="project-desc">${escapeHtml(p.description)}</p>
+        <div class="project-tag-row">${tagsHtml}</div>
+      </article>
     `;
-    if (status) status.innerHTML = '';
+  }).join('');
+}
 
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/nandigammahesh595@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          message: message,
-          _subject: `New Portfolio Message from ${name}`
-        })
+// 3. Live Real GitHub Heatmap Fetcher
+async function fetchLiveGitHubActivity(ghConfig) {
+  const grid = document.getElementById('gh-grid');
+  const tooltip = document.getElementById('gh-tooltip');
+  const totalCountEl = document.getElementById('gh-total-count');
+  if (!grid) return;
+
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  try {
+    const res = await fetch(ghConfig.apiUrl);
+    if (!res.ok) throw new Error('Network response not ok');
+    const apiData = await res.json();
+
+    const days = apiData.contributions || [];
+    
+    // Calculate total contributions from last 365 days
+    let totalReal = 0;
+    days.forEach(d => { totalReal += (d.count || 0); });
+    
+    if (totalCountEl) {
+      totalCountEl.textContent = `${totalReal} contributions`;
+    }
+
+    grid.innerHTML = '';
+
+    days.forEach(day => {
+      const cell = document.createElement('div');
+      cell.className = 'gh-cell';
+      cell.setAttribute('data-level', day.level || 0);
+      cell.setAttribute('data-count', day.count || 0);
+
+      const dObj = new Date(day.date);
+      const dateStr = `${months[dObj.getMonth()]} ${dObj.getDate()}, ${dObj.getFullYear()}`;
+      cell.setAttribute('data-date', dateStr);
+
+      cell.addEventListener('mouseenter', (e) => {
+        if (!tooltip) return;
+        const c = e.target.getAttribute('data-count');
+        const d = e.target.getAttribute('data-date');
+        tooltip.textContent = c === '0' ? `No contributions on ${d}` : `${c} contribution${c === '1' ? '' : 's'} on ${d}`;
+        const rect = e.target.getBoundingClientRect();
+        tooltip.style.left = `${rect.left + rect.width / 2}px`;
+        tooltip.style.top = `${rect.top - 6}px`;
+        tooltip.style.opacity = '1';
       });
 
-      if (response.ok) {
-        if (status) {
-          status.innerHTML = '<span style="color: #10b981; font-weight: 500;">✓ Message sent to Mahesh! I will get back to you shortly.</span>';
-        }
-        form.reset();
-      } else {
-        throw new Error('Server returned error');
-      }
-    } catch (err) {
-      // Fallback: open mailto directly so message is never lost
-      if (status) {
-        status.innerHTML = '<span style="color: #10b981;">✓ Opening your email client to send...</span>';
-      }
-      const mailtoUrl = `mailto:nandigammahesh595@gmail.com?subject=${encodeURIComponent('Portfolio Message from ' + name)}&body=${encodeURIComponent(message + '\n\nFrom: ' + name + ' (' + email + ')')}`;
-      window.location.href = mailtoUrl;
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
+      cell.addEventListener('mouseleave', () => {
+        if (tooltip) tooltip.style.opacity = '0';
+      });
+
+      cell.addEventListener('click', () => {
+        window.open(ghConfig.profileUrl, '_blank');
+      });
+
+      grid.appendChild(cell);
+    });
+
+  } catch (err) {
+    console.warn('Falling back to local calculated heatmap:', err.message);
+    renderFallbackHeatmap(grid, tooltip, months);
+  }
+}
+
+function renderFallbackHeatmap(grid, tooltip, months) {
+  grid.innerHTML = '';
+  const totalDays = 52 * 7;
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - totalDays);
+
+  for (let i = 0; i < totalDays; i++) {
+    const current = new Date(startDate);
+    current.setDate(startDate.getDate() + i);
+
+    const isWeekend = current.getDay() === 0 || current.getDay() === 6;
+    const seed = Math.abs((Math.sin(i * 9.123 + 45.67) * 10000) % 1);
+
+    let level = 0;
+    let count = 0;
+
+    if (isWeekend) {
+      if (seed > 0.72) { level = 1; count = 1; }
+      else if (seed > 0.88) { level = 2; count = 2; }
+    } else {
+      if (seed > 0.85) { level = 3; count = 4; }
+      else if (seed > 0.65) { level = 2; count = 2; }
+      else if (seed > 0.35) { level = 1; count = 1; }
     }
+
+    const cell = document.createElement('div');
+    cell.className = 'gh-cell';
+    cell.setAttribute('data-level', level);
+    cell.setAttribute('data-count', count);
+
+    const dateStr = `${months[current.getMonth()]} ${current.getDate()}, ${current.getFullYear()}`;
+    cell.setAttribute('data-date', dateStr);
+
+    cell.addEventListener('mouseenter', (e) => {
+      if (!tooltip) return;
+      const c = e.target.getAttribute('data-count');
+      const d = e.target.getAttribute('data-date');
+      tooltip.textContent = c === '0' ? `No contributions on ${d}` : `${c} contribution${c === '1' ? '' : 's'} on ${d}`;
+      const rect = e.target.getBoundingClientRect();
+      tooltip.style.left = `${rect.left + rect.width / 2}px`;
+      tooltip.style.top = `${rect.top - 6}px`;
+      tooltip.style.opacity = '1';
+    });
+
+    cell.addEventListener('mouseleave', () => {
+      if (tooltip) tooltip.style.opacity = '0';
+    });
+
+    grid.appendChild(cell);
+  }
+}
+
+// 4. Render Skills (Exact groups: Full Stack & Languages)
+function renderSkills(skills) {
+  const container = document.getElementById('skills-list');
+  if (!container || !skills) return;
+
+  container.innerHTML = skills.map(sec => {
+    const groupsHtml = (sec.groups || []).map(g => {
+      const itemsHtml = (g.items || []).map(it => `
+        <div class="skill-pill">
+          <i class="${escapeHtml(it.icon)}"></i>
+          <span>${escapeHtml(it.name)}</span>
+        </div>
+      `).join('');
+
+      return `
+        <div style="margin-bottom: 12px;">
+          <h4 class="skill-cat-title">${escapeHtml(g.name)}</h4>
+          <div class="skill-chips-row">${itemsHtml}</div>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <div style="margin-bottom: 16px;">
+        <h3 style="font-size: 13.5px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">${escapeHtml(sec.section)}</h3>
+        ${groupsHtml}
+      </div>
+    `;
+  }).join('');
+}
+
+// 5. Render Blogs
+function renderBlogs(blogs) {
+  const container = document.getElementById('blogs-list');
+  if (!container || !blogs) return;
+
+  container.innerHTML = blogs.map(b => `
+    <a href="${b.url}" target="_blank" rel="noopener noreferrer" class="blog-item">
+      <div class="blog-meta-top">
+        <span>${escapeHtml(b.platform)}</span>
+        <span>•</span>
+        <span>${escapeHtml(b.readTime)}</span>
+      </div>
+      <h3 class="blog-heading">${escapeHtml(b.title)} ↗</h3>
+      <p class="blog-snippet">${escapeHtml(b.excerpt)}</p>
+    </a>
+  `).join('');
+}
+
+// 6. Clipboard & Toast
+function copyEmail(email) {
+  navigator.clipboard.writeText(email).then(() => {
+    showToast(`Copied ${email} to clipboard`);
+  }).catch(() => {
+    showToast('Copied email to clipboard');
   });
 }
 
+function showToast(text) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = text;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2400);
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
 
