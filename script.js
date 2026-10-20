@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initTheme();
   initEmailTrigger();
-  initDiscordCopy();
   renderProjects(data.projects);
   fetchLiveGitHubActivity(data.github);
   renderSkills(data.skills);
@@ -35,19 +34,6 @@ function initEmailTrigger() {
   }
 }
 
-// Discord Copy Handle Helper
-function initDiscordCopy() {
-  const discordPill = document.getElementById('discord-pill');
-  if (discordPill) {
-    discordPill.addEventListener('click', () => {
-      navigator.clipboard.writeText('nandigammaheshbabu').then(() => {
-        showToast('Discord tag copied: nandigammaheshbabu');
-      }).catch(() => {
-        showToast('Discord: nandigammaheshbabu');
-      });
-    });
-  }
-}
 
 // 1. Two-Button Theme Switcher (Dark Mode / Light Mode)
 function initTheme() {

@@ -6,4 +6,4 @@ It gives you a clear picture of my digital presence across Competitive Programmi
 
 👉 **Live Portfolio**: [https://themahesh.tech](https://themahesh.tech)
 
-If you find any bugs, notice something broken, or have feedback, feel free to raise an issue here or ping me directly on my socials.
+If you find any bugs, notice something broken, or have feedback, feel free to raise an issue here or ping me directly on [X (@maheshn_dev)](https://x.com/maheshn_dev) or [LinkedIn](https://www.linkedin.com/in/mahesh-nandigam).

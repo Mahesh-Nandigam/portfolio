@@ -25,7 +25,7 @@ const PORTFOLIO_DATA = {
         { name: "GitHub", url: "https://github.com/Mahesh-Nandigam" },
         { name: "X", url: "https://x.com/maheshn_dev" },
         { name: "LinkedIn", url: "https://www.linkedin.com/in/mahesh-nandigam" },
-        { name: "Discord", url: "https://discord.com" }
+        { name: "Discord", url: "https://discord.com/users/1422628571842609215" }
       ],
       cp: [
         { name: "LeetCode", url: "https://leetcode.com/u/mahesh-nandigam/" },
